@@ -5,6 +5,7 @@ import './Signin.scss';
 // import HttpsIcon from '@mui/icons-material/Https';
 import CustomButton from '../custombutton/CustomButton.component';
 import GoogleButton from 'react-google-button';
+import { signInWithGoogle } from './../../firebase/firebase.utils';
 
 
 class SignIn extends React.Component{
@@ -45,7 +46,8 @@ class SignIn extends React.Component{
                 </form>
                     <div className='buttons'>
                     <CustomButton type='submit'> sign in </CustomButton>
-                        <GoogleButton label='Sign In With Google'
+                        <GoogleButton onClick={signInWithGoogle} 
+                        label='Sign In With Google'
                         style={{marginLeft: '18px'}} />
                     </div>
             </div>
