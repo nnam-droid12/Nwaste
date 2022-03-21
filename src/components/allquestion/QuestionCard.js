@@ -6,7 +6,7 @@ const QuestionCollection = () =>{
     const [questions] = useState(data);
     return(
         <main>
-           <div className='container'>
+           <div className='faq'>
               <h3>Questions and Answers On How to Use Nwaste</h3>
               <section className='info'>
                {questions.map((question) => {

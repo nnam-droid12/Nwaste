@@ -1,15 +1,22 @@
 .header {
-    height: 50px;
+    height: 70px;
     width: 100%;
-    background: rgb(148, 136, 250);
+    background: #fff;
     display: flex;
     justify-content: space-between;
     margin-bottom: 25px;
 
     .logo-container {
-      height: 100%;
+      height: 50px;
       width: 70px;
-      padding: 25px;
+      padding: 15px;
+      // #4285F4
+    }
+
+    .logo{
+      width: 65px;
+      height: 65px;
+      padding-bottom: 12px;
     }
   
     .options {
@@ -20,9 +27,10 @@
       justify-content: flex-end;
   
        .option {
+        font-family: 'EB Garamond', serif;
         padding: 10px 15px;
         cursor: pointer;
-        color: #fff;
+        color: #4285f4;
       }
     }
   }

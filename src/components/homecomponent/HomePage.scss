@@ -1,0 +1,74 @@
+.container{
+  position: absolute;
+  left: 0;
+  top: 60px;
+  width: 100%;
+  height: 70vh;
+  animation: animate 18s ease-in-out infinite;
+  background-size: cover;
+}
+
+.outer{
+    position: absolute;
+    left: 0;
+    top: o;
+    width: 100%;
+    height: 100vh;
+    // background: rgba(0,0,0,0.5);
+}
+.details{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.details h3{
+    font-family: 'EB Garamond', serif;
+    font-size: 4em;
+    color: #4285F4;
+}
+
+.details h4 span:nth-child(1){
+    color: #f1f1f1 ;
+}
+.details h4 span:nth-child(2){
+    color: #f1f1f1;
+}
+
+@keyframes animate{
+    0%, 100%{
+        background-image: url('https://csgopedia.com/uploads/blog/image055.jpg');
+    }
+    25%{
+        background-image: url('https://smbmashery.telkom.co.za/telkom/sites/default/files/2021-12/MicrosoftTeams-image%20%2855%29%20%281%29.png?_format=json&api_key=kug2d2pqg9hugj3sxtrzyg3j');
+    }
+    50%{
+        background-image: url('https://i.pinimg.com/564x/fd/49/2e/fd492eebad732acf9cdd099c174ec99d.jpg');
+    }
+    75%{
+        background-image: url('https://wallpaperaccess.com/full/3171029.jpg');
+    }
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+}
+
+.title h2{
+    color: #4285F4;
+    text-align: center;
+}
+
+.future-plan{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.future-plan > h3{
+    color: #4285F4;
+    text-align: center;
+}

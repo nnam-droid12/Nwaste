@@ -1,15 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import { ReactComponent as Logo } from '../assets/logo.svg';
+import Logo from '../../assets/logo1.png';
 import './Header.scss';
 
 const Header = () =>{
     return(
         <div className='header'>
             <Link className='logo-container' to='/'>
-              <span style={{color: 'green', fontSize:'bold'}}>N
-              <span style={{color: 'blue', fontSize: 'bold'}}>WAS
-              <span style={{color: 'red', fontSize: 'bold'}}>TE</span></span></span>
+                <img className='logo' alt='logo' src={Logo} /><span style={{color: 'blue'}}> Nwaste</span>
             </Link>
                <div className='options'>
                  <Link className='option' to='/about'>
