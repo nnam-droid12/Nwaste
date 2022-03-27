@@ -4,7 +4,7 @@ import { FaQuoteRight, FaChevronRight, FaChevronLeft } from 'react-icons/fa';
 import './Review.components.scss';
 
 const Usereview = () =>{
-    const [index, setIndex] = useState(3);
+    const [index, setIndex] = useState(0);
     const {name, job, text} = reviews[index];
 
    const checkNumber =(number) =>{

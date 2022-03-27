@@ -16,7 +16,10 @@ const HomePage = () => {
                 </div>
               </div>
           </div>
-    <section style={{marginTop: '500px'}} className="review">
+          <div className='our-work'>
+              <h3 className='work-title'>What We Do</h3>
+          </div>    
+    <section style={{marginTop: '10px'}} className="review">
         <div className='title'>
             <h2>User Reviews</h2>
             <div className='underline'></div>

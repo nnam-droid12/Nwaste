@@ -9,7 +9,7 @@ class SignUp extends React.Component {
     constructor(){
         super();
         this.state ={
-            name: '',
+            displayName: '',
             email: '',
             password: '',
             confirmPassword: ''
@@ -18,43 +18,58 @@ class SignUp extends React.Component {
 
     handleSubmit = async event =>{
         event.preventDefault();
-        const { name, email, password, confirmPassword } =this.state;
+        const { displayName, email, password, confirmPassword } =this.state;
 
         if(password !== confirmPassword){
-            alert("password don't match")
+            alert("password don't match");
+            return;
         }
         try{
           const { user } = await auth.createUserWithEmailAndPassword(
-              email, password);
+              email, 
+              password);
+              user.updateProfile({
+                  displayName: displayName
+              }).then(() =>{
+                  console.log('name updated successfully');
+              }).catch((error) =>{
+                  console.log(error);
+              })
+              auth.onAuthStateChanged(user => {
+                if(user){
+                    window.location = '/userhome';
+                }
+            });
 
-            await  createUserProfileDocument(user, { name })
+            await createUserProfileDocument(user, { displayName });
+
             this.setState({
-                name: '',
+                displayName: '',
                 email: '',
                 password: '',
                 confirmPassword: ''
-            });
+            })
         }catch(error){
           console.log(error);
         }
-    }
+    };
 
-    handleChange = (event) =>{
-        const [ name, value ] = event.target;
+    handleChange = event =>{
+        const { name, value } = event.target;
         this.setState({ [name]: value });
     }
 
 
     render(){
-        const { name, email, password, confirmPassword } =this.state;
+        const { displayName, email, password, confirmPassword } =this.state;
         return(
             <div className='sign-up'>
               <h2>Create An Account</h2>
               <span>Sign up with your username and password</span>
                <form onSubmit={this.handleSubmit}>
                    <FormInput type='text'
-                   name='name'
-                   value={name}
+                   name='displayName'
+                   value={displayName}
                    onChange={this.handleChange}
                    label='name'
                     required />
@@ -77,7 +92,7 @@ class SignUp extends React.Component {
                    label='confirm password'
                     required />
                     <div className='buttons'>
-                         <CustomButton> sign up </CustomButton>
+                         <CustomButton type='submit'> sign up </CustomButton>
                     </div>
                </form>
             </div>
