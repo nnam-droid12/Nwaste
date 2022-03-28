@@ -14,8 +14,6 @@ import { loadFireworksPreset } from "tsparticles-preset-fireworks";
   render() {
     const options = {
       preset: "fireworks",
-      background: "#fff"
-
     };
 
     return <Particles options={options} init={this.customInit} />;

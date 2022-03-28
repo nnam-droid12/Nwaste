@@ -10,6 +10,10 @@ import Header from './components/header/Header';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import Scroll from './components/scroll/Scroll';
 import Footer from './components/footer/Footer';
+import UserHomePage from './components/userhomepage/Userhome.component';
+import ForgotPassword from './components/forgot-password/ForgotPassword.component';
+import ResetMessage from './components/reset-password/ResetPassword.component';
+
 
 
 class App extends React.Component {
@@ -23,7 +27,6 @@ class App extends React.Component {
 
   componentDidMount(){
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
-      createUserProfileDocument(userAuth);
       if(userAuth){
         const userRef = await createUserProfileDocument(userAuth);
 
@@ -33,16 +36,18 @@ class App extends React.Component {
             id: snapShot.id,
             ...snapShot.data()
             }
+          }, () =>{
+            console.log(this.state)
           })
         })
       }else {
-        this.setState({currentUser: userAuth})
+        this.setState({ currentUser: userAuth });
       }
     });
   }
 
   componentWillUnmount(){
-   this.unsubscribeFromAuth()
+   this.unsubscribeFromAuth();
   }
   render() {
   return (
@@ -54,8 +59,11 @@ class App extends React.Component {
           <Route path='/faq' element={<DisplayFaq />} />
           <Route path='/signin' element={<Scroll><SignIn /></Scroll>} />
           <Route path='/signup' element={<Scroll><SignUp /></Scroll>} /> 
+          <Route  path='/userhome' element={<UserHomePage currentUser={this.state.currentUser} />}  />
+          <Route path='/forgotpassword' element={<ForgotPassword />} />
+          <Route path='/resetmessage' element={<ResetMessage />} /> 
        </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
   }

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../../assets/logo1.png';
-import { auth } from './../../firebase/firebase.utils';
+import { auth } from '../../firebase/firebase.utils';
 import './Header.scss';
 import { GoThreeBars } from "react-icons/go";
 
-const Header = ({currentUser}) =>{
+const Header = ({ currentUser }) =>{
     return(
         <nav className='header sticky'>
             <Link to='/'>
@@ -37,14 +37,17 @@ const Header = ({currentUser}) =>{
                      FAQ
                  </Link>
                  {
+
                      currentUser?
-                     <div className='option' onClick={() => auth.signOut()}>SIGN OUT</div> :
+                     <div className='option' onClick={() => auth.signOut(window.location = '/')}>SIGN OUT</div> :
                      <Link className='option' to='/signin' >
                      SIGN IN
                      </Link>
                  }
             </div>
         </nav>
+        
+
     );
 }
 

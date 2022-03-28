@@ -57,6 +57,7 @@ const HomePage = () => {
                 </div>
               </div>
           </div>
+
           
           {/* The beginning of service*/}
           <section className="service">
