@@ -1,12 +1,15 @@
 .btn {
     font-size: 30px;
     cursor: pointer;
+    margin-left: 25px;
+    border-radius: 50%;
+    background: rgba($color: #fff, $alpha: .12);
+    color: white;
 }
 .faq-container{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    // margin-bottom: 20em;
 }
 
 .answers {
@@ -18,9 +21,5 @@
 .answers::before {
     transform: scale(0, 1);
     transition: transform ease-in-out 250ms;
-    position: absolute;
-    top: -.75em;
-    left: 0;
-    right: 0;
     background: rgba($color: #000000, $alpha: .5);
 }

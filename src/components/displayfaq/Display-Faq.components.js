@@ -1,13 +1,11 @@
-import React from 'react';
 import QuestionCollection from '../allquestion/QuestionCard';
-import './Display-Faq.components.scss';
+import Footer from '../footer/Footer';
 
 const DisplayFaq = () =>{
     return(
-        <div className='display-faq'>
-
+        <div>
         <QuestionCollection />
-
+        <Footer />
         </div>
     );
 }

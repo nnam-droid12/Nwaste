@@ -8,8 +8,6 @@ import SignIn from './components/signincomponent/SignIn.components';
 import SignUp from './components/signup-component/SignUp.component';
 import Header from './components/header/Header';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
-import Scroll from './components/scroll/Scroll';
-import Footer from './components/footer/Footer';
 import UserHomePage from './components/userhomepage/Userhome.component';
 import ForgotPassword from './components/forgot-password/ForgotPassword.component';
 import ResetMessage from './components/reset-password/ResetPassword.component';
@@ -57,13 +55,12 @@ class App extends React.Component {
           <Route path='/' element={<HomePage />} />
           <Route path='/about' element={<AboutPage />} />
           <Route path='/faq' element={<DisplayFaq />} />
-          <Route path='/signin' element={<Scroll><SignIn /></Scroll>} />
-          <Route path='/signup' element={<Scroll><SignUp /></Scroll>} /> 
+          <Route path='/signin' element={<SignIn />} />
+          <Route path='/signup' element={<SignUp />} /> 
           <Route  path='/userhome' element={<UserHomePage currentUser={this.state.currentUser} />}  />
           <Route path='/forgotpassword' element={<ForgotPassword />} />
           <Route path='/resetmessage' element={<ResetMessage />} /> 
        </Routes>
-      {/* <Footer /> */}
     </div>
   );
   }

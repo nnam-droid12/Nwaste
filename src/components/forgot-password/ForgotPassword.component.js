@@ -1,4 +1,3 @@
-import React from 'react';
 import './ForgotPassword.scss';
 import { sendPasswordResetEmail } from 'firebase/auth';
 import { auth } from '../../firebase/firebase.utils';
@@ -7,7 +6,6 @@ import { auth } from '../../firebase/firebase.utils';
 
 
 const ForgotPassword = ({email}) =>{
-
     const sendPasswordReset = async (email) => {
         try{
           await sendPasswordResetEmail(auth,email);

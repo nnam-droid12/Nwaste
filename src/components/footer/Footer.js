@@ -1,9 +1,59 @@
+import { HiMail, HiPhone } from "react-icons/hi";
+import { FaGithubSquare, FaLinkedin, FaFacebookSquare, FaTwitterSquare, FaMapMarkerAlt } from "react-icons/fa";
+import Logo from '../../assets/logo1.png';
 import './Footer.scss';
 
 const Footer = () => {
     return ( 
         <footer className="footer">
-            helllooo
+            <div className="footer-container">
+              <div>
+              <div className='logo-container'  title='Go to home page!'>
+                    <div className='col'>
+                    <img className='logo' alt='logo' src={Logo} style={{height: '50px', width: '50px'}}/> 
+                    <div className='text col'style={{fontSize: '18px'}}>
+                        Nwaste
+                    </div>
+                    </div>
+                </div>  
+                <div className="f-col">
+                    <FaMapMarkerAlt className="icon-gap" />  
+                <address >
+                   <h4>University of Ibadan</h4>
+                    <h3>Ibadan, Nigeria</h3>
+                </address>
+                </div>
+                <div className="f-col">
+                    <HiPhone className="icon-gap" />  
+                
+                <address>
+                   <p>+2348057205319, +2349151840633</p>
+                </address>
+                </div>
+                <div className="f-col">
+                    <HiMail className="icon-gap" />  
+                <address >
+                   <p>
+                        <a style={{color: '#4285f4'}} href= "mailto: nwastenetwork@gmail.com">nwastenetwork@gmail.com</a>
+                   </p>
+                </address>
+                </div>
+            </div>
+
+            <div className="footer-about">
+                <div className="about-nwaste">
+                    <h3 style={{textAlign: "center"}}>About Our solution</h3>
+                    <p>Nwaste the game changer is helping the farmers getting the most from their harvest and making farmers happy.</p>
+                </div>
+                <div className="media-handles">
+                    <div className="platform"><FaLinkedin /></div>
+                    <div className="platform"><FaGithubSquare /></div>
+                    <div className="platform"><FaFacebookSquare /></div>
+                    <div className="platform"><FaTwitterSquare /></div>
+                </div>
+            </div>
+        </div>
+        <p className="copyright">&copy; 2022 NWASTE</p>
         </footer>
      );
 }
