@@ -1,16 +1,42 @@
 .sign-in{
-    width: 480px;
+    max-height: 100vh;
     display: flex;
-    padding: 0px 20px;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
+    width: 100%;
+}
 
+.sign-in-text {
+    margin: 0;
+    padding: 0;
+}
 
-    .title{
-        margin: 10px 0;
+.sign-in-btns {
+    display: flex;
+    justify-content: space-between;
+}
+.google-btn {
+    margin-left: 5px;
+}
+
+.sign-up-btn, .sign-in-btn {
+    outline: none;
+    border: none;
+    background: #4285f4;
+    color: #fff;
+    padding: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+@media screen and (max-width: 768px) {
+    .google-btn {
+        max-width: 45vw;
     }
+}
 
-    .buttons{
-        display: flex;
-        justify-content: space-between;
-    }
+.signin-form {
+    max-height: 50vh;
 }

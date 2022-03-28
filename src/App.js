@@ -4,9 +4,12 @@ import HomePage from './components/homecomponent/Home.components';
 import AboutPage from './components/aboutcomponent/About.components';
 import DisplayFaq from './components/displayfaq/Display-Faq.components';
 import './App.css';
-import SigninAndSignupPage from './pages/signin-and-signup-page/Signin-And-Signup';
+import SignIn from './components/signincomponent/SignIn.components';
+import SignUp from './components/signup-component/SignUp.component';
 import Header from './components/header/Header';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
+import Scroll from './components/scroll/Scroll';
+import Footer from './components/footer/Footer';
 
 
 class App extends React.Component {
@@ -32,7 +35,7 @@ class App extends React.Component {
             }
           })
         })
-      }else{
+      }else {
         this.setState({currentUser: userAuth})
       }
     });
@@ -49,9 +52,10 @@ class App extends React.Component {
           <Route path='/' element={<HomePage />} />
           <Route path='/about' element={<AboutPage />} />
           <Route path='/faq' element={<DisplayFaq />} />
-          <Route path='/signin' element={<SigninAndSignupPage />} /> 
+          <Route path='/signin' element={<Scroll><SignIn /></Scroll>} />
+          <Route path='/signup' element={<Scroll><SignUp /></Scroll>} /> 
        </Routes>
-           
+      <Footer />
     </div>
   );
   }

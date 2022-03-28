@@ -2,6 +2,7 @@ import React from 'react';
 import FormInput from '../formInput/Forminput.component';
 import CustomButton from '../custombutton/CustomButton.component';
 import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
+import { Link } from 'react-router-dom';
 import './SignUp.scss';
 
 
@@ -49,9 +50,13 @@ class SignUp extends React.Component {
         const { name, email, password, confirmPassword } =this.state;
         return(
             <div className='sign-up'>
-              <h2>Create An Account</h2>
-              <span>Sign up with your username and password</span>
-               <form onSubmit={this.handleSubmit}>
+               <div>
+                <h2>Create An Account</h2>
+                <span>Sign up with your username and password</span>
+               </div>
+               <form 
+               className='signin-form'
+               onSubmit={this.handleSubmit}>
                    <FormInput type='text'
                    name='name'
                    value={name}
@@ -78,6 +83,13 @@ class SignUp extends React.Component {
                     required />
                     <div className='buttons'>
                          <CustomButton> sign up </CustomButton>
+                    </div>
+                    <div className='signin-and-link'>
+                    <p style={{color: '#4285f4'}}>Already Have An Account? 
+                        <Link to='/signin'>
+                        <button className='sign-in-btn'>Sign in</button>
+                        </Link>
+                    </p> 
                     </div>
                </form>
             </div>

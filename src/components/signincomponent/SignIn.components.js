@@ -1,11 +1,11 @@
 import React from 'react';
 import FormInput from '../formInput/Forminput.component';
 import './Signin.scss';
-// import EmailIcon from '@mui/icons-material/Email';
-// import HttpsIcon from '@mui/icons-material/Https';
+import ParticlesContainer from '../particles/ParticlesContainer'
 import CustomButton from '../custombutton/CustomButton.component';
 import GoogleButton from 'react-google-button';
 import { signInWithGoogle } from './../../firebase/firebase.utils';
+import { Link } from 'react-router-dom';
 
 
 class SignIn extends React.Component{
@@ -28,10 +28,15 @@ class SignIn extends React.Component{
     }
     render(){
         return(
-            <div className='sign-in'>
+        <div className='sign-in'>
+            <ParticlesContainer />
+             <div className='sign-in-text'>
              <h2 className='h2'>I already have an account</h2>
              <span className='span'>Sign in with your email and password</span>
-                <form onSubmit={this.handleSubmit}>
+             </div>
+                <form 
+                className='signin-form'
+                onSubmit={this.handleSubmit}>
                    <FormInput name='email' type='email'
                    value={this.state.email}
                    handleChange={this.handleChange}
@@ -44,11 +49,22 @@ class SignIn extends React.Component{
                    required />
                 
                 </form>
-                    <div className='buttons'>
-                    <CustomButton type='submit'> sign in </CustomButton>
-                        <GoogleButton onClick={signInWithGoogle} 
-                        label='Sign In With Google'
-                        style={{marginLeft: '18px'}} />
+                    <div className='btn-and-link'>
+                        <div className='sign-in-btns'>
+                            <CustomButton
+                                
+                              type='submit'> sign in </CustomButton>
+                            <GoogleButton 
+                            className='google-btn'
+                            onClick={signInWithGoogle}>Sign in with google</GoogleButton>
+                        </div>
+                        <div className='signup-and-link'>
+                        <p style={{color: '#4285f4', textAlign: 'center'}}>Don't Have An Account?
+                            <Link to='/signup'>
+                            <button className='sign-up-btn'>Sign up</button>
+                            </Link>
+                        </p> 
+                        </div>
                     </div>
             </div>
         );

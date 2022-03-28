@@ -1,0 +1,10 @@
+.scroll {
+    position: absolute;
+    width: 100%;
+    top: 18%;
+    overflow-y: scroll;
+    border: 1px solid #fff;
+    min-height: 100vh;
+    content: '';
+    clear: both;
+}

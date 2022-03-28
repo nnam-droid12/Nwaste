@@ -1,21 +1,24 @@
 import React, { useState } from 'react';
 import data from '../../faqdata/data';
 import SingleQuestion from '../faqcomponent/FaqPage.components';
+import './questionCard.scss'
 
 const QuestionCollection = () =>{
     const [questions] = useState(data);
     return(
         <main>
-           <div className='faq'>
-              <h3>Questions and Answers On How to Use Nwaste</h3>
+              <div style={{marginBottom: '118px'}}>
+              <h1 className='heading'>Frequently Asked Questions</h1>
+              </div>
               <section className='info'>
                {questions.map((question) => {
                 return (
-                    <SingleQuestion key={question.id} {...question}></SingleQuestion>
+                    <div className='faq'>
+                    <SingleQuestion key={question.id} {...question}  />
+                    </div>
                 );
-                   })}
+               })}
               </section>
-           </div>
         </main>
     );
 }
