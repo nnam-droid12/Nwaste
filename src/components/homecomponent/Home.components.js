@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import reviews from '../../reviewdata/Review-Data';
 import { MdArrowRightAlt, MdShoppingCart } from "react-icons/md";
 import { HiAcademicCap, HiArrowsExpand } from "react-icons/hi";
-import { WiCloudUp } from "react-icons/wi"
+import { WiCloudUp } from "react-icons/wi";
+import { Link } from 'react-router-dom';
 import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
 import './HomePage.scss';
 
@@ -46,7 +47,7 @@ const HomePage = () => {
                 <div className='details'>
                     <h1>Nwaste the game changer is helping the farmers getting the most from their harvest and making farmers happy.</h1>
                     <p>Our Mission is Zero Hunger in 2030</p>
-                    <button 
+                    <Link to='/signin'><button 
                     className='get-started'>
                     <span className='get-started-btn'>Get Started</span>
                     <span 
@@ -54,6 +55,7 @@ const HomePage = () => {
                     size='30px'
                     ><MdArrowRightAlt /></span>
                     </button>
+                    </Link>
                 </div>
               </div>
           </div>
