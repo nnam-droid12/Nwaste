@@ -131,6 +131,7 @@
 
     25% {
         background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGFncmljdWx0dXJlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60');
+        
     }
 
     50% {
@@ -140,6 +141,10 @@
     75% {
         background-image: url('https://media.istockphoto.com/photos/aerial-photograph-rural-landscape-farms-villages-picturesque-green-picture-id1292399669?b=1&k=20&m=1292399669&s=170667a&w=0&h=LQAbbZdgZVPntMvwUvMBwTuJkIU7JF6XP4sGe-Mq4o0=');
     }
+}
+
+@keyframes animate{
+    
 }
 
 @media screen and (max-width: 768px) {
