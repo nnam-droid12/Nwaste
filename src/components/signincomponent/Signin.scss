@@ -1,15 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 .sign-in{
-    max-height: 100vh;
+    font-family: montserrat, sans-serif;
+    margin-top: 5.25rem;
+    margin-bottom: .75rem;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     width: 100%;
 }
+h2, .span {
+    margin-left: 50px;
+    margin-top: 8px;
+}
 
-.sign-in-text {
-    margin: 0;
-    padding: 0;
+.sign-in-bg {
+    box-shadow: 0 10px 10px 10px rgba(121, 121, 121, .65);
+    padding: .8rem 1.5rem;
+    border-radius: 16px;
+    
 }
 
 .sign-in-btns {
@@ -31,12 +40,23 @@
     margin-left: 5px;
 }
 
+.sign-up-btn:active, .sign-in-btn:active {
+    transform: translate(0, .2rem);
+}
+.forgot-pass {
+    color: #4285f4;
+    font-size: 12px;
+    font-style: italic;
+    text-align: center;
+    margin-left: 110px;
+}
+
 @media screen and (max-width: 768px) {
     .google-btn {
-        max-width: 45vw;
+        // max-width: 45vw;
     }
 }
 
-.signin-form {
-    max-height: 50vh;
-}
+// .signin-form {
+//     max-height: 50vh;
+// }

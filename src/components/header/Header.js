@@ -55,8 +55,6 @@ const Header = ({ currentUser }) =>{
 
             </div>
         </nav>
-        
-
     );
 }
 

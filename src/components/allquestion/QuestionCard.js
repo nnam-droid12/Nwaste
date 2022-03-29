@@ -6,10 +6,8 @@ import './questionCard.scss'
 const QuestionCollection = () =>{
     const [questions] = useState(data);
     return(
-        <main>
-              <div style={{marginBottom: '118px'}}>
+        <main className='display-faq'>
               <h1 className='heading'>Frequently Asked Questions</h1>
-              </div>
               <section className='info'>
                {questions.map((question) => {
                 return (

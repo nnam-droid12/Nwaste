@@ -1,23 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 .heading {
-    position: fixed;
-    width: 100%;
-    top: 15%;
-    left: 0;
-    right: 0;
-    z-index: 10;
     font-size: 24px;
     text-align: center;
-    padding: 5px;
+    margin-bottom: 10px;
 }
-.ask {
-    padding: 10px;
-}
+
 .faq {
-    // this faq is faqs
     background: rgba($color: #000000, $alpha: .5);
-    padding: 5px;
+    padding: 7px;
     width: 100%;
     margin-bottom: .3em;
+}
+.display-faq {
+    font-family: montserrat, sans-serif;
+    background-color: #003e51;
+    opacity: .85;
+    width: 100%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 6.56rem 0;
+    margin: 0 auto;
 }
 
 @media screen and (max-width: 768) {

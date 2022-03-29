@@ -1,4 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 .sign-up {
+        font-family: montserrat, sans-serif;
+        margin-top: 5.25rem;
+        margin-bottom: .75rem;
         min-height: 130vh;
         display: flex;
         align-items: center;
@@ -8,4 +12,10 @@
     }
 .h2 {
     text-align: center;
+}
+
+.sign-in-bg {
+    box-shadow: 0 10px 10px 10px rgba(121, 121, 121, .65);
+    padding: .8rem 1.5rem;
+    border-radius: 16px;
 }
