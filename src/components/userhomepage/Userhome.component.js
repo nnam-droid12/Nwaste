@@ -1,10 +1,21 @@
 import React from 'react';
-// import axios from 'axios';
+import axios from 'axios';
 import './Userhome.scss';
 
 
 const UserHomePage = (props) => {
     console.log(props.currentUser)
+
+    const onWeather = () =>{
+        alert('current weather displayed successfully')
+        axios({
+            url: 'userpage',
+            method: 'get',
+            data:{
+                
+            }
+        })
+    }
 
     return(
         <div className='user-home'>

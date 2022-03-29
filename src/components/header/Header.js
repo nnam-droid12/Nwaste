@@ -39,11 +39,20 @@ const Header = ({ currentUser }) =>{
                  {
 
                      currentUser?
-                     <div className='option' onClick={() => auth.signOut(window.location = '/')}>SIGN OUT</div> :
+                     // when user is sign in
+                     <div className='option'>
+                        <div className='option' onClick={() => auth.signOut(window.location = '/')}>
+                        SIGN OUT</div>
+                        <div className='option'><Link  to='/userhome'>VIEW PROFILE</Link>
+                        </div>
+                     </div>
+                       // end of when user is signin
+                       :
                      <Link className='option' to='/signin' >
                      SIGN IN
                      </Link>
                  }
+
             </div>
         </nav>
     );

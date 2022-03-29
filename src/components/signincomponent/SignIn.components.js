@@ -1,6 +1,7 @@
 import React from 'react';
 import FormInput from '../formInput/Forminput.component';
 import './Signin.scss';
+
 import CustomButton from '../custombutton/CustomButton.component';
 import GoogleButton from 'react-google-button';
 import { Link } from 'react-router-dom';
@@ -22,7 +23,7 @@ class SignIn extends React.Component{
            const response =  await getRedirectResult(auth);
 
            if(response){
-              
+              alert('Redirecting to user page, please wait!');
              window.location='/userhome'
            }
         }
