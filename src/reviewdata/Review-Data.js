@@ -1,17 +1,17 @@
 const reviews = [
     {
         id: 1,
-        name: "Adam Uche",
-        job: "Local Farmer",
+        name: "Gbenu Oluwasijibomi Pharez",
+        job: "Student and Farmer",
         text: 
-        'Nwaste will be a great solution, helping me in making huge sales and avoiding waste'
+        'This is a great software to ease our work as farmers but not all farmers are aware of soil types and compartible crops.It would be nice if could reach more farmers'
     },
     {
         id: 2,
-        name: "Smith Biden",
-        job: " Web Developer",
+        name: "Peace Sccess",
+        job: "Entrepreneur",
         text: 
-        'Nwaste is the best agricultural market that is changing the status quo and I assure to give them a try with their software I was able to know the current weather condition at my farm before I actually started planting and it helps me save time and avoid waste'
+        'With this software crop production will become easier for farmers like never before'
     },
     {
         id: 3,

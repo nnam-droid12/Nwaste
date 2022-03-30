@@ -24,7 +24,7 @@ const Header = ({ currentUser }) =>{
             </div> 
             </Link>
             <input type="checkbox" className="nav-toggle" id='nav-toggle'/>
-            <label for='nav-toggle' className='nav-toggle-label'>
+            <label htmlFor='nav-toggle' className='nav-toggle-label'>
                     <span style={{color: 'dodgerblue'}}>
                         <GoThreeBars className='hamburger-btn' size='32px' />
                     </span>
