@@ -9,7 +9,7 @@
     text-align: center;
     z-index: 1000;
     box-shadow: 0 5px 10px 10px rgba(0,0,0,.2);
-    
+    height: 90px;
  }
 .col {
   display: flex;
@@ -41,13 +41,15 @@
    width: 100%;
    padding: 10px;
    transform: scale(1, 0);
-   transition: transform 400ms ease-in-out;
+   transition: transform 500ms ease-in-out;
  }
 
  .option {
-   color: #4285f4;
-   margin-bottom: 1em;
-   margin-left: 1em;
+    font-size: 20px;
+    font-weight: bold;
+    color: #4285f4;
+    margin-bottom: 1em;
+    margin-left: 1em;
  }
 
  .nav-toggle:checked ~ div {
@@ -97,7 +99,6 @@
    .option::before {
      content: '';
      display: block;
-     height: 2px;
      background: #4285f4;
      position: absolute;
      top: -.75em;
@@ -111,3 +112,42 @@
    }
 
  }
+
+
+  .get-started {
+  background: orange;
+  padding: 0;
+  border-radius: 16px;
+  width: 210px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  overflow: hidden;
+  color: #4285f4;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: 'quicksand'sans-serif;
+  display: inline-flex;
+  height: 3.05rem;
+}
+
+ .get-started:hover {
+  filter: brightness(130%);
+}
+
+.get-started:active {
+  transform: translate(0, .3rem);
+}
+
+.get-started-btn,
+.get-started-icon {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 24px;
+  height: 100%;
+}
+
+.get-started-icon {
+  font-size: 1.5em;
+  color: #fff;
+}

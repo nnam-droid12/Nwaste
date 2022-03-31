@@ -6,6 +6,7 @@ import GoogleButton from 'react-google-button';
 import { Link } from 'react-router-dom';
 import { auth, provider } from '../../firebase/firebase.utils';
 import {getRedirectResult} from 'firebase/auth'
+import Logo from '../../assets/logo1.png';
 
 
 
@@ -22,7 +23,6 @@ class SignIn extends React.Component{
            const response =  await getRedirectResult(auth);
 
            if(response){
-              alert('Redirecting to user page, please wait!');
              window.location='/userhome'
            }
         }
@@ -59,9 +59,13 @@ class SignIn extends React.Component{
         return(
         <div className='sign-in'>
         <div className='sign-in-bg'>
-            {/* <ParticlesContainer /> */}
-            <h2 className='h2'>Already have an account?</h2>
-            <span className='span'>Sign in with your email and password</span>
+            <div className='sign-in-header'>
+                <div >
+                <img className='sign-logo' alt='logo' src={Logo} style={{height: '55px', width: '55px'}}/> 
+                </div>
+                <h2 className='h2'>Already have an account?</h2>
+                <span className='span'>Sign in with your email and password</span>
+            </div>
             <form onSubmit={this.handleSubmit}  >
                 <FormInput name='email' 
                 type='email'
@@ -79,7 +83,9 @@ class SignIn extends React.Component{
             <div className='btn-and-link'>
                 <div className='sign-in-btns'>
                     <CustomButton
-                        type='submit'> sign in </CustomButton>
+                        className="custom-btn"
+                        type='submit'> sign in 
+                    </CustomButton>
                     <GoogleButton 
                     className='google-btn'
                     onClick={this.signInWithGoogle}>Sign in with google</GoogleButton>
