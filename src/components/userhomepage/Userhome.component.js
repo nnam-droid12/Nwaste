@@ -28,8 +28,6 @@ const UserHomePage = (props) => {
                  Get Current Weather
               </button>
             </section>
-
-
         </div>
     );
 }

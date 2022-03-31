@@ -8,23 +8,22 @@ import { GoThreeBars } from "react-icons/go";
 const Header = ({ currentUser }) =>{
     return(
         <nav className='header sticky'>
+            {/* my logo === h1 */}
             <Link to='/'>
-            <div> 
-             {/* my logo === h1 */}
-                <div className='logo-container'  title='Go to home page!'>
-                    <div className='col'>
-                    <img className='logo' alt='logo' src={Logo} style={{height: '65px', width: '65px'}}/> 
-                    <div className='text col'>
-                        Nwaste
+             <div> 
+                    <div className='logo-container'  title='Go to home page!'>
+                        <div className='col'>
+                        <img className='logo' alt='logo' src={Logo} style={{height: '65px', width: '65px'}}/> 
+                            <div className='text col'>
+                                Nwaste
+                            </div>
                     </div>
-                    </div>
-                </div>     
-                {/* the end of the logo */}
-                
+                </div>    
             </div> 
             </Link>
+             {/* the end of the logo */} 
             <input type="checkbox" className="nav-toggle" id='nav-toggle'/>
-            <label for='nav-toggle' className='nav-toggle-label'>
+            <label htmlFor='nav-toggle' className='nav-toggle-label'>
                     <span style={{color: 'dodgerblue'}}>
                         <GoThreeBars className='hamburger-btn' size='32px' />
                     </span>
@@ -37,15 +36,19 @@ const Header = ({ currentUser }) =>{
                      FAQ
                  </Link>
                  {
-
                      currentUser?
                      // when user is sign in
-                     <div className='option'>
-                        <div className='option' onClick={() => auth.signOut(window.location = '/')}>
-                        SIGN OUT</div>
-                        <div className='option'><Link  to='/userhome'>VIEW PROFILE</Link>
+                     <div>
+                        <div className='option' onClick={() => auth.signOut(window.location = '/')} >
+                            SIGN OUT
                         </div>
-                     </div>
+                        
+                        <div>
+                            <Link className='option' to='/userhome'>VIEW PROFILE
+                            </Link>
+                         </div>
+                        </div>
+                     
                        // end of when user is signin
                        :
                      <Link className='option' to='/signin' >
@@ -53,7 +56,7 @@ const Header = ({ currentUser }) =>{
                      </Link>
                  }
 
-            </div>
+        </div>
         </nav>
     );
 }
