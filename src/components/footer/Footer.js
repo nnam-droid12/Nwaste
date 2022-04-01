@@ -46,10 +46,10 @@ const Footer = () => {
                     <p>Nwaste the game changer is helping the farmers getting the most from their harvest and making farmers happy.</p>
                 </div>
                 <div className="media-handles">
-                    <div className="platform"><FaLinkedin /></div>
-                    <div className="platform"><FaGithubSquare /></div>
-                    <div className="platform"><FaFacebookSquare /></div>
-                    <div className="platform"><FaTwitterSquare /></div>
+                    <div className="platform linkdn"><FaLinkedin /></div>
+                    <div className="platform github"><FaGithubSquare /></div>
+                    <div className="platform fb"><FaFacebookSquare /></div>
+                    <div className="platform twitter"><FaTwitterSquare /></div>
                 </div>
             </div>
         </div>

@@ -48,7 +48,8 @@ const HomePage = () => {
                 <div className='details'>
                     <h1>Nwaste the game changer is helping the farmers getting the most from their harvest and making farmers happy.</h1>
                     <p>Our Mission is Zero Hunger in 2030</p>
-                    <Link to='/signin'><button 
+                    <Link to='/signin'>
+                    <button 
                     className='get-started'>
                     <span className='get-started-btn'>Get Started</span>
                     <span 
@@ -72,7 +73,8 @@ const HomePage = () => {
                     size="70px"
                 />
                 <p>
-                <a href="https://link.springer.com/article/10.1007/s12230-017-9629-6" target="_blank">Ensuring that the wether condition is compartible with the farmer soil</a>
+
+                <a href="https://link.springer.com/article/10.1007/s12230-017-9629-6" target="_blank" rel="noreferrer">Ensusring that the wether condition is compartible with the farmer soil</a>
                 </p>
                 </div>
             <div className="container-item">
@@ -80,21 +82,21 @@ const HomePage = () => {
                     className="service-icon"
                     size="70px"
                 />
-                <p><a href="https://www.sciencedirect.com/science/article/pii/S0570178319300375" target="_blank">Reducing the wastage of perishable food through efficient and cost effective storage system</a></p>
+                <p><a href="https://www.sciencedirect.com/science/article/pii/S0570178319300375" target="_blank" rel="noreferrer">Reducing the wastage of perishable food through efficient and cost effective storage system</a></p>
             </div>
             <div className="container-item">
                 <MdShoppingCart 
                     className="service-icon"
                     size="70px"
                 />
-                <p><a href="https://foodprint.org/issues/the-problem-of-food-waste/" target="_blank">Reducing the billions of food wasted every year from adverse weather condition</a></p>
+                <p><a href="https://foodprint.org/issues/the-problem-of-food-waste/" target="_blank" rel="noreferrer">Reducing the billions of food wasted every year from adverse weather condition</a></p>
             </div>
             <div className="container-item">
                 <HiAcademicCap 
                     className="service-icon"
                     size="70px"
                 />
-                <p ><a href="https://www.fb.org/news/more-farmers-connecting-with-local-buyers-via-websites-and-social-media" target="_blank">We connect farmers to buyers fast and easy</a></p>
+                <p ><a href="https://www.fb.org/news/more-farmers-connecting-with-local-buyers-via-websites-and-social-media" target="_blank" rel="noreferrer">We connect farmers to buyers fast and easy</a></p>
             </div>
         </div>
     </section>

@@ -19,18 +19,17 @@ const UserHomePage = (props) => {
     
 
     const [usersoil, setUserSoil] = useState({});
-    const [setUserWeather] = useState({});
+    // const [setUserWeather] = useState({});
     const [polyshape, setPolyShape] = useState([]);
     const [progress, setProgress] = useState(0);
-    const [url, setUrl] = useState('');
+    const [url, setUrl] = useState([]);
     const [image, setImage] = useState(false);
-    const [productname, setProductName] = useState('');
-    const [farmerlocation, setFarmerLocation] = useState('');
+    const [productname, setProductName] = useState([]);
+    const [farmerlocation, setFarmerLocation] = useState([]);
 
-
-  useEffect(() => {
-      getCurrentWeather();
-  });
+  // useEffect(() => {
+  //     getCurrentWeather();
+  // });
 
   useEffect(() => {
     getSoilData();
@@ -41,11 +40,14 @@ const UserHomePage = (props) => {
     getPolygonShape();
   }, []);
 
-  const getCurrentWeather = async () =>{
-      const weatherResponse = await fetch('http://localhost:5000/userweather');
-      const weatherjsonData = await weatherResponse.json();
-      setUserWeather(weatherjsonData);
-  }
+
+
+
+  // const getCurrentWeather = async () =>{
+  //     const weatherResponse = await fetch('http://localhost:5000/userweather');
+  //     const weatherjsonData = await weatherResponse.json();
+  //     setUserWeather(weatherjsonData);
+  // }
 
   const getSoilData = async () => {
     const response = await fetch('http://localhost:5000/soil');
@@ -78,13 +80,6 @@ const UserHomePage = (props) => {
     setFarmerLocation({ [name]: value});
   }
 
-  const handleFormSubmit = e =>{
-      e.preventDefault();
-      const product = e.target.value;
-      const location = e.target.value;
-      setProductName(product);
-      setFarmerLocation(location);
-  }
 
   const handleImageSubmit = () =>{
       const uploadTask = storage.ref(`images/${image.name}`).put(image);
@@ -101,7 +96,10 @@ const UserHomePage = (props) => {
           console.log(url);
           userUploadedImageDocument(props.currentUser,{
             imageUrl:url
+           
+            
           })
+          setImage(image)
         })
 
       })
@@ -147,18 +145,25 @@ var options = {
       }
     }
   }
+
+  const fetchImages =  ()=>{
+      const images =  fetchUserImageData(props.currentUser);
+      setUrl(images);
+      console.log(images)
+  }
             
     return(
         <div className='user-home' style={{marginBottom: '5px'}}>
+        
+        {console.log('image render')}
         {props.currentUser && <h1>welcome {props.currentUser.displayName}</h1>}
-          
-            <section>
+
                  <div>
                  <h3>Upload product image</h3>
                    <input type='file' onChange={handleImageChange} />
                    <button onClick={handleImageSubmit}>Upload image</button>
-                   <button onClick={()=>fetchUserImageData(props.currentUser)}>Fetch data</button>
-                   <img alt='product' src={url} height='300' width='400' />
+                   <button onClick={fetchImages}>Fetch data</button>
+                   <img alt='product' src={image} height='300' width='400' />
                   
                    {/* <h4>{productname}</h4> */}
                     {/* <p>{farmerlocation}</p> */}
@@ -173,19 +178,28 @@ var options = {
                    onChange={handleChange} />
 
                  </form>
-                 <button onClick={handleFormSubmit}>Submit Farm Products</button>
+                 <button> Submit Farm Products</button>
                  </div>
 
                 <h4>Temperature on the 10 centimeters depth, {usersoil.t10}Kelvins</h4>
                 <h4>Soil moisture, m3/m3 {usersoil.moisture}</h4>
                 <h4> Surface temperature, Kelvins {usersoil.t0}</h4>
-              </section>
+              <section>
               <div className="chart-size" >
                 <Line
                   data={data}
                   options={options}
                 />
               </div>
+              <button>
+                 Get Current Weather
+              </button>
+            </section>
+            {url && url.map((image, idx)=>{
+          const {imageUrl} = image;
+
+          return (<img src={imageUrl} key={idx} alt=""/>);
+        })}
         </div>
     );
 }

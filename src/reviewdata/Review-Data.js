@@ -4,7 +4,7 @@ const reviews = [
         name: "Gbenu Oluwasijibomi Pharez",
         job: "Student and Farmer",
         text: 
-        'This is a great software to ease our work as farmers but not all farmers are aware of soil types and compartible crops.It would be nice if could reach more farmers'
+        'This help to ease our work as farmers but not all farmers are aware of soil types and compartibility of crops. It will be nice if it can be made reach out to more farmers'
     },
     {
         id: 2,
@@ -32,7 +32,7 @@ const reviews = [
         name: "Loyal paul",
         job: "Engineer",
         text: 
-        'My company has actually started using Nwaste after a customer refer us to the software we dont have to wait pretty longer again before we start planting.'
+        "After the recommendation of NWASTE for my company, we don't have to wait pretty longer again before we start planting."
     }
 ];
 

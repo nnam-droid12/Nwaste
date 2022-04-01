@@ -2,6 +2,7 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import 'firebase/compat/storage';
+import { getFirestore } from 'firebase/firestore';
 
 const config = {
     apiKey: "AIzaSyCs0bSO5QHHRgyRFiijo8nsVdEy79T9MLo",
@@ -70,16 +71,19 @@ const config = {
 
 
  export const fetchUserImageData = (userAuth) => {
-    const getFromFirebase = firestore.collection('images');
+    const getFromFirebase = firestore.collection(`images/${userAuth.id}/imageData`);
+    const saveFirebaseTodos = [];
+     
     getFromFirebase.onSnapshot((querySnapShot) => {
-      const saveFirebaseTodos = [];
       querySnapShot.forEach((doc) => {
-        console.log(doc)
+        saveFirebaseTodos.push(doc.data())
       });
     });
+
+    return saveFirebaseTodos;
   };
 
-firebase.initializeApp(config);
+const app = firebase.initializeApp(config);
 
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
@@ -87,6 +91,7 @@ export const firestore = firebase.firestore();
 export const provider = new firebase.auth.GoogleAuthProvider();
 provider.setCustomParameters({ prompt: 'select_account' });
 export const storage = firebase.storage();
+export const db = getFirestore(app);
 // export const signInWithGoogle = () => auth.signInWithPopup(provider);
 
 export default firebase;

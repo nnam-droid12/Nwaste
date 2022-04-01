@@ -2,27 +2,28 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../../assets/logo1.png';
 import { auth } from '../../firebase/firebase.utils';
-import './Header.scss';
 import { GoThreeBars } from "react-icons/go";
+import { MdArrowRightAlt } from "react-icons/md";
+import './Header.scss';
+
 
 const Header = ({ currentUser }) =>{
     return(
         <nav className='header sticky'>
+            {/* my logo === h1 */}
             <Link to='/'>
-            <div> 
-             {/* my logo === h1 */}
-                <div className='logo-container'  title='Go to home page!'>
+             <div> 
+                    <div className='logo-container' title='Go to home page!'>
                     <div className='col'>
                     <img className='logo' alt='logo' src={Logo} style={{height: '65px', width: '65px'}}/> 
-                    <div className='text col'>
-                        Nwaste
-                    </div>
-                    </div>
-                </div>     
-                {/* the end of the logo */}
-                
+                        <div className='text col'>
+                            Nwaste
+                        </div>
+                </div>
+                </div>    
             </div> 
             </Link>
+             {/* the end of the logo */} 
             <input type="checkbox" className="nav-toggle" id='nav-toggle'/>
             <label htmlFor='nav-toggle' className='nav-toggle-label'>
                     <span style={{color: 'dodgerblue'}}>
@@ -30,6 +31,7 @@ const Header = ({ currentUser }) =>{
                     </span>
             </label>
                <div className='options'>
+
                  <Link className='option' to='/about'>
                      ABOUT
                  </Link>
@@ -37,26 +39,40 @@ const Header = ({ currentUser }) =>{
                      FAQ
                  </Link>
                  {
-
                      currentUser?
                      // when user is sign in
-                     <div className='option'>
-                        <div className='option' onClick={() => auth.signOut(window.location = '/')}>
-                        SIGN OUT</div>
-                        <div className='option'><Link  to='/userhome'>VIEW PROFILE</Link>
+                    <div className='options'>
+
+                        <div className='option' onClick={() => auth.signOut(window.location = '/')} >
+                            SIGN OUT
                         </div>
-                     </div>
+                        
+                        <Link className='option' to='/userhome'>VIEW PROFILE
+                        </Link>
+                         
+                    </div>
+                    
                        // end of when user is signin
                        :
-                     <Link className='option' to='/signin' >
-                     SIGN IN
-                     </Link>
+                        <Link className=' option' to='/signin' >
+                        SIGN IN
+                        </Link>
                  }
-                 <Link className='option' to='/farmers' >
-                    FARM PRODUCT
-                 </Link>
 
-            </div>
+                 <div>
+                 <Link className='option buy-products' to="/" >
+                    <button 
+                        className='get-started'>
+                        <span className='get-started-btn'>Meet Farmers</span>
+                        <span 
+                        className="get-started-icon"
+                        size='30px'
+                        ><MdArrowRightAlt />
+                        </span>
+                    </button>
+                 </Link>
+                 </div>
+        </div>
         </nav>
     );
 }

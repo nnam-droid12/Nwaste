@@ -1,13 +1,13 @@
 const question_data = [
     {
         id:1,
-        title: 'Will I have to pay for using Nwaste ',
-        info: "At the moment you don't have to pay use Nwaste but in subsequent year you have to start paying"
+        title: 'Will I have to pay for using Nwaste? ',
+        info: "At the moment you don't have to pay to use Nwaste but in subsequent years you'll have to start paying"
 },
     {
     id:2,
     title: 'How can I reset my username and password?',
-    info: 'You can easily reset your username and password by navigating to the sign in page, you will see a button named forgot password click on it and follow the instructions'
+    info: 'You can easily reset your username and password by navigating to the sign in page, you will see a link named forgot password click on it and follow the instructions'
 },
     {
     id:3,
