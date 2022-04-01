@@ -17,6 +17,8 @@ class SignIn extends React.Component{
             password: ''
         }
     }
+
+
     componentDidMount(){
         const fetchGoogleSignIn = async ()=>{
            const response =  await getRedirectResult(auth);
@@ -59,7 +61,7 @@ class SignIn extends React.Component{
         return(
         <div className='sign-in'>
         <div className='sign-in-bg'>
-            {/* <ParticlesContainer /> */}
+
             <h2 className='h2'>Already have an account?</h2>
             <span className='span'>Sign in with your email and password</span>
             <form onSubmit={this.handleSubmit}  >
@@ -75,16 +77,17 @@ class SignIn extends React.Component{
                 handleChange={this.handleChange}
                 label='password'
                 required />
-            </form>
-            <div className='btn-and-link'>
+
+           <div className='btn-and-link'>
                 <div className='sign-in-btns'>
-                    <CustomButton
-                        type='submit'> sign in </CustomButton>
+                    <CustomButton type='submit'> sign in </CustomButton>
                     <GoogleButton 
                     className='google-btn'
                     onClick={this.signInWithGoogle}>Sign in with google</GoogleButton>
                 </div>
             </div>
+            </form>
+            
             <div className='signup-and-link'>
             <p style={{color: '#4285f4', textAlign: 'center'}}>Don't Have An Account?
                 <Link to='/signup'>

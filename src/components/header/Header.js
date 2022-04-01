@@ -52,6 +52,9 @@ const Header = ({ currentUser }) =>{
                      SIGN IN
                      </Link>
                  }
+                 <Link className='option' to='/farmers' >
+                    FARM PRODUCT
+                 </Link>
 
             </div>
         </nav>

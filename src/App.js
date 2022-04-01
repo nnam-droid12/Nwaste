@@ -11,6 +11,7 @@ import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import UserHomePage from './components/userhomepage/Userhome.component';
 import ForgotPassword from './components/forgot-password/ForgotPassword.component';
 import ResetMessage from './components/reset-password/ResetPassword.component';
+import Farmers from './components/farmers/Farmer.component';
 
 
 
@@ -60,6 +61,7 @@ class App extends React.Component {
           <Route  path='/userhome' element={<UserHomePage currentUser={this.state.currentUser} />}  />
           <Route path='/forgotpassword' element={<ForgotPassword />} />
           <Route path='/resetmessage' element={<ResetMessage />} /> 
+          <Route path='/farmers' element={<Farmers />} /> 
        </Routes>
     </div>
   );

@@ -72,7 +72,7 @@ const HomePage = () => {
                     size="70px"
                 />
                 <p>
-                <a href="https://link.springer.com/article/10.1007/s12230-017-9629-6" target="_blank">Ensusring that the wether condition is compartible with the farmer soil</a>
+                <a href="https://link.springer.com/article/10.1007/s12230-017-9629-6" target="_blank">Ensuring that the wether condition is compartible with the farmer soil</a>
                 </p>
                 </div>
             <div className="container-item">

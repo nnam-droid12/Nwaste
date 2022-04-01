@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Chart as ChartJS, LineElement,LinearScale, CategoryScale, PointElement } from 'chart.js';
 import {Line} from 'react-chartjs-2';
+import { storage, userUploadedImageDocument, fetchUserImageData } from '../../firebase/firebase.utils';
 import './Userhome.scss';
 
 
@@ -15,20 +16,25 @@ ChartJS.register(
 
 
 const UserHomePage = (props) => {
-    console.log(props.currentUser)
     
 
     const [usersoil, setUserSoil] = useState({});
-    const [userweather, setUserWeather] = useState({});
-    const [polyshape, setPolyShape] = useState({});
+    const [setUserWeather] = useState({});
+    const [polyshape, setPolyShape] = useState([]);
+    const [progress, setProgress] = useState(0);
+    const [url, setUrl] = useState('');
+    const [image, setImage] = useState(false);
+    const [productname, setProductName] = useState('');
+    const [farmerlocation, setFarmerLocation] = useState('');
 
 
   useEffect(() => {
       getCurrentWeather();
-  }, []);
+  });
 
   useEffect(() => {
     getSoilData();
+    
   }, []);
 
   useEffect(() => {
@@ -55,16 +61,59 @@ const UserHomePage = (props) => {
         }
     });
     const polyjsonData = await shape_response.json();
-    console.log(polyjsonData[0].id)
+    console.log(polyjsonData)
     setPolyShape(polyjsonData);
   };
+
+  const handleImageChange = e =>{
+    const file = e.target.files[0];
+    if(file){
+      setImage(file);
+    }
+  }
+
+  const handleChange = event =>{
+    const { value, name } = event.target;
+    setProductName({ [name]: value });
+    setFarmerLocation({ [name]: value});
+  }
+
+  const handleFormSubmit = e =>{
+      e.preventDefault();
+      const product = e.target.value;
+      const location = e.target.value;
+      setProductName(product);
+      setFarmerLocation(location);
+  }
+
+  const handleImageSubmit = () =>{
+      const uploadTask = storage.ref(`images/${image.name}`).put(image);
+      uploadTask.on('state_changed',
+      (snapshot) => {
+
+      },
+      (error) =>{
+        console.log(error);
+      },
+      () =>{
+        storage.ref('images').child(image.name).getDownloadURL()
+        .then((url) => {
+          console.log(url);
+          userUploadedImageDocument(props.currentUser,{
+            imageUrl:url
+          })
+        })
+
+      })
+  }
+
      
 
   var data = {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    labels: polyshape.coordinates,
     datasets: [{
         label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
+        data: polyshape.center,
         backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',
@@ -100,14 +149,32 @@ var options = {
   }
             
     return(
-        <div className='user-home'>
+        <div className='user-home' style={{marginBottom: '5px'}}>
         {props.currentUser && <h1>welcome {props.currentUser.displayName}</h1>}
           
             <section>
-              
-                <button>
-                  Get Current Weather
-                </button>
+                 <div>
+                 <h3>Upload product image</h3>
+                   <input type='file' onChange={handleImageChange} />
+                   <button onClick={handleImageSubmit}>Upload image</button>
+                   <button onClick={()=>fetchUserImageData(props.currentUser)}>Fetch data</button>
+                   <img alt='product' src={url} height='300' width='400' />
+                  
+                   {/* <h4>{productname}</h4> */}
+                    {/* <p>{farmerlocation}</p> */}
+                 </div>
+                <div className='farm-product'>
+                 <form>
+                 <input type='text' name='name'
+                   placeholder='product name'
+                   onChange={handleChange} />
+                   <input type='text' name='name'
+                   placeholder='location'
+                   onChange={handleChange} />
+
+                 </form>
+                 <button onClick={handleFormSubmit}>Submit Farm Products</button>
+                 </div>
 
                 <h4>Temperature on the 10 centimeters depth, {usersoil.t10}Kelvins</h4>
                 <h4>Soil moisture, m3/m3 {usersoil.moisture}</h4>
