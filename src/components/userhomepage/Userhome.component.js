@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Chart as ChartJS, LineElement,LinearScale, CategoryScale, PointElement } from 'chart.js';
 import {Line} from 'react-chartjs-2';
 import { storage, userUploadedImageDocument, fetchUserImageData } from '../../firebase/firebase.utils';
+import {db} from '../../firebase/firebase.utils';
+import { collection, getDocs, addDoc } from 'firebase/firestore';
+import Farmers from '../farmers/Farmer.component';
 import './Userhome.scss';
 
 
@@ -21,51 +24,60 @@ const UserHomePage = (props) => {
     const [usersoil, setUserSoil] = useState({});
     // const [setUserWeather] = useState({});
     const [polyshape, setPolyShape] = useState([]);
-    const [progress, setProgress] = useState(0);
     const [url, setUrl] = useState([]);
     const [image, setImage] = useState(false);
-    const [productname, setProductName] = useState([]);
-    const [farmerlocation, setFarmerLocation] = useState([]);
+    const [products, setProducts] = useState([]);
+    const [newName, setNewName] = useState('');
+    const [newLocation, setNewLocation] = useState('');
+    const [newPrice, setNewPrice] = useState(0);
 
-  // useEffect(() => {
-  //     getCurrentWeather();
-  // });
+    const productsCollectionRef = collection(db, "products")
+   
+
+
 
   useEffect(() => {
+    const getSoilData = async () => {
+      const response = await fetch('http://localhost:5000/soil');
+      const jsonData = await response.json();
+      setUserSoil(jsonData);
+    };
     getSoilData();
     
   }, []);
 
   useEffect(() => {
+    const getPolygonShape = async () => {
+      const shape_response = await fetch('http://localhost:5000/shape',{
+          headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+          }
+      });
+      const polyjsonData = await shape_response.json();
+      console.log(polyjsonData)
+      setPolyShape(polyjsonData);
+    };
     getPolygonShape();
   }, []);
 
 
+  useEffect(() => {
+    const getProducts = async() =>{
+        const data = await getDocs(productsCollectionRef)
+        setProducts(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
+        console.log(data);
+    }
+    getProducts()
+}, [])
 
 
-  // const getCurrentWeather = async () =>{
-  //     const weatherResponse = await fetch('http://localhost:5000/userweather');
-  //     const weatherjsonData = await weatherResponse.json();
-  //     setUserWeather(weatherjsonData);
-  // }
+const createUser = async () =>{
+  await addDoc(productsCollectionRef, {name: newName, location:newLocation, price:newPrice});
 
-  const getSoilData = async () => {
-    const response = await fetch('http://localhost:5000/soil');
-    const jsonData = await response.json();
-    setUserSoil(jsonData);
-  };
 
-  const getPolygonShape = async () => {
-    const shape_response = await fetch('http://localhost:5000/shape',{
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        }
-    });
-    const polyjsonData = await shape_response.json();
-    console.log(polyjsonData)
-    setPolyShape(polyjsonData);
-  };
+}
+
 
   const handleImageChange = e =>{
     const file = e.target.files[0];
@@ -74,11 +86,6 @@ const UserHomePage = (props) => {
     }
   }
 
-  const handleChange = event =>{
-    const { value, name } = event.target;
-    setProductName({ [name]: value });
-    setFarmerLocation({ [name]: value});
-  }
 
 
   const handleImageSubmit = () =>{
@@ -99,7 +106,6 @@ const UserHomePage = (props) => {
            
             
           })
-          setImage(image)
         })
 
       })
@@ -164,22 +170,31 @@ var options = {
                    <button onClick={handleImageSubmit}>Upload image</button>
                    <button onClick={fetchImages}>Fetch data</button>
                    <img alt='product' src={image} height='300' width='400' />
-                  
-                   {/* <h4>{productname}</h4> */}
-                    {/* <p>{farmerlocation}</p> */}
+                
                  </div>
                 <div className='farm-product'>
                  <form>
-                 <input type='text' name='name'
-                   placeholder='product name'
-                   onChange={handleChange} />
-                   <input type='text' name='name'
-                   placeholder='location'
-                   onChange={handleChange} />
-
+                    <input type='text' placeholder='product name'
+                    onChange={(event) => setNewName(event.target.value)} />
+                    <input type='text' placeholder='Location'
+                    onChange={(event) => setNewLocation(event.target.value)} />
+                    <input type='text' placeholder='price' 
+                    onChange={(event) => setNewPrice(event.target.value)}
+                    />
+                    <button onClick={createUser}>submit products</button>
+               
                  </form>
-                 <button> Submit Farm Products</button>
+                
                  </div>
+                      {
+                   products.map((product, idx) => {
+                     return <Farmers 
+                     key={idx}
+                     name={product[idx].name}
+                     location={product[idx].location}
+                     price={product[idx].price} />
+                   })
+                       }
 
                 <h4>Temperature on the 10 centimeters depth, {usersoil.t10}Kelvins</h4>
                 <h4>Soil moisture, m3/m3 {usersoil.moisture}</h4>
@@ -195,11 +210,11 @@ var options = {
                  Get Current Weather
               </button>
             </section>
-            {url && url.map((image, idx)=>{
+            {url ? url.map((image, idx)=>{
           const {imageUrl} = image;
 
           return (<img src={imageUrl} key={idx} alt=""/>);
-        })}
+        }) : undefined}
         </div>
     );
 }
