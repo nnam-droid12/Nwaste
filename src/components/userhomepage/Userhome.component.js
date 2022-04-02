@@ -3,8 +3,7 @@ import { Chart as ChartJS, LineElement,LinearScale, CategoryScale, PointElement 
 import {Line} from 'react-chartjs-2';
 import { storage, userUploadedImageDocument, fetchUserImageData } from '../../firebase/firebase.utils';
 import {db} from '../../firebase/firebase.utils';
-import { collection, getDocs, addDoc } from 'firebase/firestore';
-import Farmers from '../farmers/Farmer.component';
+import { collection, addDoc } from 'firebase/firestore';
 import './Userhome.scss';
 
 
@@ -26,9 +25,8 @@ const UserHomePage = (props) => {
     const [polyshape, setPolyShape] = useState([]);
     const [url, setUrl] = useState([]);
     const [image, setImage] = useState(false);
-    const [products, setProducts] = useState([]);
-    const [newName, setNewName] = useState('');
-    const [newLocation, setNewLocation] = useState('');
+    const [newName, setNewName] = useState("");
+    const [newLocation, setNewLocation] = useState("");
     const [newPrice, setNewPrice] = useState(0);
 
     const productsCollectionRef = collection(db, "products")
@@ -62,21 +60,13 @@ const UserHomePage = (props) => {
   }, []);
 
 
-  useEffect(() => {
-    const getProducts = async() =>{
-        const data = await getDocs(productsCollectionRef)
-        setProducts(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
-        console.log(data);
-    }
-    getProducts()
-}, [])
 
 
 const createUser = async () =>{
-  await addDoc(productsCollectionRef, {name: newName, location:newLocation, price:newPrice});
+  await addDoc(productsCollectionRef, {name: newName, location:newLocation, price:newPrice });
 
 
-}
+};
 
 
   const handleImageChange = e =>{
@@ -173,28 +163,24 @@ var options = {
                 
                  </div>
                 <div className='farm-product'>
-                 <form>
-                    <input type='text' placeholder='product name'
-                    onChange={(event) => setNewName(event.target.value)} />
-                    <input type='text' placeholder='Location'
-                    onChange={(event) => setNewLocation(event.target.value)} />
-                    <input type='text' placeholder='price' 
-                    onChange={(event) => setNewPrice(event.target.value)}
+                <form>
+                    <input placeholder='product name'
+                    onChange={(event) => {
+                      setNewName(event.target.value);
+                    }} />
+                    <input placeholder='Location'
+                    onChange={(event) => {
+                      setNewLocation(event.target.value);
+                    }} />
+                    <input type='number' placeholder='price' 
+                    onChange={(event) => {
+                      setNewPrice(event.target.value);
+                    }}
                     />
                     <button onClick={createUser}>submit products</button>
-               
-                 </form>
-                
+
+                </form>
                  </div>
-                      {
-                   products.map((product, idx) => {
-                     return <Farmers 
-                     key={idx}
-                     name={product[idx].name}
-                     location={product[idx].location}
-                     price={product[idx].price} />
-                   })
-                       }
 
                 <h4>Temperature on the 10 centimeters depth, {usersoil.t10}Kelvins</h4>
                 <h4>Soil moisture, m3/m3 {usersoil.moisture}</h4>
@@ -213,7 +199,7 @@ var options = {
             {url ? url.map((image, idx)=>{
           const {imageUrl} = image;
 
-          return (<img src={imageUrl} key={idx} alt=""/>);
+          return (<img src={imageUrl} key={idx} alt={imageUrl} />);
         }) : undefined}
         </div>
     );
