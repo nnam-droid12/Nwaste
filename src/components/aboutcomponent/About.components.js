@@ -1,8 +1,11 @@
 import Footer from '../footer/Footer';
+import Header from '../header/Header';
 import './About.scss';
 
 const AboutPage = () => {
     return(
+      <div>
+      <Header />
     <section className="about-us">
         <div className='about-container'>
           <div className="bg-text">
@@ -21,6 +24,7 @@ const AboutPage = () => {
         </div>
         <Footer />
     </section>
+    </div>
     );
 }
 

@@ -41,7 +41,7 @@ const Header = ({ currentUser }) =>{
                  {
                      currentUser?
                      // when user is sign in
-                    <div className='options'>
+                    <div>
 
                         <div className='option' onClick={() => auth.signOut(window.location = '/')} >
                             SIGN OUT
@@ -55,11 +55,11 @@ const Header = ({ currentUser }) =>{
                        // end of when user is signin
                        :
                         <Link className=' option' to='/signin' >
-                        SIGN IN
+                            LOGIN
                         </Link>
                  }
                  <div>
-                 <Link className='option buy-products' to="/" >
+                 <Link className='options' to="/farmers" >
                     <button 
                         className='get-started'>
                         <span className='get-started-btn'>Meet Farmers</span>
@@ -72,6 +72,11 @@ const Header = ({ currentUser }) =>{
                  </Link>
                  </div>
         </div>
+        <Link to="/farmers">
+            <button className='products'>
+                Meet Farmers
+            </button>
+        </Link>
         </nav>
     );
 }
