@@ -35,7 +35,7 @@ const Footer = () => {
                     <HiMail className="icon-gap" />  
                 <address >
                    <p>
-                        <a style={{color: '#4285f4'}} href= "mailto: nwastenetwork@gmail.com" target="_blank">nwastenetwork@gmail.com</a>
+                        <a style={{color: '#4285f4'}} href= "mailto: nwastenetwork@gmail.com" target="_blank" rel="noreferrer">nwastenetwork@gmail.com</a>
                    </p>
                 </address>
                 </div>

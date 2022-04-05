@@ -2,7 +2,6 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import 'firebase/compat/storage';
-import { getFirestore } from 'firebase/firestore';
 
 const config = {
     apiKey: "AIzaSyCs0bSO5QHHRgyRFiijo8nsVdEy79T9MLo",
@@ -40,49 +39,6 @@ const config = {
     return userRef;
   }
 
-  export const userUploadedImageDocument = async (userAuth, additionalData) =>{
- 
-
-
-    if(!userAuth) return;
-  
-    const imageRef = firestore.doc(`images/${userAuth.id}`);
-    const snapShot = await imageRef.get();
-    
-
-      const createdAt = new Date();
-
-      
-
-      try{
-
-          await imageRef.collection('imageData').add({
-            createdAt,
-            ...additionalData
-          });
-
-        
-      }catch(error){
-        console.log('error creating image', error.message);
-      }
-
-    return imageRef;
-  }
-
-
- export const fetchUserImageData = (userAuth) => {
-    const getFromFirebase = firestore.collection(`images/${userAuth.id}/imageData`);
-    const saveFirebaseTodos = [];
-     
-    getFromFirebase.onSnapshot((querySnapShot) => {
-      querySnapShot.forEach((doc) => {
-        saveFirebaseTodos.push(doc.data())
-      });
-    });
-
-    return saveFirebaseTodos;
-  };
-
 const app = firebase.initializeApp(config);
 
 export const auth = firebase.auth();
@@ -90,8 +46,8 @@ export const firestore = firebase.firestore();
 
 export const provider = new firebase.auth.GoogleAuthProvider();
 provider.setCustomParameters({ prompt: 'select_account' });
-export const storage = firebase.storage();
-export const db = getFirestore(app);
+export const storage = firebase.storage(app)
+export const db = firebase.firestore(app);
 // export const signInWithGoogle = () => auth.signInWithPopup(provider);
 
 export default firebase;

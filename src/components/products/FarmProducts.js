@@ -1,7 +1,7 @@
 
 export const FarmProducts = [
     {
-        imgUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRohHKmJ6ohvX403E_Hf4348Bz4I8FjLvgg_w&usqp=CAU",
+        imgUrl: "m3/m3",
         location: 'Abuja',
         price: '$300.99',
         name: 'Rice'

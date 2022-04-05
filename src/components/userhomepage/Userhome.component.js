@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react';
 import Header from '../header/Header';
 import { Chart as ChartJS, LineElement,LinearScale, CategoryScale, PointElement } from 'chart.js';
 import {Line} from 'react-chartjs-2';
-import { storage, userUploadedImageDocument, fetchUserImageData } from '../../firebase/firebase.utils';
-import {db} from '../../firebase/firebase.utils';
+import {ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
+import { storage, db } from '../../firebase/firebase.utils';
 import { collection, addDoc } from 'firebase/firestore';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 import './Userhome.scss';
+
 
 
 
@@ -24,21 +27,82 @@ const UserHomePage = (props) => {
     const [usersoil, setUserSoil] = useState({});
     // const [setUserWeather] = useState({});
     const [polyshape, setPolyShape] = useState([]);
-    const [url, setUrl] = useState([]);
-    const [image, setImage] = useState(false);
-    const [newName, setNewName] = useState("");
-    const [newLocation, setNewLocation] = useState("");
-    const [newPrice, setNewPrice] = useState(0);
+    const [formData, setFormData] = useState({
+      title: "",
+      location: "",
+      description: "",
+      price: "",
+      image: "",
 
-    const productsCollectionRef = collection(db, "products")
-   
+    });
+    const [progress, setProgress] = useState(0);
 
+
+    const handleChange = (e) =>{
+      setFormData({ ...formData, [e.target.name]: e.target.value });
+
+      
+    }
+
+
+    const handleImageChange = (e) =>{
+      setFormData({ ...formData, image:e.target.files[0] })
+    }
+
+
+    const handleProducts = (e) =>{
+      e.preventDefault();
+      if(!formData.title || !formData.location || !formData.description || !formData.price || !formData.image){
+          return;
+        }
+        const storageRef = ref(storage, `/images/${Date.now()}${formData.image.name}`);
+        const uploadImage = uploadBytesResumable(storageRef, formData.image);
+        uploadImage.on('state_changed',
+        (snapshot) =>{
+          const progressPercent = Math.round((snapshot.bytesTransferred /snapshot.totalBytes) * 100);
+          setProgress(progressPercent);
+        },
+        (error) =>{
+          console.log(error)
+        },
+        () =>{
+          
+            getDownloadURL(uploadImage.snapshot.ref)
+            .then(async (url) =>{
+              const productRef = collection(db, "Products");
+              console.log(productRef);
+              console.log(formData);
+               await addDoc(productRef, {
+                title: formData.title,
+                location: formData.location,
+                description: formData.description,
+                price: formData.price,
+                imageUrl: url,
+              })
+              .then(() =>{
+                setFormData({
+                  title: "",
+                  location: "",
+                  description: "",
+                  price: "",
+                  image: "",
+                });
+                toast("Products submitted successfully, ready to viewed by potential buyers",{type: "success"});
+                setProgress(0);
+              }).catch(error =>{
+                 toast("error adding products", {type: "error"})
+              })
+            })
+        }
+        )
+    }
 
 
   useEffect(() => {
     const getSoilData = async () => {
       const response = await fetch('http://localhost:5000/soil');
       const jsonData = await response.json();
+      console.log(jsonData);
       setUserSoil(jsonData);
     };
     getSoilData();
@@ -48,6 +112,7 @@ const UserHomePage = (props) => {
   useEffect(() => {
     const getPolygonShape = async () => {
       const shape_response = await fetch('http://localhost:5000/shape',{
+         method: 'GET',
           headers: {
               'Content-Type': 'application/json',
               'Accept': 'application/json'
@@ -59,56 +124,23 @@ const UserHomePage = (props) => {
     };
     getPolygonShape();
   }, []);
-
-
-
-
-const createUser = async () =>{
-  await addDoc(productsCollectionRef, {name: newName, location:newLocation, price:newPrice });
-
-
-};
-
-
-  const handleImageChange = e =>{
-    const file = e.target.files[0];
-    if(file){
-      setImage(file);
-    }
-  }
-
-
-
-  const handleImageSubmit = () =>{
-      const uploadTask = storage.ref(`images/${image.name}`).put(image);
-      uploadTask.on('state_changed',
-      (snapshot) => {
-
-      },
-      (error) =>{
-        console.log(error);
-      },
-      () =>{
-        storage.ref('images').child(image.name).getDownloadURL()
-        .then((url) => {
-          console.log(url);
-          userUploadedImageDocument(props.currentUser,{
-            imageUrl:url
-           
-            
-          })
-        })
-
-      })
-  }
-
      
 
+<<<<<<< HEAD
+  var data = {
+    labels: polyshape.map(y => y.name),
+    datasets: [{
+        label: `${polyshape.length} graph available`,
+        data: polyshape.map(x => x.area),
+        xAxisID: polyshape.center,
+        yAxisID: polyshape.area ,
+=======
   const data = {
     labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
     datasets: [{
         label: '# of Votes',
         data: [12, 19, 3, 5, 2, 3],
+>>>>>>> 70259dbf0678b660a7fd3a863bb509130ac8dd98
         backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',
@@ -143,6 +175,11 @@ const options = {
     }
   }
 
+<<<<<<< HEAD
+            
+    return(
+        <div className='user-home' style={{marginBottom: '5px'}}>
+=======
 
    const fetchImages =  () =>{
      const images = fetchUserImageData(props.currentUser)
@@ -153,39 +190,13 @@ const options = {
       <div>
       <Header />
         <div className='user-home'>
+>>>>>>> 70259dbf0678b660a7fd3a863bb509130ac8dd98
         {props.currentUser && <h1>welcome {props.currentUser.displayName}</h1>}
 
-                 <div>
-                 <h3>Upload product image</h3>
-                   <input type='file' onChange={handleImageChange} />
-                   <button onClick={handleImageSubmit}>Upload image</button>
-                   <button onClick={fetchImages}>Fetch data</button>
-                   <img alt='product' src={image} height='300' width='400' />
-                
-                 </div>
-                <div className='farm-product'>
-                <form>
-                    <input placeholder='product name'
-                    onChange={(event) => {
-                      setNewName(event.target.value);
-                    }} />
-                    <input placeholder='Location'
-                    onChange={(event) => {
-                      setNewLocation(event.target.value);
-                    }} />
-                    <input type='number' placeholder='price' 
-                    onChange={(event) => {
-                      setNewPrice(event.target.value);
-                    }}
-                    />
-                    <button onClick={createUser}>submit products</button>
 
-                </form>
-                 </div>
-
-                <h4>Temperature on the 10 centimeters depth, {usersoil.t10}Kelvins</h4>
-                <h4>Soil moisture, m3/m3 {usersoil.moisture}</h4>
-                <h4> Surface temperature, Kelvins {usersoil.t0}</h4>
+                <h4>Temperature on the 10 centimeters depth, {usersoil.t10}K</h4>
+                <h4>Soil moisture {usersoil.moisture}m2/m3</h4>
+                <h4> Surface temperature {usersoil.t0}K</h4>
               <section>
               <div className="chart-size" >
                 <Line
@@ -197,14 +208,55 @@ const options = {
                  Get Current Weather
               </button>
             </section>
-            {url ? url.map((image, idx)=>{
-          const {imageUrl} = image;
+            <div className='submit product'>
+            
+              <form>
+              <h2>Submit products</h2>
+               <input type='text' name='title'
+               placeholder='product name' 
+               value={formData.title}
+               onChange={(e)=>handleChange(e)}
+               required />
 
-          return (<img src={imageUrl} key={idx} alt={imageUrl} />);
-        }) : undefined}
+               <input type='text' name='location'
+               placeholder='location' 
+               value={formData.location}
+               onChange={(e)=>handleChange(e)}
+               required />
+
+              <input type='text' name='description'
+              placeholder='product description' 
+              value={formData.description}
+               onChange={(e) =>handleChange(e)} 
+                required
+               />
+
+               <input type='number' name='price'
+               placeholder='price' 
+               value={formData.price}
+               onChange={(e) =>handleChange(e)}
+               required
+               />
+
+               <input type='file' 
+               name='image' 
+               accept="image/*"
+               onChange={(e) =>handleImageChange(e)} />
+
+               {progress === 0 ? null :(
+               <div className='progress-bar' style={{width: `${progress}%` }}>
+                 {`uploading image ${progress}%`}
+               </div>) }
+               <button onClick={handleProducts}>Submit product</button>
+              </form>
+            </div>
+           
         </div>
         </div>
     );
 }
 
 export default UserHomePage;
+
+
+// http://api.agromonitoring.com/agro/1.0/polygons?appid=test
