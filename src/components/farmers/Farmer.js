@@ -51,7 +51,8 @@ const Farmer = () => {
          filteredProduct.map((product) =>{
            return (
              <main className='farm-products dib grow'>
-                  <div>
+              
+                  <a href="facebook.com" target='_blank'>
                     <img src={product.imgUrl} alt="images" 
                     className="img" />
                      <div className='product-detail ml3'>
@@ -62,7 +63,7 @@ const Farmer = () => {
                        </div>
                       <h4 className='price'>{product.price}</h4>
                     </div>
-                 </div>
+                 </a>
            </main>);
          }
          
