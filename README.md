@@ -1,6 +1,6 @@
 # NWASTE the game changer
 
- [Nwaste](https://previews.123rf.com/images/yimwow/yimwow1207/yimwow120700013/14556238-granjero-en-la-granja-de-arroz.jpg).
+ ![Nwaste](https://previews.123rf.com/images/yimwow/yimwow1207/yimwow120700013/14556238-granjero-en-la-granja-de-arroz.jpg).
 
 
 
