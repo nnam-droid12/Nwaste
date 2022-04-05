@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Header from '../header/Header';
 import { Chart as ChartJS, LineElement,LinearScale, CategoryScale, PointElement } from 'chart.js';
 import {Line} from 'react-chartjs-2';
 import {ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
@@ -125,6 +126,7 @@ const UserHomePage = (props) => {
   }, []);
      
 
+<<<<<<< HEAD
   var data = {
     labels: polyshape.map(y => y.name),
     datasets: [{
@@ -132,6 +134,13 @@ const UserHomePage = (props) => {
         data: polyshape.map(x => x.area),
         xAxisID: polyshape.center,
         yAxisID: polyshape.area ,
+=======
+  const data = {
+    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3],
+>>>>>>> 70259dbf0678b660a7fd3a863bb509130ac8dd98
         backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',
@@ -152,7 +161,7 @@ const UserHomePage = (props) => {
     }]
 }
 
-var options = {
+const options = {
   maintainAspectRatio: false,
   scales: {
       y: {
@@ -166,9 +175,22 @@ var options = {
     }
   }
 
+<<<<<<< HEAD
             
     return(
         <div className='user-home' style={{marginBottom: '5px'}}>
+=======
+
+   const fetchImages =  () =>{
+     const images = fetchUserImageData(props.currentUser)
+     setUrl(images)
+   }
+            
+    return(
+      <div>
+      <Header />
+        <div className='user-home'>
+>>>>>>> 70259dbf0678b660a7fd3a863bb509130ac8dd98
         {props.currentUser && <h1>welcome {props.currentUser.displayName}</h1>}
 
 
@@ -229,6 +251,7 @@ var options = {
               </form>
             </div>
            
+        </div>
         </div>
     );
 }

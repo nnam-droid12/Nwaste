@@ -5,6 +5,7 @@ import CustomButton from '../custombutton/CustomButton.component';
 import GoogleButton from 'react-google-button';
 import { Link } from 'react-router-dom';
 import { auth, provider } from '../../firebase/firebase.utils';
+import Header from '../header/Header';
 import {getRedirectResult} from 'firebase/auth'
 import Logo from '../../assets/logo1.png';
 
@@ -59,6 +60,8 @@ class SignIn extends React.Component{
     }
     render(){
         return(
+            <div>
+            <Header />
         <div className='sign-in'>
         <div className='sign-in-bg'>
             <div className='sign-in-header'>
@@ -105,6 +108,7 @@ class SignIn extends React.Component{
             <Link className="forgot-pass"
                 to='/forgotpassword' >Forgot Password?
             </Link>
+     </div>
      </div>
      </div>
         );

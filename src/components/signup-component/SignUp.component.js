@@ -3,6 +3,7 @@ import FormInput from '../formInput/Forminput.component';
 import CustomButton from '../custombutton/CustomButton.component';
 import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
 import { Link } from 'react-router-dom';
+import Header from '../header/Header';
 import Logo from '../../assets/logo1.png';
 import './SignUp.scss';
 
@@ -65,6 +66,8 @@ class SignUp extends React.Component {
     render(){
         const { displayName, email, password, confirmPassword } =this.state;
         return(
+            <div>
+            <Header />
             <div className='sign-up'>
             <div className='sign-in-bg'>
             <div className='sign-in-header'>
@@ -112,6 +115,7 @@ class SignUp extends React.Component {
                     </p> 
                     </div>
                </form>
+            </div>
             </div>
             </div>
            );

@@ -6,12 +6,13 @@ import DisplayFaq from './components/displayfaq/Display-Faq.components';
 import './App.css';
 import SignIn from './components/signincomponent/SignIn.components';
 import SignUp from './components/signup-component/SignUp.component';
-import Header from './components/header/Header';
+
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import UserHomePage from './components/userhomepage/Userhome.component';
 import ForgotPassword from './components/forgot-password/ForgotPassword.component';
 import ResetMessage from './components/reset-password/ResetPassword.component';
-import Farmers from './components/farmers/Farmer.component';
+// import Header_two from './components/header_two/Header_two';
+import Farmer from './components/farmers/Farmer';
 
 
 
@@ -53,7 +54,7 @@ class App extends React.Component {
   render() {
   return (
     <div className="App">
-      <Header currentUser={this.state.currentUser} />
+      
        <Routes>
           <Route path='/' element={<HomePage />} />
           <Route path='/about' element={<AboutPage />} />
@@ -62,8 +63,8 @@ class App extends React.Component {
           <Route path='/signup' element={<SignUp />} /> 
           <Route  path='/userhome' element={<UserHomePage currentUser={this.state.currentUser} />}  />
           <Route path='/forgotpassword' element={<ForgotPassword />} />
-          <Route path='/resetmessage' element={<ResetMessage />} /> 
-          <Route path='/farmers' element={<Farmers />} /> 
+          <Route path='/resetmessage' element= {<ResetMessage />} />
+          <Route path='/farmers' element= {<Farmer />} />
        </Routes>
     </div>
   );
