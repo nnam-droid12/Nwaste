@@ -1,11 +1,11 @@
 import { FaSistrix } from "react-icons/fa";
+import { AiOutlineClose } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import Logo from '../../assets/logo1.png';
 import { GoThreeBars } from "react-icons/go";
-import { auth } from '../../firebase/firebase.utils';
 import './Header_two.scss';
 
-const Header_two = () => {
+const HeaderTwo = ({ handleFilter, filteredProduct, searchName, clrBtn, }) => {
     return ( 
         <nav>
          <div className="nav-container">
@@ -24,10 +24,18 @@ const Header_two = () => {
 
             <div className="search">
                 <input
+                type='search'
+                value={searchName}
+                onChange={handleFilter}
                 className="input" 
                 placeholder="Search products"
                 />
-                <div className="search-icon"><FaSistrix /></div>
+                <div className="search-icon">
+                    {
+                        (filteredProduct.length !==0 )? 
+                        <FaSistrix /> : <AiOutlineClose onClick={clrBtn} />
+                    }
+                </div>
             </div>
 
             <input type="checkbox" className="nav-toggle" id='nav-toggle'/>
@@ -46,10 +54,13 @@ const Header_two = () => {
                 <Link className='option' to='/signin' >
                     LOGIN
                 </Link>
+                <Link className='option' to='/signin' >
+                    NEWS
+                </Link>
             </div>
           </div>
         </nav>
      );
 }
  
-export default Header_two;
+export default HeaderTwo;

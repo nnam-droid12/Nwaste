@@ -42,14 +42,12 @@ const Header = ({ currentUser }) =>{
                      currentUser?
                      // when user is sign in
                     <div>
-
                         <div className='option' onClick={() => auth.signOut(window.location = '/')} >
                             SIGN OUT
                         </div>
                         
                         <Link className='option' to='/userhome'>VIEW PROFILE
-                        </Link>
-                         
+                        </Link>   
                     </div>
                     
                        // end of when user is signin
@@ -58,6 +56,10 @@ const Header = ({ currentUser }) =>{
                             LOGIN
                         </Link>
                  }
+                 <Link className='option' to='/signin' >
+                    NEWS
+                </Link>
+
                  <div>
                  <Link className='options' to="/farmers" >
                     <button 

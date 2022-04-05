@@ -19,6 +19,8 @@ class SignIn extends React.Component{
             password: ''
         }
     }
+
+
     componentDidMount(){
         const fetchGoogleSignIn = async ()=>{
            const response =  await getRedirectResult(auth);
@@ -82,8 +84,8 @@ class SignIn extends React.Component{
                 handleChange={this.handleChange}
                 label='password'
                 required />
-            </form>
-            <div className='btn-and-link'>
+
+           <div className='btn-and-link'>
                 <div className='sign-in-btns'>
                     <CustomButton
                         className="custom-btn"
@@ -94,6 +96,8 @@ class SignIn extends React.Component{
                     onClick={this.signInWithGoogle}>Sign in with google</GoogleButton>
                 </div>
             </div>
+            </form>
+            
             <div className='signup-and-link'>
             <p style={{color: '#4285f4', textAlign: 'center'}}>Don't Have An Account?
                 <Link to='/signup'>

@@ -1,6 +1,7 @@
 import { HiMail, HiPhone } from "react-icons/hi";
 import { FaGithubSquare, FaLinkedin, FaFacebookSquare, FaTwitterSquare, FaMapMarkerAlt } from "react-icons/fa";
 import Logo from '../../assets/logo1.png';
+import { Link } from 'react-router-dom';
 import './Footer.scss';
 
 const Footer = () => {
@@ -45,11 +46,27 @@ const Footer = () => {
                     <h3 style={{textAlign: "center"}}>About Our solution</h3>
                     <p>Nwaste the game changer is helping the farmers getting the most from their harvest and making farmers happy.</p>
                 </div>
+
                 <div className="media-handles">
-                    <div className="platform linkdn"><FaLinkedin /></div>
-                    <div className="platform github"><FaGithubSquare /></div>
-                    <div className="platform fb"><FaFacebookSquare /></div>
-                    <div className="platform twitter"><FaTwitterSquare /></div>
+                    <a href="https://www.linkedin.com/in/williamnnamani" target="_blank">
+                    <div className="platform linkdn"><FaLinkedin />
+                    </div>
+                    </a>
+
+                    <a href="https://github.com/nnam-droid12" target="_blank">
+                    <div className="platform github"><FaGithubSquare />
+                    </div>
+                    </a>
+
+                   <a href="https://web.facebook.com/rashidi.yakini.756/" target="_blank">
+                   <div className="platform fb"><FaFacebookSquare />
+                    </div>
+                   </a>
+
+                    <a href="https://twitter.com/nnamani_william" target='_blank'>
+                    <div className="platform twitter"><FaTwitterSquare/>
+                    </div>
+                    </a>
                 </div>
             </div>
         </div>

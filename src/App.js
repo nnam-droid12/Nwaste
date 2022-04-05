@@ -12,7 +12,7 @@ import UserHomePage from './components/userhomepage/Userhome.component';
 import ForgotPassword from './components/forgot-password/ForgotPassword.component';
 import ResetMessage from './components/reset-password/ResetPassword.component';
 // import Header_two from './components/header_two/Header_two';
-import Farmer from './components/farmer/Farmer';
+import Farmer from './components/farmers/Farmer';
 
 
 

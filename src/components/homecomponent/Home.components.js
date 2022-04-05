@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import reviews from '../../reviewdata/Review-Data';
 import { MdArrowRightAlt, MdShoppingCart } from "react-icons/md";
+import { RiGuideLine } from "react-icons/ri";
 import { HiAcademicCap, HiArrowsExpand } from "react-icons/hi";
 import { WiCloudUp } from "react-icons/wi";
 import { Link } from 'react-router-dom';
@@ -50,16 +51,16 @@ const HomePage = () => {
                 <div className='details'>
                     <h1>Nwaste the game changer is helping the farmers getting the most from their harvest and making farmers happy.</h1>
                     <p>Our Mission is Zero Hunger in 2030</p>
-                    <Link to='/signin'>
+                    <a href='#guideline-content'>
                     <button 
                     className='get-started'>
-                    <span className='get-started-btn'>Get Started</span>
+                    <span className='get-started-btn'>Guideline</span>
                     <span 
                     className="get-started-icon"
                     size='30px'
                     ><MdArrowRightAlt /></span>
                     </button>
-                    </Link>
+                    </a>
                 </div>
               </div>
           </div>
@@ -75,6 +76,7 @@ const HomePage = () => {
                     size="70px"
                 />
                 <p>
+
                 <a href="https://link.springer.com/article/10.1007/s12230-017-9629-6" target="_blank" rel="noreferrer">Ensusring that the wether condition is compartible with the farmer soil</a>
                 </p>
                 </div>
@@ -120,6 +122,25 @@ const HomePage = () => {
         </div>
     </section>
         {/* the end of user reviews */}
+
+        <section>
+        <div>
+          <div className='guideline-content' id='guideline-content'>
+          <p className='guideline'>
+          <h2 className="guideline-tittle">
+          <RiGuideLine size="32px" />
+            NWASTE GUIDELINE
+          </h2>
+           Welcome to NWASTE. This is a step by step guide on how to get the most in using NWASTE. If you are new, click on the login button in the navigation bar and then sign up with your email and password or you can just head on to signing with your Google account. On signing in, you will be redirected to your user page in less than a minute. In your user page, you can monitor your current soil data with our polygon to keep track of soil state with weather condition before and after planting.<br/><br/>
+
+           The soil data is updated two times in every 12 hours period. Below the polygon is a submit button, when you click on it, you will be redirected to a page where you can submit your available farm products with your location, price and product name for potential and prospective customers to reach out.
+           <br/><br/>
+
+            There is also a NEWS section where we display soft loans that are available for farmers to help increase productivity and maintenance of farming activities.
+          </p>
+          </div>
+        </div>
+    </section>
 
         {/* future plan beginning */}
       <section className='future-plan'>
