@@ -13,6 +13,7 @@ import ForgotPassword from './components/forgot-password/ForgotPassword.componen
 import ResetMessage from './components/reset-password/ResetPassword.component';
 // import Header_two from './components/header_two/Header_two';
 import Farmer from './components/farmers/Farmer';
+import Loan from './components/news/News.component';
 
 
 
@@ -65,6 +66,7 @@ class App extends React.Component {
           <Route path='/forgotpassword' element={<ForgotPassword />} />
           <Route path='/resetmessage' element= {<ResetMessage />} />
           <Route path='/farmers' element= {<Farmer />} />
+          <Route path='/loan' element= {<Loan />} />
        </Routes>
     </div>
   );

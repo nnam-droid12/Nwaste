@@ -5,7 +5,7 @@ import Logo from '../../assets/logo1.png';
 import { GoThreeBars } from "react-icons/go";
 import './Header_two.scss';
 
-const HeaderTwo = ({ handleFilter, filteredProduct, searchName, clrBtn, }) => {
+const HeaderTwo = ({ handleFilter, searchName, clrBtn, }) => {
     return ( 
         <nav>
          <div className="nav-container">

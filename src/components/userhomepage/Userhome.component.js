@@ -5,8 +5,6 @@ import {Line} from 'react-chartjs-2';
 import {ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { storage, db } from '../../firebase/firebase.utils';
 import { collection, addDoc } from 'firebase/firestore';
-import 'react-toastify/dist/ReactToastify.css';
-import { toast } from 'react-toastify';
 import './Userhome.scss';
 
 
@@ -87,10 +85,9 @@ const UserHomePage = (props) => {
                   price: "",
                   image: "",
                 });
-                toast("Products submitted successfully, ready to viewed by potential buyers",{type: "success"});
                 setProgress(0);
               }).catch(error =>{
-                 toast("error adding products", {type: "error"})
+                console.log(error)
               })
             })
         }
@@ -126,7 +123,6 @@ const UserHomePage = (props) => {
   }, []);
      
 
-<<<<<<< HEAD
   var data = {
     labels: polyshape.map(y => y.name),
     datasets: [{
@@ -134,13 +130,6 @@ const UserHomePage = (props) => {
         data: polyshape.map(x => x.area),
         xAxisID: polyshape.center,
         yAxisID: polyshape.area ,
-=======
-  const data = {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-    datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
->>>>>>> 70259dbf0678b660a7fd3a863bb509130ac8dd98
         backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',
@@ -175,22 +164,11 @@ const options = {
     }
   }
 
-<<<<<<< HEAD
-            
-    return(
-        <div className='user-home' style={{marginBottom: '5px'}}>
-=======
-
-   const fetchImages =  () =>{
-     const images = fetchUserImageData(props.currentUser)
-     setUrl(images)
-   }
             
     return(
       <div>
       <Header />
         <div className='user-home'>
->>>>>>> 70259dbf0678b660a7fd3a863bb509130ac8dd98
         {props.currentUser && <h1>welcome {props.currentUser.displayName}</h1>}
 
 

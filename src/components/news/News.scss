@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+.news {
+    font-family: montserrat, sans-serif;
+    margin-top: 8rem;
+    max-width: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.news-title{
+    font-weight: bold;
+    font-style: italic;
+}

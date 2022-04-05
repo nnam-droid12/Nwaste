@@ -56,8 +56,8 @@ const Header = ({ currentUser }) =>{
                             LOGIN
                         </Link>
                  }
-                 <Link className='option' to='/signin' >
-                    NEWS
+                 <Link className='option' to='/loan' >
+                    LOAN
                 </Link>
 
                  <div>
