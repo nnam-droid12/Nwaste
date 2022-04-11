@@ -4,13 +4,12 @@ import { MdArrowRightAlt, MdShoppingCart } from "react-icons/md";
 import { RiGuideLine } from "react-icons/ri";
 import { HiAcademicCap, HiArrowsExpand } from "react-icons/hi";
 import { WiCloudUp } from "react-icons/wi";
-import { Link } from 'react-router-dom';
 import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
 import Header from '../header/Header';
 import Footer from '../footer/Footer';
 import './HomePage.scss';
 
-const HomePage = () => {
+const HomePage = (props) => {
     // The beginning of the nexting and previewing function
     const [index, setIndex] = useState(3);
     const {name, job, text} = reviews[index];
@@ -45,7 +44,7 @@ const HomePage = () => {
 
     return(
         <div >
-        <Header />
+         <Header currentUser={props.currentUser} />
           <div className='container'>
               <div className='outer'>
                 <div className='details'>

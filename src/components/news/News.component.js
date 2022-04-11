@@ -1,16 +1,15 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import Header from '../header/Header';
 import LoanData from '../../newsdata/NewsData';
 import './News.scss';
 
 
-const Loan = ({imageUrl, title, desc, how_to_apply}) =>{
-    // const [loan, setLoan] = useState([]);
+const Loan = ({imageUrl, title, desc, how_to_apply, currentUser }) =>{
 
 
     return (
         <div>
-        <Header />
+        <Header currentUser={currentUser} />
         <div className='news'>
         { LoanData.map(news=>{
         return (

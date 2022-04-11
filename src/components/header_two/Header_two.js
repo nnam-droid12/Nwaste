@@ -1,11 +1,12 @@
 import { FaSistrix } from "react-icons/fa";
-import { AiOutlineClose } from "react-icons/ai";
+// import { AiOutlineClose } from "react-icons/ai";
 import { Link } from 'react-router-dom';
+import { auth } from '../../firebase/firebase.utils';
 import Logo from '../../assets/logo1.png';
 import { GoThreeBars } from "react-icons/go";
 import './Header_two.scss';
 
-const HeaderTwo = ({ handleFilter, searchName, clrBtn, }) => {
+const HeaderTwo = ({ products,handleFilter, searchName, clrBtn, currentUser }) => {
     return ( 
         <nav>
          <div className="nav-container">
@@ -32,8 +33,7 @@ const HeaderTwo = ({ handleFilter, searchName, clrBtn, }) => {
                 />
                 <div className="search-icon">
                     {
-                        (filteredProduct.length !==0 )? 
-                        <FaSistrix /> : <AiOutlineClose onClick={clrBtn} />
+                        <FaSistrix /> 
                     }
                 </div>
             </div>
@@ -51,12 +51,21 @@ const HeaderTwo = ({ handleFilter, searchName, clrBtn, }) => {
                 <Link className='option' to='/faq' >
                     FAQ
                 </Link>
-                <Link className='option' to='/signin' >
+                <Link className='option' to='/loan' >
+                    LOAN
+                </Link>
+                {
+                    currentUser?
+                    <div className='option' onClick={() => auth.signOut(window.location = '/')} >
+                            LOGOUT
+                        </div>
+                    :
+                    <Link className='option' to='/signin'>
                     LOGIN
-                </Link>
-                <Link className='option' to='/signin' >
-                    NEWS
-                </Link>
+                    </Link>
+                    
+                }
+               
             </div>
           </div>
         </nav>

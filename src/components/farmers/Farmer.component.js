@@ -1,12 +1,21 @@
-import { collection, onSnapshot, query } from 'firebase/firestore';
 import React, { useState, useEffect } from 'react';
+import { collection, onSnapshot, query, getDocs } from 'firebase/firestore';
 import {db} from '../../firebase/firebase.utils';
+import HeaderTwo from "../header_two/Header_two";
+import { FaMapMarkerAlt } from "react-icons/fa";
+import Footer from '../footer/Footer';
+import "tachyons";
 import './Farmers.scss';
 
 
-const Farmers = () => {
- 
+const Farmer = (props) => {
+    
+
   const [products, setProducts] = useState([]);
+  // const [filteredProduct, setFilteredProduct] = useState(products);
+  const [searchName, setSearchName] = useState('');
+  
+    const productsCollectionRef = collection(db, "Products");
 
 
   useEffect(() =>{
@@ -21,32 +30,68 @@ const Farmers = () => {
       console.log(products);
     });
   }, [])
-  
+
+    useEffect(() => {
+        const getProducts = async () =>{
+            const data = await getDocs(productsCollectionRef)
+            setProducts(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
+            console.log(data);
+        }
+        getProducts()
+    },[productsCollectionRef])
+
+    const clrBtn = ()=>{
+      setSearchName("")
+      // setProducts(products)
+    }
+    
+    const handleFilter =(event)=> {
+      const searchWord = event.target.value;
+      setSearchName(searchWord)
+      const filteredWord = products.filter(val=>{
+        return val.title.toLowerCase().includes(searchWord.toLowerCase());
+      });
+      products(filteredWord);
+    }
 
     return(
+        <div>
+        <HeaderTwo
+        currentUser={props.currentUser}
+        clrBtn={clrBtn} 
+        searchName={searchName}
+        products={products}
+        handleFilter={handleFilter} />
+        <div className='farmer-card ml4'>
+         {
+         products.map((i) =>{
+           return (
+             <main className='farm-products dib grow' key={i.id}>
+               <div >
+                    <img src={i.imageUrl} alt="images" 
+                    className="img" />
+                     <div className='product-detail ml3'>
+                       <h3 className='name'> {i.title}</h3>
+                       <div className='flex-wrapper'>
+                       <FaMapMarkerAlt className='location'/>
+                       <span><h4>{i.location}</h4></span>
+                       </div>
+                      <h4 className='price'>${i.price}</h4>
+                    </div>
+                 </div>
 
-        <div className='farmer-card' style={{marginTop: '700px'}}>
-
-<div>
-              {
-                products.length ===0 ?
-               ( <p>No products submitted yet</p> ):
-                (
-                  products.map(({ id, title, location, description, price, imageUrl }) => (
-                   <div key={id}>
-                   <h2>{title}</h2>
-                   <h4>{location}</h4>
-                   <h2>{description}</h2>
-                   <p>{price}</p>
-                   <img src={imageUrl} height='180px' width='180px' alt='name' /> 
-                   </div>
-                  ))
-                )
-              }
-            </div>
                   
-         </div>
+           </main>);
+         }
+         
+         )
+       }
+       </div>  
+        <footer className="position-footer">
+        <Footer /> 
+        </footer>     
+       </div>
     );
 }
 
-export default Farmers;
+export default Farmer;

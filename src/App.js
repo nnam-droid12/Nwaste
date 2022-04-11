@@ -12,8 +12,9 @@ import UserHomePage from './components/userhomepage/Userhome.component';
 import ForgotPassword from './components/forgot-password/ForgotPassword.component';
 import ResetMessage from './components/reset-password/ResetPassword.component';
 // import Header_two from './components/header_two/Header_two';
-import Farmer from './components/farmers/Farmer';
+import Farmer from './components/farmers/Farmer.component';
 import Loan from './components/news/News.component';
+import ProductForm from './components/productform/ProductForm.component';
 
 
 
@@ -67,6 +68,7 @@ class App extends React.Component {
           <Route path='/resetmessage' element= {<ResetMessage />} />
           <Route path='/farmers' element= {<Farmer />} />
           <Route path='/loan' element= {<Loan />} />
+          <Route path='/productform' element= {<ProductForm />} />
        </Routes>
     </div>
   );

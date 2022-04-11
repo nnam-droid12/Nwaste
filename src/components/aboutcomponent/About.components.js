@@ -2,10 +2,10 @@ import Footer from '../footer/Footer';
 import Header from '../header/Header';
 import './About.scss';
 
-const AboutPage = () => {
+const AboutPage = (props) => {
     return(
       <div>
-      <Header />
+     <Header currentUser={props.currentUser} />
     <section className="about-us">
         <div className='about-container'>
           <div className="bg-text">
