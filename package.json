@@ -2,6 +2,7 @@
   "name": "nwaste",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:5000",
   "dependencies": {
     "@mui/icons-material": "^5.5.1",
     "@mui/material": "^5.5.1",
@@ -11,6 +12,7 @@
     "axios": "^0.26.1",
     "chart.js": "^3.7.1",
     "firebase": "^9.6.8",
+    "microsoft-cognitiveservices-speech-sdk": "^1.20.0",
     "node-sass": "^7.0.1",
     "react": "^17.0.2",
     "react-chartjs-2": "^4.0.1",
@@ -25,6 +27,7 @@
     "tachyons": "^4.12.0",
     "tsparticles": "^1.42.4",
     "tsparticles-preset-fireworks": "^1.42.4",
+    "universal-cookie": "^4.0.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

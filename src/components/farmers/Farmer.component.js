@@ -27,7 +27,7 @@ const Farmer = (props) => {
         ...doc.data(),
       }));
       setProducts(products);
-      console.log(products);
+      // console.log(products);
     });
   }, [])
 
@@ -35,7 +35,7 @@ const Farmer = (props) => {
         const getProducts = async () =>{
             const data = await getDocs(productsCollectionRef)
             setProducts(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
-            console.log(data);
+            // console.log(data);
         }
         getProducts()
     },[productsCollectionRef])
@@ -45,13 +45,12 @@ const Farmer = (props) => {
       // setProducts(products)
     }
     
-    const handleFilter =(event)=> {
-      const searchWord = event.target.value;
+    const handleFilter =(e)=> {
+      const searchWord = e.target.value;
       setSearchName(searchWord)
-      const filteredWord = products.filter(val=>{
-        return val.title.toLowerCase().includes(searchWord.toLowerCase());
-      });
-      products(filteredWord);
+      setProducts(products.filter((products) =>
+      products.title.toLowerCase().includes(searchWord.toLowerCase())
+      ));
     }
 
     return(

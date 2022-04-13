@@ -1,12 +1,55 @@
+import React, { useState, useEffect } from 'react'
 import { FaSistrix } from "react-icons/fa";
 // import { AiOutlineClose } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import { auth } from '../../firebase/firebase.utils';
 import Logo from '../../assets/logo1.png';
 import { GoThreeBars } from "react-icons/go";
+import { getTokenOrRefresh } from '../../token_utils';
+import { ResultReason } from 'microsoft-cognitiveservices-speech-sdk';
+import { BsMicFill } from 'react-icons/bs';
 import './Header_two.scss';
 
+const speechsdk = require('microsoft-cognitiveservices-speech-sdk')
+
+
 const HeaderTwo = ({ products,handleFilter, searchName, clrBtn, currentUser }) => {
+
+    const[micspeak, setMicSpeak] = useState({displayText:'Be ready to test speech...'})
+
+    useEffect(() =>{
+        const getTokenFromApi = async () =>{
+           const tokenRes = await getTokenOrRefresh();
+           if (tokenRes.authToken === null) {
+               setMicSpeak(micspeak);
+            }
+        }
+        getTokenFromApi()
+    }, [])
+
+
+    const sttFromMic = async () => {
+        const tokenObj = await getTokenOrRefresh();
+        const speechConfig = speechsdk.SpeechConfig.fromAuthorizationToken(tokenObj.authToken, tokenObj.region);
+        speechConfig.speechRecognitionLanguage = 'en-US';
+        
+        const audioConfig = speechsdk.AudioConfig.fromDefaultMicrophoneInput();
+        const recognizer = new speechsdk.SpeechRecognizer(speechConfig, audioConfig);
+
+        setMicSpeak({displayText:'you can speak now'})
+
+        recognizer.recognizeOnceAsync(result => {
+            let micspeak;
+            if (result.reason === ResultReason.RecognizedSpeech) {
+                micspeak.displayText = `RECOGNIZED: Text=${result.text}`
+            } else {
+                micspeak.displayText = 'ERROR: Speech was cancelled or could not be recognized. Ensure your microphone is working properly.';
+            }
+
+            setMicSpeak(micspeak);
+        });
+    }
+
     return ( 
         <nav>
          <div className="nav-container">
@@ -24,6 +67,15 @@ const HeaderTwo = ({ products,handleFilter, searchName, clrBtn, currentUser }) =
             </Link>
 
             <div className="search">
+             {
+                <BsMicFill onClick={sttFromMic} />?
+                <input
+                type='search'
+                value={micspeak.displayText}
+                onChange={handleFilter}
+                className="input" 
+                placeholder="Search products"
+                /> :
                 <input
                 type='search'
                 value={searchName}
@@ -31,7 +83,10 @@ const HeaderTwo = ({ products,handleFilter, searchName, clrBtn, currentUser }) =
                 className="input" 
                 placeholder="Search products"
                 />
+             }
+                
                 <div className="search-icon">
+                <BsMicFill onClick={sttFromMic} />
                     {
                         <FaSistrix /> 
                     }
