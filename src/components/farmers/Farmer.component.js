@@ -1,52 +1,75 @@
-import { collection, onSnapshot, query } from 'firebase/firestore';
 import React, { useState, useEffect } from 'react';
 import {db} from '../../firebase/firebase.utils';
+import HeaderTwo from "../header_two/Header_two";
+import { FaMapMarkerAlt } from "react-icons/fa";
+import Footer from '../footer/Footer';
+import "tachyons";
 import './Farmers.scss';
 
 
-const Farmers = () => {
- 
+const Farmer = (props) => {
   const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [search, setSearch] = useState("");
+    useEffect(() => {
+      const fetchData = async () => {
+        const data = await db.collection("Products").get();
+        setProducts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+        console.log("the data", data)
+      };
+      fetchData();
+    }, []);
+    useEffect(() => {
+        const filterHandler = products.filter(
+          user => user.title.toLowerCase().includes(search.toLowerCase())           
+        )
+        setFilteredProducts(filterHandler)
+    }, [search, products]);
 
+  const clearBtn =()=> {
+    setSearch('');
+  }
+   
+    return (
+        <div>
+        <HeaderTwo
+        search={ search }
+        clearBtn={clearBtn}
+        currentUser={props.currentUser}
+        products={products}
+        setSearch={setSearch} />
+        <div className='farmer-card ml4'>
+         {
+          filteredProducts.map((i) =>{
+           return (!products.length)?
+           <h1>Loading...</h1> :
+            (
+             <main className='farm-products dib grow' key={i.id}>
+               <div >
+                    <img src={i.imageUrl} alt="images" 
+                    className="img" />
+                     <div className='product-detail ml3'>
+                       <h3 className='name'> {i.title}</h3>
+                       <div className='flex-wrapper'>
+                       <FaMapMarkerAlt className='location'/>
+                       <span><h4>{i.location}</h4></span>
+                       </div>
+                      <h4 className='price'>${i.price}</h4>
+                    </div>
+                 </div>
 
-  useEffect(() =>{
-    const productRef = collection(db, 'Products');
-    const q = query(productRef);
-    onSnapshot(q,(snapshot) =>{
-      const products = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      setProducts(products);
-      console.log(products);
-    });
-  }, [])
-  
-
-    return(
-
-        <div className='farmer-card' style={{marginTop: '700px'}}>
-
-<div>
-              {
-                products.length ===0 ?
-               ( <p>No products submitted yet</p> ):
-                (
-                  products.map(({ id, title, location, description, price, imageUrl }) => (
-                   <div key={id}>
-                   <h2>{title}</h2>
-                   <h4>{location}</h4>
-                   <h2>{description}</h2>
-                   <p>{price}</p>
-                   <img src={imageUrl} height='180px' width='180px' alt='name' /> 
-                   </div>
-                  ))
-                )
-              }
-            </div>
                   
-         </div>
+           </main>);
+         }
+         
+         )
+       }
+       </div>  
+        <footer className="position-footer">
+        <Footer /> 
+        </footer>     
+       </div>
     );
 }
 
-export default Farmers;
+export default Farmer;

@@ -1,14 +1,53 @@
 .user-home {
-    position:  relative;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1999;
-    margin-top: 200px;
+    margin-top: 4.85rem;
+    background-color: #003e51;
+    color: #fff;
+    height: 135vh;
+    width: 100%;
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
+
+.user {
+margin-top: 0;
+    
+}
+
+.contact-icon {
+    width: 100%;
+    font-size: 220px;
+    margin-bottom: 0;
+}
+.button{
+    padding: 10px;
+    height: 50px;
+    border-radius: 16px;
+    margin-left: 30px;
+}
+.soil-params {
+
+    background: rgba($color: #000000, $alpha: .5);
+    border-radius: 16px;
+    max-width: 500px;
+    height: 220px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
+}
+
+
+
 .chart-size {
-    height: 60vh;
-    width: 500px;
+    margin: 20px auto;
+    height: 50vh;
+    max-width: 500px;
+    background: #fff;
+    opacity: .65;
+    color: #003e51;
+    width: 700px;
+    padding: 20px;
 }

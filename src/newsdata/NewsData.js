@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom';
-
 const loan_data = [
     {
         id: 1,

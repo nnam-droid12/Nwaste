@@ -1,9 +1,19 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+.bg-holder {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    background-image: url("https://image.winudf.com/v2/image1/Y29tLmFwcHdhbGxldC5iYWNrZ3JvdW5kcmVtb3ZlcnByb19zY3JlZW5fN18xNTU1NTYwMTEyXzA4OQ/screen-7.jpg?fakeurl=1&type=.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .sign-up {
         font-family: montserrat, sans-serif;
-        margin-top: 5.25rem;
-        margin-bottom: .75rem;
-        min-height: 130vh;
+        min-height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -13,9 +23,21 @@
 .h2 {
     text-align: center;
 }
+.signup-text {
+    color: #0c5f79;
+}
 
 .sign-in-bg {
     box-shadow: 0 10px 10px 10px rgba(121, 121, 121, .65);
-    padding: .8rem 1.5rem;
+    padding: .55rem 1.8rem;
     border-radius: 16px;
+    background: #fff;
+    
+}
+
+@media screen and (max-width: 1440px) {
+    .sign-in-bg {
+        padding: .5rem 1.8rem;
+        max-height: 97vh;
+    }
 }

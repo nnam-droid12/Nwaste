@@ -4,13 +4,12 @@ import { MdArrowRightAlt, MdShoppingCart } from "react-icons/md";
 import { RiGuideLine } from "react-icons/ri";
 import { HiAcademicCap, HiArrowsExpand } from "react-icons/hi";
 import { WiCloudUp } from "react-icons/wi";
-import { Link } from 'react-router-dom';
 import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
 import Header from '../header/Header';
 import Footer from '../footer/Footer';
 import './HomePage.scss';
 
-const HomePage = () => {
+const HomePage = (props) => {
     // The beginning of the nexting and previewing function
     const [index, setIndex] = useState(3);
     const {name, job, text} = reviews[index];
@@ -45,7 +44,7 @@ const HomePage = () => {
 
     return(
         <div >
-        <Header />
+         <Header currentUser={props.currentUser} />
           <div className='container'>
               <div className='outer'>
                 <div className='details'>
@@ -77,7 +76,7 @@ const HomePage = () => {
                 />
                 <p>
 
-                <a href="https://link.springer.com/article/10.1007/s12230-017-9629-6" target="_blank" rel="noreferrer">Ensusring that the wether condition is compartible with the farmer soil</a>
+                <a href="https://link.springer.com/article/10.1007/s12230-017-9629-6" target="_blank" rel="noreferrer">Ensusring that the weather condition is compartible with the farmer soil</a>
                 </p>
                 </div>
             <div className="container-item">

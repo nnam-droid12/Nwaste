@@ -38,30 +38,28 @@ const Header = ({ currentUser }) =>{
                  <Link className='option' to='/faq' >
                      FAQ
                  </Link>
-                 {
-                     currentUser?
-                     // when user is sign in
-                    <div>
-                        <div className='option' onClick={() => auth.signOut(window.location = '/')} >
-                            SIGN OUT
-                        </div>
-                        
-                        <Link className='option' to='/userhome'>VIEW PROFILE
-                        </Link>   
-                    </div>
-                    
-                       // end of when user is signin
-                       :
-                        <Link className=' option' to='/signin' >
-                            LOGIN
-                        </Link>
-                 }
                  <Link className='option' to='/loan' >
                     LOAN
                 </Link>
+                 {
+                     currentUser ?
+                     // when user is sign in
+                    <div>
+                        <div className='option' onClick={() => auth.signOut(window.location = '/')} >
+                            LOGOUT
+                        </div>
+                        
+                        <Link className='option' to='/userhome'>
+                        VIEW PROFILE
+                        </Link>   
+                    </div>:
+                        <Link className='option' to='/signin' >
+                            LOGIN
+                        </Link>
+                 }
 
                  <div>
-                 <Link className='options' to="/farmers" >
+                 <Link className='option' to="/farmers" >
                     <button 
                         className='get-started'>
                         <span className='get-started-btn'>Meet Farmers</span>

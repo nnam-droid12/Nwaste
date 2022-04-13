@@ -3,7 +3,6 @@ import FormInput from '../formInput/Forminput.component';
 import CustomButton from '../custombutton/CustomButton.component';
 import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
 import { Link } from 'react-router-dom';
-import Header from '../header/Header';
 import Logo from '../../assets/logo1.png';
 import './SignUp.scss';
 
@@ -34,9 +33,9 @@ class SignUp extends React.Component {
               user.updateProfile({
                   displayName: displayName
               }).then(() =>{
-                  console.log('name updated successfully');
+                  return ('name updated successfully');
               }).catch((error) =>{
-                  console.log(error);
+                 return (error);
               })
               auth.onAuthStateChanged(user => {
                 if(user){
@@ -53,7 +52,7 @@ class SignUp extends React.Component {
                 confirmPassword: ''
             })
         }catch(error){
-          console.log(error);
+          return (error);
         }
     };
 
@@ -66,16 +65,15 @@ class SignUp extends React.Component {
     render(){
         const { displayName, email, password, confirmPassword } =this.state;
         return(
-            <div>
-            <Header />
+            <div className="bg-holder">
             <div className='sign-up'>
             <div className='sign-in-bg'>
             <div className='sign-in-header'>
-                <div >
-                <img className='sign-logo' alt='logo' src={Logo} style={{height: '55px', width: '55px'}}/> 
-                </div>
-                <h2>Create An Account</h2>
-                <span>Sign up with your username and password</span>
+            <Link to="/">
+                <img className='sign-logo' title='Go to home page' alt='logo' src={Logo} style={{height: '55px', width: '55px'}} /> 
+            </Link>
+                <h2 className='signup-text'>Create An Account</h2>
+                <span className='signup-text'>Sign up with your username and password</span>
             </div>
                <form 
                className='signin-form'
@@ -110,7 +108,7 @@ class SignUp extends React.Component {
                     <div className='signin-and-link'>
                     <p style={{color: '#4285f4'}}>Already Have An Account? 
                         <Link to='/signin'>
-                            .<button className='sign-in-btn'>Sign in</button>
+                            <button className='sign-in-btn'>Sign in</button>
                         </Link>
                     </p> 
                     </div>
