@@ -1,7 +1,6 @@
 import { HiMail, HiPhone } from "react-icons/hi";
 import { FaGithubSquare, FaLinkedin, FaFacebookSquare, FaTwitterSquare, FaMapMarkerAlt } from "react-icons/fa";
 import Logo from '../../assets/logo1.png';
-import { Link } from 'react-router-dom';
 import './Footer.scss';
 
 const Footer = () => {
@@ -48,22 +47,22 @@ const Footer = () => {
                 </div>
 
                 <div className="media-handles">
-                    <a href="https://www.linkedin.com/in/williamnnamani" target="_blank">
+                    <a href="https://www.linkedin.com/in/williamnnamani" target="_blank" rel="noreferrer">
                     <div className="platform linkdn"><FaLinkedin />
                     </div>
                     </a>
 
-                    <a href="https://github.com/nnam-droid12" target="_blank">
+                    <a href="https://github.com/nnam-droid12" target="_blank" rel="noreferrer">
                     <div className="platform github"><FaGithubSquare />
                     </div>
                     </a>
 
-                   <a href="https://web.facebook.com/rashidi.yakini.756/" target="_blank">
+                   <a href="https://web.facebook.com/rashidi.yakini.756/" target="_blank" rel="noreferrer">
                    <div className="platform fb"><FaFacebookSquare />
                     </div>
                    </a>
 
-                    <a href="https://twitter.com/nnamani_william" target='_blank'>
+                    <a href="https://twitter.com/nnamani_william" target='_blank' rel="noreferrer" >
                     <div className="platform twitter"><FaTwitterSquare/>
                     </div>
                     </a>

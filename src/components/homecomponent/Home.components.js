@@ -76,7 +76,7 @@ const HomePage = (props) => {
                 />
                 <p>
 
-                <a href="https://link.springer.com/article/10.1007/s12230-017-9629-6" target="_blank" rel="noreferrer">Ensusring that the wether condition is compartible with the farmer soil</a>
+                <a href="https://link.springer.com/article/10.1007/s12230-017-9629-6" target="_blank" rel="noreferrer">Ensusring that the weather condition is compartible with the farmer soil</a>
                 </p>
                 </div>
             <div className="container-item">

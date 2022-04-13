@@ -5,7 +5,6 @@ import CustomButton from '../custombutton/CustomButton.component';
 import GoogleButton from 'react-google-button';
 import { Link } from 'react-router-dom';
 import { auth, provider } from '../../firebase/firebase.utils';
-import Header from '../header/Header';
 import {getRedirectResult} from 'firebase/auth'
 import Logo from '../../assets/logo1.png';
 
@@ -60,14 +59,13 @@ class SignIn extends React.Component{
     }
     render(){
         return(
-            <div>
-            <Header />
+            <div className='bg-holder'>
         <div className='sign-in'>
-        <div className='sign-in-bg'>
+        <div className='login-in-bg'>
             <div className='sign-in-header'>
-                <div >
-                <img className='sign-logo' alt='logo' src={Logo} style={{height: '55px', width: '55px'}}/> 
-                </div>
+              <Link to="/">
+                <img className='sign-logo' title='Go to home page' alt='logo' src={Logo} style={{height: '55px', width: '55px'}} /> 
+              </Link>
                 <h2 className='h2'>Already have an account?</h2>
                 <span className='span'>Sign in with your email and password</span>
             </div>
@@ -93,6 +91,7 @@ class SignIn extends React.Component{
                     </CustomButton>
                     <GoogleButton 
                     className='google-btn'
+                    style={{color: '#fff'}}
                     onClick={this.signInWithGoogle}>Sign in with google</GoogleButton>
                 </div>
             </div>

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { collection, onSnapshot, query, getDocs } from 'firebase/firestore';
 import {db} from '../../firebase/firebase.utils';
 import HeaderTwo from "../header_two/Header_two";
 import { FaMapMarkerAlt } from "react-icons/fa";
@@ -9,9 +8,8 @@ import './Farmers.scss';
 
 
 const Farmer = (props) => {
-    
-
   const [products, setProducts] = useState([]);
+<<<<<<< HEAD
   // const [filteredProduct, setFilteredProduct] = useState(products);
   const [searchName, setSearchName] = useState('');
   
@@ -54,17 +52,43 @@ const Farmer = (props) => {
     }
 
     return(
+=======
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [search, setSearch] = useState("");
+    useEffect(() => {
+      const fetchData = async () => {
+        const data = await db.collection("Products").get();
+        setProducts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+        console.log("the data", data)
+      };
+      fetchData();
+    }, []);
+    useEffect(() => {
+        const filterHandler = products.filter(
+          user => user.title.toLowerCase().includes(search.toLowerCase())           
+        )
+        setFilteredProducts(filterHandler)
+    }, [search, products]);
+
+  const clearBtn =()=> {
+    setSearch('');
+  }
+   
+    return (
+>>>>>>> 8c5f8f0baa71f8625983717cc479d12a75f6b49e
         <div>
         <HeaderTwo
+        search={ search }
+        clearBtn={clearBtn}
         currentUser={props.currentUser}
-        clrBtn={clrBtn} 
-        searchName={searchName}
         products={products}
-        handleFilter={handleFilter} />
+        setSearch={setSearch} />
         <div className='farmer-card ml4'>
          {
-         products.map((i) =>{
-           return (
+          filteredProducts.map((i) =>{
+           return (!products.length)?
+           <h1>Loading...</h1> :
+            (
              <main className='farm-products dib grow' key={i.id}>
                <div >
                     <img src={i.imageUrl} alt="images" 

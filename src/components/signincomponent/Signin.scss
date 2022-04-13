@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 .sign-in{
     font-family: montserrat, sans-serif;
-    margin-top: 6.35rem;
-    margin-bottom: .75rem;
+    margin-top: 4.35rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -11,19 +10,20 @@
 }
 h2, .span {
     margin-left: 50px;
-    margin-top: 8px;
 }
 
-.sign-in-bg {
+.login-in-bg {
     box-shadow: 0 10px 10px 10px rgba(121, 121, 121, .65);
     padding: .8rem 1.85rem;
     border-radius: 16px;
-    
+    background: #fff;
+    height: 80vh;
 }
 
 .sign-in-btns {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 .google-btn {
     margin-left: 5px;
@@ -41,6 +41,7 @@ h2, .span {
     padding: 5px;
     border-radius: 4px;
     cursor: pointer;
+    font-size: 14px;
     margin-left: 5px;
 }
 
@@ -61,7 +62,7 @@ h2, .span {
     padding: .5rem;
 }
 
-h2, span {
+.h2, .span {
     color: #0c5f79;
 }
 

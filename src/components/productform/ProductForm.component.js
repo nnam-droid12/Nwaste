@@ -96,7 +96,7 @@ const ProductForm = (props) =>{
                onChange={(e)=>handleChange(e)}
                required />
 
-               <input type='number' name='price'
+               <input type='text' name='price'
                placeholder='price' 
                value={formData.price}
                onChange={(e) =>handleChange(e)}
@@ -110,7 +110,7 @@ const ProductForm = (props) =>{
 
                {progress === 0 ? null :(
                <div className='progress-bar' style={{width: `${progress}%` }}>
-                 {`uploading image ${progress}%`}
+                 {`uploading products ${progress}%`}
                </div>) }
                <button onClick={handleProducts}>Submit product</button>
                <UpdateProduct />

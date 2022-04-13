@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { FaSistrix } from "react-icons/fa";
-// import { AiOutlineClose } from "react-icons/ai";
+import { AiOutlineClose } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import { auth } from '../../firebase/firebase.utils';
 import Logo from '../../assets/logo1.png';
@@ -10,6 +10,7 @@ import { ResultReason } from 'microsoft-cognitiveservices-speech-sdk';
 import { BsMicFill } from 'react-icons/bs';
 import './Header_two.scss';
 
+<<<<<<< HEAD
 const speechsdk = require('microsoft-cognitiveservices-speech-sdk')
 
 
@@ -49,6 +50,9 @@ const HeaderTwo = ({ products,handleFilter, searchName, clrBtn, currentUser }) =
             setMicSpeak(micspeak);
         });
     }
+=======
+const HeaderTwo = ({ setSearch, currentUser, search, clearBtn  }) => {
+>>>>>>> 8c5f8f0baa71f8625983717cc479d12a75f6b49e
 
     return ( 
         <nav>
@@ -78,17 +82,22 @@ const HeaderTwo = ({ products,handleFilter, searchName, clrBtn, currentUser }) =
                 /> :
                 <input
                 type='search'
-                value={searchName}
-                onChange={handleFilter}
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
                 className="input" 
-                placeholder="Search products"
+                placeholder="Search products. . ."
                 />
              }
                 
                 <div className="search-icon">
+<<<<<<< HEAD
                 <BsMicFill onClick={sttFromMic} />
                     {
                         <FaSistrix /> 
+=======
+                    { (!search.length)?
+                        <FaSistrix /> : <AiOutlineClose onClick={clearBtn}/>
+>>>>>>> 8c5f8f0baa71f8625983717cc479d12a75f6b49e
                     }
                 </div>
             </div>
