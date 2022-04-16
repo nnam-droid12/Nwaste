@@ -27,7 +27,7 @@ const UserHomePage = (props) => {
 
   useEffect(() => {
     const getSoilData = async () => {
-      const response = await fetch('http://localhost:5000/soil',{
+      const response = await fetch('https://nwaste-api.herokuapp.com/soil',{
         method: 'GET',
          headers: {
              'Content-Type': 'application/json',
@@ -44,7 +44,7 @@ const UserHomePage = (props) => {
 
   useEffect(() => {
     const getPolygonShape = async () => {
-      const shape_response = await fetch('http://localhost:5000/shape',{
+      const shape_response = await fetch('https://nwaste-api.herokuapp.com/shape',{
          method: 'GET',
           headers: {
               'Content-Type': 'application/json',
