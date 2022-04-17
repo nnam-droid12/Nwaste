@@ -66,7 +66,7 @@ const Farmer = (props) => {
         }
     }
     getTokenFromApi()
-}, [])
+}, [micspeak])
 
 
 const sttFromMic = async () => {
