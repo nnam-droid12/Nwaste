@@ -3,7 +3,6 @@ import {ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { storage, db } from '../../firebase/firebase.utils';
 import { collection, addDoc } from 'firebase/firestore';
 import Header from '../header/Header';
-import UpdateProduct from '../updateproducts/UpdateProduct.component';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 
@@ -113,7 +112,6 @@ const ProductForm = (props) =>{
                  {`uploading products ${progress}%`}
                </div>) }
                <button onClick={handleProducts}>Submit product</button>
-               <UpdateProduct />
             </form>
         </div>
    </div>
