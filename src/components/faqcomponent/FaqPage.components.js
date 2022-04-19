@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
+import { AiOutlineClose, AiOutlinePlus } from 'react-icons/ai';
 import './Faq.component.scss'
 
 
@@ -13,7 +13,7 @@ const Question = ({title, info}) =>{
                  (!showInfo)}>
                     {
                         showInfo? 
-                        <AiOutlineMinus /> :
+                        <AiOutlineClose /> :
                         <AiOutlinePlus />
                     }
                 </button>             

@@ -191,7 +191,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 400;
     color: #003e51;
     font-family: montserrat, sans-serif;
 }
@@ -200,10 +199,9 @@
     position: absolute;
     z-index: 999;
     top: 480%;
-    width: 80%;
+    width: 85%;
     margin: 20px auto;
     padding: .5rem 5.25rem 3.65rem;
-
 }
 .info {
    margin-left: 8px;
@@ -234,8 +232,8 @@
         position: absolute;
         width: auto;
         z-index: 999;
-        font-size: 10px;
         text-align: center;
+        top: 430%;
     }
 // guideline styles
 }

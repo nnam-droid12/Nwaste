@@ -109,7 +109,7 @@ const HomePage = (props) => {
         <div className="user-reviews">
             <div  className='userss'>
 
-                <FaChevronLeft size='50px' onClick={prePerson} />
+                <FaChevronLeft size='60px' onClick={prePerson} />
              <div>
                 <h1>User Reviews</h1>
                 <h2 className='info'>{text}</h2>
@@ -143,7 +143,7 @@ const HomePage = (props) => {
 
         {/* future plan beginning */}
       <section className='future-plan'>
-            <h1>Our Future Plan</h1>
+            <h1><hr/>Our Future Plan<hr/></h1>
         <div className='mission'>
             <p>Out of the Billions of food wasted every year, perishable foods have been identified to be the most paramount, which has been due to inefficient and uneffective method of preservation, as result NWASTE plan to address this problem by creating the most effective preservation method as our mission strongly tie to this, which is zero hunger in 2030.</p>
             <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXgsj5dNoXh4EhBkYAP_SEDWDnJ3YRaQ-spg&usqp=CAU' alt='' ></img>

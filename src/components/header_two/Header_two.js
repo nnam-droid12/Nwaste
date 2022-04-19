@@ -16,7 +16,7 @@ const HeaderTwo = ({ setSearch, currentUser, search, clearBtn  }) => {
                 <div className='logo-container' title='Go to home page!'>
                     <div className='col'>
                     <img className='logo' alt='logo' src={Logo} style={{height: '65px', width: '65px'}}/> 
-                    <div className='text col'>
+                    <div className='text-2 col'>
                         Nwaste
                     </div>
                 </div>
@@ -28,7 +28,7 @@ const HeaderTwo = ({ setSearch, currentUser, search, clearBtn  }) => {
                 <input
                 type='search'
                 value={search}
-                onChange={(e) => setSearch(e.target.value)}
+                onChange={(e) => setSearch(e.target.value) + console.log("this is e", e)}
                 className="input" 
                 placeholder="Search products. . ."
                 />

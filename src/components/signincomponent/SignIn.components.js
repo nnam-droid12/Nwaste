@@ -18,8 +18,6 @@ class SignIn extends React.Component{
             password: ''
         }
     }
-
-
     componentDidMount(){
         const fetchGoogleSignIn = async ()=>{
            const response =  await getRedirectResult(auth);
@@ -59,17 +57,17 @@ class SignIn extends React.Component{
     }
     render(){
         return(
-            <div className='bg-holder'>
+        <div className='bg-holder'>
         <div className='sign-in'>
         <div className='login-in-bg'>
             <div className='sign-in-header'>
               <Link to="/">
                 <img className='sign-logo' title='Go to home page' alt='logo' src={Logo} style={{height: '55px', width: '55px'}} /> 
               </Link>
-                <h2 className='h2'>Already have an account?</h2>
+                <h4 className='header-4'>Already have an account?</h4>
                 <span className='span'>Sign in with your email and password</span>
             </div>
-            <form onSubmit={this.handleSubmit}  >
+            <form className='form-input' onSubmit={this.handleSubmit}  >
                 <FormInput name='email' 
                 type='email'
                 value={this.state.email}
@@ -91,7 +89,6 @@ class SignIn extends React.Component{
                     </CustomButton>
                     <GoogleButton 
                     className='google-btn'
-                    style={{color: '#fff'}}
                     onClick={this.signInWithGoogle}>Sign in with google</GoogleButton>
                 </div>
             </div>

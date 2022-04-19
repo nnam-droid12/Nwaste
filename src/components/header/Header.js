@@ -74,7 +74,7 @@ const Header = ({ currentUser }) =>{
         </div>
         <Link to="/farmers">
             <button className='products'>
-                Meet Farmers
+                Market place
             </button>
         </Link>
         </nav>

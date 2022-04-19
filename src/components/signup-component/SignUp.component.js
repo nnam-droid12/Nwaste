@@ -72,11 +72,11 @@ class SignUp extends React.Component {
             <Link to="/">
                 <img className='sign-logo' title='Go to home page' alt='logo' src={Logo} style={{height: '55px', width: '55px'}} /> 
             </Link>
-                <h2 className='signup-text'>Create An Account</h2>
-                <span className='signup-text'>Sign up with your username and password</span>
+                <h4 className='header-4'>Create An Account</h4>
+                <span className='span'>Sign up with your name and password</span>
             </div>
                <form 
-               className='signin-form'
+               className='form-input'
                onSubmit={this.handleSubmit}>
                    <FormInput type='text'
                    name='displayName'

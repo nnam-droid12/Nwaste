@@ -1,13 +1,16 @@
-const Loader = () => {
-    const loader = document.getElementById('loader');
+import './Loader.scss';
 
+
+const Loader = () => {
+   let loader = document.getElementById('loader');
                 function loading() {
                     loader.hidden = false;
                 }
-
     return ( 
-        <main>
-            <div className="loader" id="loader"></div>
+        <main className='loading'>
+            <div className="loader" id="loader">
+            </div>
+            <p>Loading. . .</p>
         </main>
      );
 }
