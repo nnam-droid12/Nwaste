@@ -4,12 +4,12 @@ import LoanData from '../../newsdata/NewsData';
 import './News.scss';
 
 
-const Loan = ({ id, imageUrl, title, desc, how_to_apply, linkUrl}) =>{
+const Loan = ({ id, imageUrl, title, desc, how_to_apply, linkUrl, currentUser }) =>{
 
 
     return (
         <div>
-        <Header />
+        <Header currentUser={currentUser} />
         <div className='news'>
         { LoanData.map(news=>{
         return (
@@ -21,7 +21,7 @@ const Loan = ({ id, imageUrl, title, desc, how_to_apply, linkUrl}) =>{
            <h4> HOW TO APPLY</h4>
            {news.how_to_apply}
            </p>
-          <p ><a href={`https://${id}${linkUrl}`} style={{color:'blue',cursor:'pointer'}} target="_blank" rel="noreferrer">apply now</a></p>
+          <p onClick={()=>{window.location.href = news.linkUrl}}>aply</p>
            </div>
            );
     })}

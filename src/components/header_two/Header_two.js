@@ -67,9 +67,14 @@ const HeaderTwo = ({ micspeak, sttFromMic, setSearch, currentUser, search, clear
                 </Link>
                 {
                     currentUser?
-                    <div className='option' onClick={() => auth.signOut(window.location = '/')} >
+                    <div>
+                        <div className='option' onClick={() => auth.signOut(window.location = '/')} >
                             LOGOUT
                         </div>
+                        <Link className='option' to='/userhome'>
+                        VIEW PROFILE
+                        </Link> 
+                    </div>        
                     :
                     <Link className='option' to='/signin'>
                     LOGIN
