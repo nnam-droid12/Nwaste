@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import reviews from '../../reviewdata/Review-Data';
 import { MdArrowRightAlt, MdShoppingCart } from "react-icons/md";
-import { RiGuideLine } from "react-icons/ri";
 import { HiAcademicCap, HiArrowsExpand } from "react-icons/hi";
 import { WiCloudUp } from "react-icons/wi";
 import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
@@ -67,7 +66,9 @@ const HomePage = (props) => {
           
           {/* The beginning of service*/}
           <section className="service">
-            <h1 className='service-title' >What We Do</h1>
+          <h1 className='horizontal-line'><hr/>
+              What We Do
+          <hr/></h1>
             <div className="service-container">  
                 <div className="container-item">
                 <WiCloudUp 
@@ -109,14 +110,14 @@ const HomePage = (props) => {
         <div className="user-reviews">
             <div  className='userss'>
 
-                <FaChevronLeft size='60px' onClick={prePerson} />
+                <FaChevronLeft className='change-review' size='30px' onClick={prePerson} />
              <div>
                 <h1>User Reviews</h1>
                 <h2 className='info'>{text}</h2>
                 <h4 className='name'>{name}</h4>
                 <p className='job'>{job}</p>
               </div>
-                   <FaChevronRight size='50px' onClick={nextPerson} />
+                   <FaChevronRight className='change-review' size='30px' onClick={nextPerson} />
             </div>
         </div>
     </section>
@@ -126,10 +127,7 @@ const HomePage = (props) => {
         <div>
           <div className='guideline-content' id='guideline-content'>
           <p className='guideline'>
-          <h2 className="guideline-tittle">
-          <RiGuideLine size="32px" />
-            NWASTE GUIDELINE
-          </h2>
+          <h3 className='horizontal-line'><hr/>Nwaste Guideline<hr/></h3>
            Welcome to NWASTE. This is a step by step guide on how to get the most in using NWASTE. If you are new, click on the login button in the navigation bar and then sign up with your email and password or you can just head on to signing with your Google account. On signing in, you will be redirected to your user page in less than a minute. In your user page, you can monitor your current soil data with our polygon to keep track of soil state with weather condition before and after planting.<br/><br/>
 
            The soil data is updated two times in every 12 hours period. Below the polygon is a submit button, when you click on it, you will be redirected to a page where you can submit your available farm products with your location, price and product name for potential and prospective customers to reach out.
@@ -143,7 +141,7 @@ const HomePage = (props) => {
 
         {/* future plan beginning */}
       <section className='future-plan'>
-            <h1><hr/>Our Future Plan<hr/></h1>
+            <h1 className='horizontal-line'><hr/>Our Future Plan<hr/></h1>
         <div className='mission'>
             <p>Out of the Billions of food wasted every year, perishable foods have been identified to be the most paramount, which has been due to inefficient and uneffective method of preservation, as result NWASTE plan to address this problem by creating the most effective preservation method as our mission strongly tie to this, which is zero hunger in 2030.</p>
             <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXgsj5dNoXh4EhBkYAP_SEDWDnJ3YRaQ-spg&usqp=CAU' alt='' ></img>

@@ -59,10 +59,10 @@ const Header = ({ currentUser }) =>{
                  }
 
                  <div>
-                 <Link className='option' to="/farmers" >
+                 <Link className='options' to="/farmers" >
                     <button 
                         className='get-started'>
-                        <span className='get-started-btn'>Meet Farmers</span>
+                        <span className='get-started-btn'>Market place</span>
                         <span 
                         className="get-started-icon"
                         size='30px'
