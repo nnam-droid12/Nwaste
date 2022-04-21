@@ -5,15 +5,52 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 import Footer from '../footer/Footer';
 // import { Spinner } from 'reactstrap';
 import Loader from "../loader/Loader";
+import { getTokenOrRefresh } from '../../token_utils';
+import { ResultReason } from 'microsoft-cognitiveservices-speech-sdk';
 import "tachyons";
 import './Farmers.scss';
+const speechsdk = require('microsoft-cognitiveservices-speech-sdk');
 
 
 const Farmer = (props) => {
-  const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [search, setSearch] = useState("");
+  const [products, setProducts] = useState([]);
+  const[micspeak, setMicSpeak] = useState('');
 
+
+
+
+  useEffect(() =>{
+    const getTokenFromApi = async () =>{
+       const tokenRes = await getTokenOrRefresh();
+       if (tokenRes.authToken === null) {
+           setMicSpeak(micspeak);
+        }
+    }
+    getTokenFromApi()
+}, [])
+
+
+const sttFromMic = async () => {
+    const tokenObj = await getTokenOrRefresh();
+    const speechConfig = speechsdk.SpeechConfig.fromAuthorizationToken(tokenObj.authToken, tokenObj.region);
+    speechConfig.speechRecognitionLanguage = 'en-US';
+    const audioConfig = speechsdk.AudioConfig.fromDefaultMicrophoneInput();
+    const recognizer = new speechsdk.SpeechRecognizer(speechConfig, audioConfig);
+
+    setMicSpeak('Listening...');
+    recognizer.recognizeOnceAsync(result => {
+        let micspeak;
+        if (result.reason === ResultReason.RecognizedSpeech) {
+            micspeak = `${(result.text.toLowerCase())}`
+        }
+
+        setMicSpeak(micspeak);
+    });
+}
+
+  
     useEffect(() => {
       const fetchData = async () => {
         const data = await db.collection("Products").get();
@@ -24,14 +61,14 @@ const Farmer = (props) => {
 
     useEffect(() => {
         const filterHandler = products.filter(
-          user => user.title.toLowerCase().includes(search.toLowerCase()) 
-         )   
-        setFilteredProducts(filterHandler)    
-    }, [search, products]);
- 
+          user => user.title.toLowerCase().includes(search.toLowerCase())           
+        )
+        setFilteredProducts(filterHandler)
+    }, [search, products, micspeak]);
 
   const clearBtn =()=> {
     setSearch('');
+    setProducts(products);
   }
    
     return (
@@ -41,7 +78,9 @@ const Farmer = (props) => {
         clearBtn={clearBtn}
         currentUser={props.currentUser}
         products={products}
-        setSearch={setSearch} />
+        setSearch={setSearch}
+        sttFromMic={sttFromMic}
+        micspeak={micspeak} />
         <div className='farmer-card ml4'>
          {
           products.length > 0 ?   
@@ -64,7 +103,7 @@ const Farmer = (props) => {
        </div> 
       
         <footer 
-        classnullName="position-footer"
+        className="position-footer"
         >
         <Footer /> 
         </footer>     
@@ -73,13 +112,3 @@ const Farmer = (props) => {
 }
 
 export default Farmer;
-
-
-
-
-
-
-
-
-
-

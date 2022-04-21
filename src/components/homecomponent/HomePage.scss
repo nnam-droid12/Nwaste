@@ -77,13 +77,13 @@
 
 // our service container
 .service-title {
-    margin-top: 60px;
+    margin-top: 50px;
     text-align: center;
     color: #0c5f79;
 }
 
 .service .service-container {
-    margin-top: 2rem;
+    margin-top: 1.25rem;
     display: grid;
     grid-gap: 14px;
     grid-template-columns: repeat(auto-fill, minmax(450px, 2fr));

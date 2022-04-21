@@ -4,7 +4,7 @@ import LoanData from '../../newsdata/NewsData';
 import './News.scss';
 
 
-const Loan = ({imageUrl, title, desc, how_to_apply, currentUser }) =>{
+const Loan = ({ id, imageUrl, title, desc, how_to_apply, linkUrl, currentUser }) =>{
 
 
     return (
@@ -21,6 +21,7 @@ const Loan = ({imageUrl, title, desc, how_to_apply, currentUser }) =>{
            <h4> HOW TO APPLY</h4>
            {news.how_to_apply}
            </p>
+          <p onClick={()=>{window.location.href = news.linkUrl}}>aply</p>
            </div>
            );
     })}

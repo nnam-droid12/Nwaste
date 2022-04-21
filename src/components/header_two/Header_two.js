@@ -1,12 +1,16 @@
+import React from 'react'
 import { FaSistrix } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import { auth } from '../../firebase/firebase.utils';
 import Logo from '../../assets/logo1.png';
 import { GoThreeBars } from "react-icons/go";
+import { BsMicFill } from 'react-icons/bs';
 import './Header_two.scss';
 
-const HeaderTwo = ({ setSearch, currentUser, search, clearBtn  }) => {
+
+
+const HeaderTwo = ({ micspeak, sttFromMic, setSearch, currentUser, search, clearBtn  }) => {
 
     return ( 
         <nav>
@@ -28,14 +32,17 @@ const HeaderTwo = ({ setSearch, currentUser, search, clearBtn  }) => {
                 <input
                 type='search'
                 value={search}
-                onChange={(e) => setSearch(e.target.value) + console.log("this is e", e)}
+                onChange={(e) => setSearch(e.target.value || e.micspeak)}
                 className="input" 
-                placeholder="Search products. . ."
+                placeholder="Search. . ."
                 />
+                
                 <div className="search-icon">
-                    { (!search.length)?
-                        <FaSistrix /> : <AiOutlineClose onClick={clearBtn}/>
+                
+                    {
+                      !search.length?  <FaSistrix /> : <AiOutlineClose onClick={clearBtn}/>
                     }
+                    <span className='partition'>|</span> <BsMicFill onClick={sttFromMic} />
                 </div>
             </div>
 
@@ -46,27 +53,32 @@ const HeaderTwo = ({ setSearch, currentUser, search, clearBtn  }) => {
                     </span>
             </label>
             <div className='options'>
-                <Link className='option' to='/about'>
-                    ABOUT
-                </Link>
-                <Link className='option' to='/faq' >
-                    FAQ
-                </Link>
                 <Link className='option' to='/loan' >
                     LOAN
                 </Link>
+                <Link className='option' to='/faq' >
+                    FAQs
+                </Link>
+               
                 {
                     currentUser?
-                    <div className='option' onClick={() => auth.signOut(window.location = '/')} >
+                    <div className='display-option'>
+                        <div className='option' onClick={() => auth.signOut(window.location = '/')} >
                             LOGOUT
                         </div>
+                       
+                        <Link className='option' to='/userhome'>
+                        PROFILE
+                        </Link> 
+                         
+                    </div>        
                     :
                     <Link className='option' to='/signin'>
                     LOGIN
                     </Link>
                     
                 }
-               
+
             </div>
           </div>
         </nav>

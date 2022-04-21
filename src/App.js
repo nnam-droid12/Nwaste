@@ -58,17 +58,17 @@ class App extends React.Component {
     <div className="App">
       
        <Routes>
-          <Route path='/' element={<HomePage />} />
-          <Route path='/about' element={<AboutPage />} />
-          <Route path='/faq' element={<DisplayFaq />} />
-          <Route path='/signin' element={<SignIn />} />
+          <Route path='/' element={<HomePage currentUser={this.state.currentUser} />} />
+          <Route path='/about' element={<AboutPage currentUser={this.state.currentUser} />} />
+          <Route path='/faq' element={<DisplayFaq currentUser={this.state.currentUser} />} />
+          <Route path='/signin' element={<SignIn />}  />
           <Route path='/signup' element={<SignUp />} /> 
-          <Route  path='/userhome' element={<UserHomePage currentUser={this.state.currentUser} />}  />
           <Route path='/forgotpassword' element={<ForgotPassword />} />
           <Route path='/resetmessage' element= {<ResetMessage />} />
-          <Route path='/farmers' element= {<Farmer />} />
-          <Route path='/loan' element= {<Loan />} />
+          <Route path='/farmers' element= {<Farmer currentUser={this.state.currentUser} />} />
+          <Route path='/loan' element= {<Loan currentUser={this.state.currentUser} />} />
           <Route path='/productform' element= {<ProductForm />} />
+            <Route path='/userhome' element={<UserHomePage currentUser={this.state.currentUser} />}  />
        </Routes>
     </div>
   );

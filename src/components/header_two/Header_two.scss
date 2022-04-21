@@ -4,7 +4,7 @@
     border-radius: 16px;
     height: 15px;
     width: 100%;
-    width: 350px;
+    width: 300px;
     outline: none;
     margin-left: 10px;
     margin-top: 10px;
@@ -46,10 +46,13 @@ nav {
 .search-icon {
     height: 10px;
     font-size: 20px;
-    position:absolute;
+    position:  absolute;
     right: 5%;
     cursor: pointer;
     color: #29c3f1;
+}
+.display-option {
+    display: flex;
 }
 
 
@@ -66,6 +69,9 @@ nav {
     }
     .text-2 {
         display: none;
+    }
+    .display-option {
+        display: block;
     }
 }
 
