@@ -1,6 +1,6 @@
 import React from 'react'
 import { FaSistrix } from "react-icons/fa";
-// import { AiOutlineClose } from "react-icons/ai";
+import { AiOutlineClose } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import { createStructuredSelector } from 'reselect';
 import { selectCartHidden } from '../../redux/cart/cart.selectors';
@@ -43,14 +43,15 @@ const HeaderTwo = ({ sttFromMic, setSearch, currentUser, hidden, search, clearBt
                 type='search'
                 onChange={(e) => setSearch(e.target.value)}
                 className="input" 
-                placeholder="Search products"
+                placeholder="Search. . ."
                 />
                 
                 <div className="search-icon">
-                <BsMicFill onClick={sttFromMic} />
+                
                     {
-                        <FaSistrix />
+                      !search.length?  <FaSistrix /> : <AiOutlineClose onClick={clearBtn}/>
                     }
+                    <span className='partition'>|</span> <BsMicFill onClick={sttFromMic} />
                 </div>
             </div>
 
@@ -61,24 +62,24 @@ const HeaderTwo = ({ sttFromMic, setSearch, currentUser, hidden, search, clearBt
                     </span>
             </label>
             <div className='options'>
-                <Link className='option' to='/about'>
-                    ABOUT
-                </Link>
-                <Link className='option' to='/faq' >
-                    FAQ
-                </Link>
                 <Link className='option' to='/loan' >
                     LOAN
                 </Link>
+                <Link className='option' to='/faq' >
+                    FAQs
+                </Link>
+               
                 {
                     currentUser?
-                    <div>
+                    <div className='display-option'>
                         <div className='option' onClick={() => auth.signOut(window.location = '/')} >
                             LOGOUT
                         </div>
+                       
                         <Link className='option' to='/userhome'>
-                        VIEW PROFILE
+                        PROFILE
                         </Link> 
+                         
                     </div>        
                     :
                     <Link className='option' to='/signin'>

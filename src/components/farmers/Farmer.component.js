@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import {db} from '../../firebase/firebase.utils';
 import HeaderTwo from "../header_two/Header_two";
+import WhatsappFloat from "../floating.whatsapp/Floating.whatsapp";
 import { FaMapMarkerAlt } from "react-icons/fa";
-import Footer from '../footer/Footer';
 import { getTokenOrRefresh } from '../../token_utils';
 import { ResultReason } from 'microsoft-cognitiveservices-speech-sdk';
+import Loader from "../loader/Loader";
 import { connect } from 'react-redux';
 import { addItem } from '../../redux/cart/cart.actions';
 import "tachyons";
@@ -18,45 +19,6 @@ const Farmer = ({ addItem, currentUser }) => {
   const [products, setProducts] = useState([]);
   const[micspeak, setMicSpeak] = useState('');
 
-
-  
-  //   const productsCollectionRef = collection(db, "Products");
-
-
-  // useEffect(() =>{
-  //   const productRef = collection(db, 'Products');
-  //   const q = query(productRef);
-  //   onSnapshot(q,(snapshot) =>{
-  //     const products = snapshot.docs.map((doc) => ({
-  //       id: doc.id,
-  //       ...doc.data(),
-  //     }));
-  //     setProducts(products);
-  //     // console.log(products);
-  //   });
-  // }, [])
-
-  //   useEffect(() => {
-  //       const getProducts = async () =>{
-  //           const data = await getDocs(productsCollectionRef)
-  //           setProducts(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
-  //           // console.log(data);
-  //       }
-  //       getProducts()
-  //   },[productsCollectionRef])
-
-  //   const clrBtn = ()=>{
-  //     setSearchName("")
-  //     // setProducts(products)
-  //   }
-    
-  //   const handleFilter =(e)=> {
-  //     const searchWord = e.target.value;
-  //     setSearchName(searchWord)
-  //     setProducts(products.filter((products) =>
-  //     products.title.toLowerCase().includes(searchWord.toLowerCase())
-  //     ));
-  //   }
 
 
 
@@ -75,19 +37,14 @@ const sttFromMic = async () => {
     const tokenObj = await getTokenOrRefresh();
     const speechConfig = speechsdk.SpeechConfig.fromAuthorizationToken(tokenObj.authToken, tokenObj.region);
     speechConfig.speechRecognitionLanguage = 'en-US';
-    
     const audioConfig = speechsdk.AudioConfig.fromDefaultMicrophoneInput();
     const recognizer = new speechsdk.SpeechRecognizer(speechConfig, audioConfig);
 
     setMicSpeak('Listening...');
-
     recognizer.recognizeOnceAsync(result => {
         let micspeak;
         if (result.reason === ResultReason.RecognizedSpeech) {
-            micspeak = `${(result.text).toLowerCase()}`
-            console.log(micspeak)
-        } else {
-            console.log('ERROR: Speech was cancelled or could not be recognized. Ensure your microphone is working properly.')
+            micspeak = `${(result.text.toLowerCase())}`
         }
 
         setMicSpeak(micspeak);
@@ -112,6 +69,7 @@ const sttFromMic = async () => {
 
   const clearBtn =()=> {
     setSearch('');
+    setProducts(products);
   }
    
     return (
@@ -125,7 +83,7 @@ const sttFromMic = async () => {
         sttFromMic={sttFromMic}
         micspeak={micspeak} />
         <div className='farmer-card ml4'>
-         {
+         {products.length?
           
          ( filteredProducts.map((i) => 
              (<main className='farm-products dib grow' key={i.id}>
@@ -143,17 +101,12 @@ const sttFromMic = async () => {
                           Add to cart
                           </button>
                         </div>
-                        
                     </div>
-                  </main>)) ) 
+                    
+                  </main>))) : <div className='loading'><Loader /></div>
                   }
        </div> 
-      
-        <footer 
-        className="position-footer"
-        >
-        <Footer /> 
-        </footer>     
+       <WhatsappFloat />
        </div>
     );
 }

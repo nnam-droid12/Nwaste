@@ -93,12 +93,17 @@
     .farm-products {
         width: 47%;
     }
-    .img {
-        width: 210px;
-        height: 210px;
-    }
     .position-footer {
         bottom: auto;
+    }
+}
+@media screen and (max-width: 480px) {
+    .farm-products {
+        width: 47%;
+    }
+    .img {
+        height: 200px;
+        width: 200px;
     }
 }
 

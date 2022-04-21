@@ -3,6 +3,7 @@ import { BiMessageRoundedDots } from 'react-icons/bi';
 import { IoIosPeople } from 'react-icons/io';
 import { RiExchangeDollarLine } from 'react-icons/ri';
 import { FcSurvey } from 'react-icons/fc';
+import { FaQuestionCircle } from 'react-icons/fa';
 
 
 export const sidebarData = [
@@ -33,7 +34,7 @@ export const sidebarData = [
     },
     {
         title: "FAQs",
-        icon: <AiOutlineHome />,
+        icon: <FaQuestionCircle />,
         link: '/faq'
     }
 ]

@@ -1,15 +1,33 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
-.news {
+.loan {
     font-family: montserrat, sans-serif;
-    margin-top: 8rem;
-    max-width: 700px;
+    max-width: 800px;
+    margin: 8rem auto;
+    background: #fff7e5;
+    padding: 10px;
+}
+
+.loan-heading{
+    font-weight: bold;
+    font-style: italic;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
 }
-
-.news-title{
-    font-weight: bold;
-    font-style: italic;
+.loan-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    text-decoration: underline;
+}
+.loan-description {
+    margin-left: 10px;
+    width: 600px;
+    line-height: 1.5;
+    letter-spacing: 1.5;
+    font-size: 18px;
+}
+.apply {
+    color: #4285f4;
 }

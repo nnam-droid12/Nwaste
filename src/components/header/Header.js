@@ -45,25 +45,20 @@ const Header = ({ currentUser }) =>{
                  {
                      currentUser ?
                      // when user is sign in
-                    <div>
-                        <div className='option' onClick={() => auth.signOut(window.location = '/')} >
-                            LOGOUT
-                        </div>
-                        
                         <Link className='option' to='/userhome'>
-                        VIEW PROFILE
+                        PROFILE
                         </Link>   
-                    </div>:
+                    :
                         <Link className='option' to='/signin' >
                             LOGIN
                         </Link>
                  }
 
                  <div>
-                 <Link className='option' to="/farmers" >
+                 <Link className='options' to="/farmers" >
                     <button 
                         className='get-started'>
-                        <span className='get-started-btn'>Meet Farmers</span>
+                        <span className='get-started-btn'>Market place</span>
                         <span 
                         className="get-started-icon"
                         size='30px'

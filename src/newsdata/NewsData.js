@@ -2,7 +2,7 @@ const loan_data = [
     {
         id: 1,
         imageUrl: '',
-        title: 'National funding For Agricultural Business',
+        title: '',
         desc: ' It is difficulty to find small business loans for agriculture due to the unique nature of the industry. It`s important to work with a lender who understands the financial challenges faced by farmers and ranchers. National Funding is providing loan to help finance new agricultural equipment, hire workers, expand your operation and cash for the things your farm needs.',
         how_to_apply: 'How do small business loans for agriculture work? The agriculture loan procedure is simple and straightforward. After applying, a dedicated funding specialist will contact you to learn more about your farming busines. You `ll work directly with your funding specialist to explore your financial options. We `ll help you customize an agriculture business loan to meet your needs at No-cost, no-obligation application with funding in as few as 24 hours. Application Link ',
         linkUrl:'nationalfunding.com'

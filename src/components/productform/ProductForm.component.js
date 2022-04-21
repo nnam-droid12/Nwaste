@@ -113,7 +113,6 @@ const ProductForm = () =>{
                <button onClick={handleProducts} className='submit-btn'>Submit product</button>
           </div>
        </form>
-
     );
 }
 

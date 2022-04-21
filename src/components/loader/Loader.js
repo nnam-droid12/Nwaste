@@ -1,18 +1,29 @@
+import { useState } from "react";
+import { css } from "@emotion/react";
+import MoonLoader from "react-spinners/MoonLoader";
 import './Loader.scss';
 
 
-const Loader = () => {
-   let loader = document.getElementById('loader');
-                function loading() {
-                    loader.hidden = false;
-                }
-    return ( 
-        <main className='loading'>
-            <div className="loader" id="loader">
-            </div>
-            <p>Loading. . .</p>
-        </main>
-     );
+// Can be a string as well. Need to ensure each key-value pair ends with ;
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
+
+const Loader =()=> {
+  let [loading, setLoading] = useState(true);
+  let [color, setColor] = useState("#4285f4");
+
+  return (
+    <div className="loading sweet-loading">
+      <button className="hide-items" onClick={() => setLoading(!loading)}>Toggle Loader</button>
+      <input className="hide-items" value={color} onChange={(input) => setColor(input.target.value)} placeholder="Color of the loader" />
+
+      <MoonLoader color={color} loading={loading} css={override} size={120} />
+      <h3>Loading. . .</h3>
+    </div>
+  );
 }
- 
+
 export default Loader;
