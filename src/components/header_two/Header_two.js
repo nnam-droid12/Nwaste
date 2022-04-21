@@ -20,9 +20,8 @@ import './Header_two.scss';
 
 
 
-const HeaderTwo = ({ micspeak, sttFromMic, setSearch, currentUser, hidden, search, clearBtn  }) => {
+const HeaderTwo = ({ sttFromMic, setSearch, currentUser, hidden, search, clearBtn  }) => {
 
-    console.log('from header rr',micspeak)
     return ( 
         <nav>
          <div className="nav-container">
@@ -42,7 +41,7 @@ const HeaderTwo = ({ micspeak, sttFromMic, setSearch, currentUser, hidden, searc
             <div className="search">
                 <input
                 type='search'
-                onChange={(e) => setSearch(e.target.value || e.micspeak)}
+                onChange={(e) => setSearch(e.target.value)}
                 className="input" 
                 placeholder="Search products"
                 />

@@ -5,8 +5,6 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 import Footer from '../footer/Footer';
 import { getTokenOrRefresh } from '../../token_utils';
 import { ResultReason } from 'microsoft-cognitiveservices-speech-sdk';
-// import { Spinner } from 'reactstrap';
-import Loader from "../loader/Loader";
 import { connect } from 'react-redux';
 import { addItem } from '../../redux/cart/cart.actions';
 import "tachyons";
@@ -167,8 +165,6 @@ const mapDispatchToProps = dispatch => ({
 export default connect(null, mapDispatchToProps)(Farmer);
 
 
-// : <div className='loading'><Loader /></div>
-// {/* products.length > 0 ?    */}
 
 
 
