@@ -1,32 +1,37 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 .sign-in{
     font-family: montserrat, sans-serif;
-    margin-top: 4.35rem;
+    margin-top: 2.35rem;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    
 }
-h2, .span {
-    margin-left: 50px;
+
+.form-input {
+    max-width: 300px;
 }
 
 .login-in-bg {
     box-shadow: 0 10px 10px 10px rgba(121, 121, 121, .65);
-    padding: .8rem 1.85rem;
+    padding: .6rem;
     border-radius: 16px;
     background: #fff;
-    height: 80vh;
+    height: 550px;
+    width: 250px;
 }
 
 .sign-in-btns {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-direction: column;
 }
 .google-btn {
-    margin-left: 5px;
+    margin-top: 5px;
 }
 
 .google-btn:active {
@@ -53,7 +58,7 @@ h2, .span {
     font-size: 12px;
     font-style: italic;
     text-align: center;
-    margin-left: 110px;
+    margin-left: 45px;
 }
 
 .sign-logo {
@@ -62,8 +67,14 @@ h2, .span {
     padding: .5rem;
 }
 
-.h2, .span {
+.header-4 {
     color: #0c5f79;
+    text-align: center;
+    margin-bottom: 3px;
+}
+.span {
+    color: #0c5f79;
+    text-align: center;
 }
 
 @media screen and (max-width: 768px) {
@@ -75,17 +86,4 @@ h2, .span {
     }
 }
 
-.loader {
-    border: 16px solid #f3f3f3;
-    border-top: 16px solid #485f;
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    animation: spin 2s linear infinite;
-}
-
-@keyframes spin {
-    0% {transform: rotate(0deg);}
-    100% {transform: rotate(360deg);}
-}
 

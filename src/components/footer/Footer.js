@@ -8,7 +8,7 @@ const Footer = () => {
         <footer className="footer">
             <div className="footer-container">
               <div>
-              <div className='logo-container'  title='Go to home page!'>
+              <div className='logo-container'>
                     <div className='col'>
                     <img className='logo' alt='logo' src={Logo} style={{height: '50px', width: '50px'}}/> 
                     <div className='text col'style={{fontSize: '18px'}}>
@@ -27,7 +27,7 @@ const Footer = () => {
                     <HiPhone className="icon-gap" />  
                 
                 <address>
-                   <p>+2348057205319, +2349151840633</p>
+                   <p>+2349151840633, +2348057205319 </p>
                 </address>
                 </div>
                 <div className="f-col">

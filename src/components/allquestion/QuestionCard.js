@@ -7,7 +7,7 @@ const QuestionCollection = () =>{
     const [questions] = useState(data);
     return(
         <main className='display-faq'>
-              <h1 className='heading'>Frequently Asked Questions On How To Use NWASTE</h1>
+              <h1 className='heading'>Frequently Asked Questions</h1>
               <section className='info'>
                {questions.map((question) => {
                 return (
@@ -22,4 +22,3 @@ const QuestionCollection = () =>{
 }
 
 export default QuestionCollection;
-

@@ -5,12 +5,16 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 import Footer from '../footer/Footer';
 import { getTokenOrRefresh } from '../../token_utils';
 import { ResultReason } from 'microsoft-cognitiveservices-speech-sdk';
+// import { Spinner } from 'reactstrap';
+import Loader from "../loader/Loader";
+import { connect } from 'react-redux';
+import { addItem } from '../../redux/cart/cart.actions';
 import "tachyons";
 import './Farmers.scss';
 const speechsdk = require('microsoft-cognitiveservices-speech-sdk');
 
 
-const Farmer = (props) => {
+const Farmer = ({ addItem, currentUser }) => {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [search, setSearch] = useState("");
   const [products, setProducts] = useState([]);
@@ -96,11 +100,11 @@ const sttFromMic = async () => {
     useEffect(() => {
       const fetchData = async () => {
         const data = await db.collection("Products").get();
-        setProducts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-        console.log("the data", data)
+        setProducts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
       };
       fetchData();
     }, []);
+
     useEffect(() => {
         const filterHandler = products.filter(
           user => user.title.toLowerCase().includes(search.toLowerCase())           
@@ -117,43 +121,57 @@ const sttFromMic = async () => {
         <HeaderTwo
         search={ search }
         clearBtn={clearBtn}
-        currentUser={props.currentUser}
+        currentUser={currentUser}
         products={products}
         setSearch={setSearch}
         sttFromMic={sttFromMic}
         micspeak={micspeak} />
         <div className='farmer-card ml4'>
          {
-          filteredProducts.map((i) =>{
-           return (!products.length)?
-           <h1>Loading...</h1> :
-            (
-             <main className='farm-products dib grow' key={i.id}>
-               <div >
-                    <img src={i.imageUrl} alt="images" 
-                    className="img" />
-                     <div className='product-detail ml3'>
-                       <h3 className='name'> {i.title}</h3>
-                       <div className='flex-wrapper'>
-                       <FaMapMarkerAlt className='location'/>
-                       <span><h4>{i.location}</h4></span>
-                       </div>
-                      <h4 className='price'>${i.price}</h4>
+          
+         ( filteredProducts.map((i) => 
+             (<main className='farm-products dib grow' key={i.id}>
+                    <div >
+                        <img src={i.imageUrl} alt="images" 
+                        className="img" />
+                        <div className='product-detail ml3'>
+                          <h3 className='name'> {i.title}</h3>
+                          <div className='flex-wrapper'>
+                          <FaMapMarkerAlt className='location'/>
+                          <span><h4>{i.location}</h4></span>
+                          </div>
+                          <h4 className='price'>${i.price}</h4>
+                          <button className='cart-button' onClick={() => addItem(i)}>
+                          Add to cart
+                          </button>
+                        </div>
+                        
                     </div>
-                 </div>
-
-                  
-           </main>);
-         }
-         
-         )
-       }
-       </div>  
-        <footer className="position-footer">
+                  </main>)) ) 
+                  }
+       </div> 
+      
+        <footer 
+        className="position-footer"
+        >
         <Footer /> 
         </footer>     
        </div>
     );
 }
 
-export default Farmer;
+const mapDispatchToProps = dispatch => ({
+  addItem: item => dispatch(addItem(item))
+})
+
+export default connect(null, mapDispatchToProps)(Farmer);
+
+
+// : <div className='loading'><Loader /></div>
+// {/* products.length > 0 ?    */}
+
+
+
+
+
+

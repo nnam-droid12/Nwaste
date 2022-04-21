@@ -20,16 +20,10 @@
         flex-direction: column;
         width: 100%;
     }
-.h2 {
-    text-align: center;
-}
-.signup-text {
-    color: #0c5f79;
-}
 
 .sign-in-bg {
     box-shadow: 0 10px 10px 10px rgba(121, 121, 121, .65);
-    padding: .55rem 1.8rem;
+    padding: .6rem;
     border-radius: 16px;
     background: #fff;
     
@@ -37,7 +31,7 @@
 
 @media screen and (max-width: 1440px) {
     .sign-in-bg {
-        padding: .5rem 1.8rem;
+        padding: .6rem;
         max-height: 97vh;
     }
 }

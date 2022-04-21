@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../header/Header';
+import HeaderThree from '../header_three/Header_three';
+import Sidebar from '../sidebar/Sidebar';
 import { Chart as ChartJS, LineElement,LinearScale, CategoryScale, PointElement } from 'chart.js';
 import {Line} from 'react-chartjs-2';
-import { IoMdContact } from "react-icons/io";
-import { Link } from 'react-router-dom';
 import './Userhome.scss';
 
 
@@ -18,11 +17,10 @@ ChartJS.register(
 
 
 
-const UserHomePage = (props) => {
+const UserHomePage = () => {
     
 
     const [usersoil, setUserSoil] = useState({});
-    // const [setUserWeather] = useState({});
     const [polyshape, setPolyShape] = useState([]);
 
   useEffect(() => {
@@ -102,34 +100,26 @@ const options = {
 
             
     return(
-      <div>
-      <Header currentUser={props.currentUser} />
-        <div className='user-home'>
-        <div className='user'>
-        <div className="contact-icon"><IoMdContact /></div>
-        <div className='username'>
-        <button type='submit' className='button'><Link to='/productform'>Submit Products</Link></button>
-        {props.currentUser && <h1>Welcome {props.currentUser.displayName}</h1>}
-        </div>
-        </div>
-
-         <div className='soil-params'>
-          <div>
-          <h4>Temperature on the 10 centimeters depth: {usersoil.t10}K</h4>
-          <h4>Soil moisture: {usersoil.moisture}m2/m3</h4>
-          <h4> Surface temperature: {usersoil.t0}K</h4>
+      <div className='user-page'>
+      <HeaderThree/>
+     <article className='userpage-layout'>
+      <Sidebar  />
+        <main className='user-main-page'>
+         <div className='soil-params'>         
+            <h4>Temperature on the 10 centimeters depth: {usersoil.t10}K</h4>
+            <h4>Soil moisture: {usersoil.moisture}m2/m3</h4>
+            <h4> Surface temperature: {usersoil.t0}K</h4>
           </div>
-         </div>
-              <section>
-              <div className="chart-size" >
-                <Line
-                  data={data}
-                  options={options}
-                />
-              </div>
-            </section>
-           
-        </div>
+        <section>
+          <div className="chart-section" >
+            <Line
+              data={data}
+              options={options}
+            />
+          </div>
+       </section>  
+        </main>
+      </article>
         </div>
     );
 }

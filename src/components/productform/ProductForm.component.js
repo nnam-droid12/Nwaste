@@ -2,34 +2,27 @@ import React, { useState } from 'react';
 import {ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { storage, db } from '../../firebase/firebase.utils';
 import { collection, addDoc } from 'firebase/firestore';
-import Header from '../header/Header';
+import { Link } from 'react-router-dom';
+import Logo from '../../assets/logo1.png';
+// import UpdateProduct from '../updateproducts/UpdateProduct.component';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
+import "./ProductForm.scss";
 
-const ProductForm = (props) =>{
-
+const ProductForm = () =>{
     const [formData, setFormData] = useState({
         title: "",
         location: "",
         price: "",
         image: "",
-  
       });
       const [progress, setProgress] = useState(0);
-  
-  
       const handleChange = (e) =>{
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-  
-        
+      setFormData({ ...formData, [e.target.name]: e.target.value })  
       }
-  
-  
       const handleImageChange = (e) =>{
         setFormData({ ...formData, image:e.target.files[0] })
       }
-  
-  
       const handleProducts = (e) =>{
         e.preventDefault();
         if(!formData.title || !formData.location || !formData.price || !formData.image){
@@ -77,44 +70,50 @@ const ProductForm = (props) =>{
   
 
     return (
-   <div>
-        <Header currentUser={props.currentUser} />
-     <div style={{marginTop: '180px'}}>
-       <form>
-              <h2>Submit products</h2>
+       <form className='form-container'>
+          <div className='form-bg'>
+          <Link to="/">
+                <img className='sign-logo' title='Go to home page' alt='logo' src={Logo} style={{height: '55px', width: '55px'}} /> 
+              </Link>
+          <h2 className='title'>Submit products</h2>
+               <p className="form-tag">Product Name</p>
                <input type='text' name='title'
+               className='product-input'
                placeholder='product name' 
                value={formData.title}
                onChange={(e)=>handleChange(e)}
-               required />
+               required /> <br/><br/>
 
-
+                <p className="form-tag">Location</p>
                <input type='text' name='location'
+               className='product-input'
                placeholder='location' 
                value={formData.location}
                onChange={(e)=>handleChange(e)}
-               required />
-
+               required /> <br/><br/>
+                <p className="form-tag">Price</p>
                <input type='text' name='price'
+               className='product-input'
                placeholder='price' 
                value={formData.price}
                onChange={(e) =>handleChange(e)}
                required
-               />
-
-               <input type='file' 
+               /> <br/><br/>
+                <p className="form-tag">Image</p>
+               <input type='file'
+               className='product-input' 
                name='image' 
                accept="image/*"
-               onChange={(e) =>handleImageChange(e)} />
+               onChange={(e) =>handleImageChange(e)} /><br/><br/>
 
                {progress === 0 ? null :(
                <div className='progress-bar' style={{width: `${progress}%` }}>
                  {`uploading products ${progress}%`}
                </div>) }
-               <button onClick={handleProducts}>Submit product</button>
-            </form>
-        </div>
-   </div>
+               <button onClick={handleProducts} className='submit-btn'>Submit product</button>
+          </div>
+       </form>
+
     );
 }
 

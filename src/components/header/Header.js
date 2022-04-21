@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import Logo from '../../assets/logo1.png';
 import { auth } from '../../firebase/firebase.utils';
 import { GoThreeBars } from "react-icons/go";
@@ -74,11 +75,18 @@ const Header = ({ currentUser }) =>{
         </div>
         <Link to="/farmers">
             <button className='products'>
-                Meet Farmers
+                Market place
             </button>
         </Link>
         </nav>
     );
 }
 
-export default Header;
+
+const mapInitialStateToProps = ({user: {currentUser}, cart: {hidden} })=> ({
+    currentUser,
+    hidden
+})
+
+
+export default connect(mapInitialStateToProps)(Header);

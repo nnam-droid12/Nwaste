@@ -2,6 +2,7 @@ import React from 'react';
 import CustomButton from '../custombutton/CustomButton.component';
 import FormInput from '../formInput/Forminput.component';
 import { useNavigate } from 'react-router-dom';
+import './resetPassword.scss';
 
 
 
