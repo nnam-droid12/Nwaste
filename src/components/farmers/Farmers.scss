@@ -6,6 +6,7 @@
     max-width: auto;
     cursor: pointer;
     height: auto;
+    position: relative;
 }
 
 .img {
@@ -17,6 +18,42 @@
     padding: .55rem;
     width: 100%;
 }
+
+.cart-button{
+    position:absolute;
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+    align-items: center;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    top:55%;
+    left: 30%;
+    opacity: 0.55;
+    cursor: pointer;
+}
+
+.custom-button{
+  width: 80%;
+  opacity: 0.7;
+  position: absolute;
+  top: 255px;
+  display: none;
+
+  &:hover{
+    .img{
+        opacity: 0.8;
+    }
+
+    .custom-button{
+        opacity: 0.85;
+        display: flex;
+    }
+  }
+}
+
+
 .flex-wrapper {
     display: flex;
 }

@@ -127,15 +127,17 @@ const HomePage = (props) => {
         <section>
         <div>
           <div className='guideline-content' id='guideline-content'>
-          <p className='guideline'>
-          <h3 className='horizontal-line'><hr/>Nwaste Guideline<hr/></h3>
+          <div className='guideline'>
+          <h2 className="guideline-tittle">
+            NWASTE GUIDELINE
+          </h2>
            Welcome to NWASTE. This is a step by step guide on how to get the most in using NWASTE. If you are new, click on the login button in the navigation bar and then sign up with your email and password or you can just head on to signing with your Google account. On signing in, you will be redirected to your user page in less than a minute. In your user page, you can monitor your current soil data with our polygon to keep track of soil state with weather condition before and after planting.<br/><br/>
 
            The soil data is updated two times in every 12 hours period. Below the polygon is a submit button, when you click on it, you will be redirected to a page where you can submit your available farm products with your location, price and product name for potential and prospective customers to reach out.
            <br/><br/>
 
             There is also a NEWS section where we display soft loans that are available for farmers to help increase productivity and maintenance of farming activities.
-          </p>
+          </div>
           </div>
         </div>
     </section>

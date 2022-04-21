@@ -52,7 +52,7 @@ class SignIn extends React.Component{
     }
 
     signInWithGoogle = async () =>{
-        auth.signInWithRedirect(provider);
+        await auth.signInWithRedirect(provider);
     
     }
     render(){

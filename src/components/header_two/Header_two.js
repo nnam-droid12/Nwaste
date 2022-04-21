@@ -2,15 +2,25 @@ import React from 'react'
 import { FaSistrix } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import { Link } from 'react-router-dom';
+import { createStructuredSelector } from 'reselect';
+import { selectCartHidden } from '../../redux/cart/cart.selectors';
+import { selectCurrentUser } from '../../redux/user/user.selectors';
 import { auth } from '../../firebase/firebase.utils';
 import Logo from '../../assets/logo1.png';
+import CartIcon from '../cart-icon/Cart-icon.component';
+import { connect } from 'react-redux';
+import CartDropdown from '../cart-dropdown/Cart-dropdown.component';
 import { GoThreeBars } from "react-icons/go";
 import { BsMicFill } from 'react-icons/bs';
 import './Header_two.scss';
 
 
 
-const HeaderTwo = ({ micspeak, sttFromMic, setSearch, currentUser, search, clearBtn  }) => {
+
+
+
+
+const HeaderTwo = ({ micspeak, sttFromMic, setSearch, currentUser, hidden, search, clearBtn  }) => {
 
     return ( 
         <nav>
@@ -31,7 +41,6 @@ const HeaderTwo = ({ micspeak, sttFromMic, setSearch, currentUser, search, clear
             <div className="search">
                 <input
                 type='search'
-                value={search}
                 onChange={(e) => setSearch(e.target.value || e.micspeak)}
                 className="input" 
                 placeholder="Search. . ."
@@ -78,11 +87,21 @@ const HeaderTwo = ({ micspeak, sttFromMic, setSearch, currentUser, search, clear
                     </Link>
                     
                 }
-
+                <CartIcon />
+               
             </div>
+            {
+                hidden? null :
+                <CartDropdown />
+            }
           </div>
         </nav>
      );
 }
+
+const mapInitialStateToProps =  createStructuredSelector({
+    currentUser: selectCurrentUser,
+    hidden: selectCartHidden
+})
  
-export default HeaderTwo;
+export default connect(mapInitialStateToProps)(HeaderTwo);

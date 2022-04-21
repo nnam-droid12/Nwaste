@@ -17,7 +17,7 @@ ChartJS.register(
 
 
 
-const UserHomePage = (props) => {
+const UserHomePage = () => {
     
 
     const [usersoil, setUserSoil] = useState({});
@@ -103,7 +103,7 @@ const options = {
       <div className='user-page'>
       <HeaderThree/>
      <article className='userpage-layout'>
-      <Sidebar props={props} currentUser={props.currentUser} />
+      <Sidebar  />
         <main className='user-main-page'>
          <div className='soil-params'>         
             <h4>Temperature on the 10 centimeters depth: {usersoil.t10}K</h4>

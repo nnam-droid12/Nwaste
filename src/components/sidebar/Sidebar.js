@@ -1,14 +1,17 @@
-import './Sidebar.scss';
+import React from 'react';
 import { sidebarData } from '../Sidebar.data';
 import { IoMdContact } from "react-icons/io";
+import { connect } from 'react-redux';
+import { selectCurrentUser } from '../../redux/user/user.selectors';
+import './Sidebar.scss';
 
-const Sidebar = ({props}) => {
+const Sidebar = ({currentUser}) => {
     return ( 
         <div className='sidebar'>
             
             <ul className='sidebar-list'>
             <div id="contact-icon"><IoMdContact /></div>
-            <div id='username'>{props.currentUser && <p>Welcome, {props.currentUser.displayName}</p>}</div>
+            <div id='username'>{currentUser && <p>Welcome, {currentUser.displayName}</p> }</div>
                 <h5 id='navigation'> Navigation</h5>
             {sidebarData.map((val, key)=> {
                 return (
@@ -26,5 +29,9 @@ const Sidebar = ({props}) => {
         </div>
      );
 }
+
+const mapInitialStateToProps = state => ({
+    currentUser: selectCurrentUser(state)
+})
  
-export default Sidebar;
+export default connect(mapInitialStateToProps)(Sidebar);

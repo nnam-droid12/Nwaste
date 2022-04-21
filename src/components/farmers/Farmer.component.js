@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import {db} from '../../firebase/firebase.utils';
 import HeaderTwo from "../header_two/Header_two";
+import WhatsappFloat from "../floating.whatsapp/Floating.whatsapp";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import Footer from '../footer/Footer';
-// import { Spinner } from 'reactstrap';
-import Loader from "../loader/Loader";
 import { getTokenOrRefresh } from '../../token_utils';
 import { ResultReason } from 'microsoft-cognitiveservices-speech-sdk';
+import Loader from "../loader/Loader";
+import { connect } from 'react-redux';
+import { addItem } from '../../redux/cart/cart.actions';
 import "tachyons";
 import './Farmers.scss';
 const speechsdk = require('microsoft-cognitiveservices-speech-sdk');
 
 
-const Farmer = (props) => {
+const Farmer = ({ addItem, currentUser }) => {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [search, setSearch] = useState("");
   const [products, setProducts] = useState([]);
@@ -76,14 +78,14 @@ const sttFromMic = async () => {
         <HeaderTwo
         search={ search }
         clearBtn={clearBtn}
-        currentUser={props.currentUser}
+        currentUser={currentUser}
         products={products}
         setSearch={setSearch}
         sttFromMic={sttFromMic}
         micspeak={micspeak} />
         <div className='farmer-card ml4'>
-         {
-          products.length > 0 ?   
+         {products.length?
+          
          ( filteredProducts.map((i) => 
              (<main className='farm-products dib grow' key={i.id}>
                     <div >
@@ -96,19 +98,33 @@ const sttFromMic = async () => {
                           <span><h4>{i.location}</h4></span>
                           </div>
                           <h4 className='price'>${i.price}</h4>
+                          <button className='cart-button' onClick={() => addItem(i)}>
+                          Add to cart
+                          </button>
                         </div>
                     </div>
-                  </main>)) ) : <div className='loading'><Loader /></div>
+                    
+                  </main>))) : <div className='loading'><Loader /></div>
                   }
        </div> 
-      
-        <footer 
-        className="position-footer"
-        >
-        <Footer /> 
-        </footer>     
+       <WhatsappFloat />
+    {/* <footer className="position-footer">
+    <Footer /> 
+    </footer>      */}
        </div>
     );
 }
 
-export default Farmer;
+const mapDispatchToProps = dispatch => ({
+  addItem: item => dispatch(addItem(item))
+})
+
+export default connect(null, mapDispatchToProps)(Farmer);
+
+
+
+
+
+
+
+

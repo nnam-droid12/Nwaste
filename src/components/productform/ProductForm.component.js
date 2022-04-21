@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 import "./ProductForm.scss";
 
-const ProductForm = (props) =>{
+const ProductForm = () =>{
     const [formData, setFormData] = useState({
         title: "",
         location: "",
@@ -111,7 +111,6 @@ const ProductForm = (props) =>{
                  {`uploading products ${progress}%`}
                </div>) }
                <button onClick={handleProducts} className='submit-btn'>Submit product</button>
-               {/* <UpdateProduct /> */}
           </div>
        </form>
     );

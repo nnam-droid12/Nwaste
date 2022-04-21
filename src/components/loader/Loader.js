@@ -16,11 +16,12 @@ const Loader =()=> {
   let [color, setColor] = useState("#4285f4");
 
   return (
-    <div className="sweet-loading">
+    <div className="loading sweet-loading">
       <button className="hide-items" onClick={() => setLoading(!loading)}>Toggle Loader</button>
       <input className="hide-items" value={color} onChange={(input) => setColor(input.target.value)} placeholder="Color of the loader" />
 
-      <MoonLoader color={color} loading={loading} css={override} size={150} />
+      <MoonLoader color={color} loading={loading} css={override} size={120} />
+      <h3>Loading. . .</h3>
     </div>
   );
 }

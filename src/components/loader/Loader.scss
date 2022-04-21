@@ -1,3 +1,9 @@
 .hide-items {
     display: none;
 }
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
