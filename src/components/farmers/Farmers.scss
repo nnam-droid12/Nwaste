@@ -6,7 +6,6 @@
     max-width: auto;
     cursor: pointer;
     height: auto;
-    position: relative;
 }
 
 .img {
@@ -19,7 +18,7 @@
     width: 100%;
 }
 
-.cart-button{
+.cart-button {
     position:absolute;
     background-color: black;
     color: white;
@@ -104,6 +103,10 @@
     .img {
         height: 200px;
         width: 200px;
+    }
+    .cart-button {
+        top: 40%;
+        left: 20%;
     }
 }
 

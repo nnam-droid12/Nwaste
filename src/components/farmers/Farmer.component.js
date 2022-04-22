@@ -6,6 +6,7 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 import { getTokenOrRefresh } from '../../token_utils';
 import { ResultReason } from 'microsoft-cognitiveservices-speech-sdk';
 import Loader from "../loader/Loader";
+import Footer from '../footer/Footer';
 import { connect } from 'react-redux';
 import { addItem } from '../../redux/cart/cart.actions';
 import "tachyons";
@@ -107,6 +108,9 @@ const sttFromMic = async () => {
                   }
        </div> 
        <WhatsappFloat />
+    <footer className="position-footer">
+    <Footer /> 
+    </footer>     
        </div>
     );
 }

@@ -102,8 +102,10 @@ class SignUp extends React.Component {
                    onChange={this.handleChange}
                    label='confirm password'
                     required />
-                    <div className='buttons'>
-                         <CustomButton type='submit'> sign up </CustomButton>
+                    <div >
+                         <CustomButton 
+                         className='custom-btn'
+                         type='submit'> sign up </CustomButton>
                     </div>
                     <div className='signin-and-link'>
                     <p style={{color: '#4285f4'}}>Already Have An Account? 
