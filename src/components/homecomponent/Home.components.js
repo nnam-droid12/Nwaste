@@ -48,7 +48,7 @@ const HomePage = (props) => {
           <div className='container'>
               <div className='outer'>
                 <div className='details'>
-                    <h1>Nwaste the game changer is helping the farmers getting the most from their harvest and making farmers happy.</h1>
+                    <h1>We help farmers get the most from harvest, connect the dot between farmers and buyers, quick access to soft loans and efficient storage system.</h1>
                     <p>Our Mission is Zero Hunger in 2030</p>
                     <a href='#guideline-content'>
                     <button 
@@ -131,9 +131,9 @@ const HomePage = (props) => {
           <h2 className="guideline-tittle">
             NWASTE GUIDELINE
           </h2>
-           Welcome to NWASTE. This is a step by step guide on how to get the most in using NWASTE. If you are new, click on the login button in the navigation bar and then sign up with your email and password or you can just head on to signing with your Google account. On signing in, you will be redirected to your user page in less than a minute. In your user page, you can monitor your current soil data with our polygon to keep track of soil state with weather condition before and after planting.<br/><br/>
+           Welcome to NWASTE. This is a step by step guide on how to get the most in using NWASTE. If you are new, click on the login button in the navigation bar and then sign up with your email and password or you can just head on to signing with your Google account. On signing in, you will be redirected to your user page in few seconds. In your user page, you can monitor your current soil data with our polygon to keep track of soil state before and after planting.<br/><br/>
 
-           The soil data is updated two times in every 12 hours period. Below the polygon is a submit button, when you click on it, you will be redirected to a page where you can submit your available farm products with your location, price and product name for potential and prospective customers to reach out.
+           The soil data is updated two times in every 12 hours period. On the navigation click on submit product, when you click on it, you will be redirected to a page where you can submit your available farm products with your location, price and product name for potential and prospective customers to reach out.
            <br/><br/>
 
             There is also a NEWS section where we display soft loans that are available for farmers to help increase productivity and maintenance of farming activities.
@@ -146,12 +146,12 @@ const HomePage = (props) => {
       <section className='future-plan'>
             <h1 className='horizontal-line'><hr/>Our Future Plan<hr/></h1>
         <div className='mission'>
-            <p>Out of the Billions of food wasted every year, perishable foods have been identified to be the most paramount, which has been due to inefficient and uneffective method of preservation, as result NWASTE plan to address this problem by creating the most effective preservation method as our mission strongly tie to this, which is zero hunger in 2030.</p>
+            <p>Out of the Billions of food wasted every year, perishable foods have been identified to be the most wasted, which has been due to inefficient and uneffective method of preservation, as a result NWASTE is building the most efficient solar powered storage system to address this problem.</p>
             <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXgsj5dNoXh4EhBkYAP_SEDWDnJ3YRaQ-spg&usqp=CAU' alt='' ></img>
         </div>
         <div className='mission'>
           <p>
-              As NWASTE  is committed to keeping to its future plan which is zero hunger in 2030, we plan to help farmers with crop data decision, what deos this mean? Based on the crop the farmer wish to plant in aparticular season, farmers get to know if their crop is compartible with the soil type and weather condition before, during and after planting. But for the mean time our solution solely address soil type, current weather condition, forecast and historical weather data.
+              As NWASTE  is committed to keeping to its future plan which is zero hunger in 2030, we plan to help farmers with crop data decision, what deos this mean? Based on the crop the farmer wish to plant in a particular season, farmers get to know if their crop is compartible with the soil type and weather condition before, during and after planting. But for the mean time our solution solely address soil type, soil moisture and temperatue.
             </p>
               <img src={weather} alt='' />
         </div>
