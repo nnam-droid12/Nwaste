@@ -11,13 +11,19 @@
     border: 1px solid rgb(153, 149, 149);
     border: none;
     box-shadow: 0 2px 2px 2px rgba(121,255, 255, .35);
-}
+}p
 .input::placeholder {
     color: rgb(155, 145, 145)
 }
+.cart-icon {
+    color: #4285f4;
+    position: absolute;
+    right: 0;
+    margin-left: auto;
+}
 .text-2 {
     color: #4285f4;
-    font-size: 1.35rem;
+    font-size: .88rem;
     font-style: oblique;
 }
 nav {
@@ -34,7 +40,7 @@ nav {
 
 .nav-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 .search {
@@ -59,13 +65,12 @@ nav {
 @media screen and (max-width: 768px) {
     .input {
         margin-top: 10px;
-        margin-right: 4rem;
+        margin-right: 7rem;
         margin-left: 0;
-        width: 220px;
-        
+        width: 190px;
     }
     .search-icon {
-        right: 23%
+        right: 38%
     }
     .text-2 {
         display: none;
@@ -73,11 +78,24 @@ nav {
     .display-option {
         display: block;
     }
+    .cart-icon {
+        position: absolute;
+        right: 15%;
+        top: 12%;
+    }
 }
 
-@media screen and (max-width: 960px) {
-    .input {
-        max-width: 275px;
-        margin-left: 1rem;
+
+@media only screen and (min-width: 768px) and (max-width: 1400px) {
+	.input {
+        max-width: 260px;
+    }
+    .cart-icon {
+        position: absolute;
+        right: 0%;
+        
+    }
+    .h2-options {
+        margin-right: 2.5em;
     }
 }

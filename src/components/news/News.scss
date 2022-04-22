@@ -2,9 +2,13 @@
 .loan {
     font-family: montserrat, sans-serif;
     max-width: 800px;
-    margin: 8rem auto;
+    margin: 6rem auto;
     background: #fff7e5;
     padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .loan-heading{
@@ -23,7 +27,7 @@
 }
 .loan-description {
     margin-left: 10px;
-    width: 600px;
+    max-width: 600px;
     line-height: 1.5;
     letter-spacing: 1.5;
     font-size: 18px;

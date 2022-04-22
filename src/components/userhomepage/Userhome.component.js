@@ -105,10 +105,24 @@ const options = {
      <article className='userpage-layout'>
       <Sidebar  />
         <main className='user-main-page'>
-         <div className='soil-params'>         
-            <h4>Temperature on the 10 centimeters depth: {usersoil.t10}K</h4>
-            <h4>Soil moisture: {usersoil.moisture}m2/m3</h4>
-            <h4> Surface temperature: {usersoil.t0}K</h4>
+         <div className='soil-params'>
+         <p className='content-description'>
+            Soil moisture is one of the determining variables of the health on land surface ecosystems and managed system such as those in agriculture. Monitoring soil moisture provides the necessary information to adopt and implement strategies to reduce damage due to defect in precipitation as well as determine approaches to optimize the management of natural ecosystems under the threat of climate changes.
+         </p>    
+           <div className='about-soil'>
+           <h3>Condition of the Land:</h3>    
+            <ul>
+            <li>
+            <p>Temperature on the 10 centimeters depth: {usersoil.t10}K</p>
+            </li>
+            <li>
+            <p>Soil moisture: {usersoil.moisture}m2/m3</p>
+            </li>
+            <li>
+            <p> Surface temperature: {usersoil.t0}K</p>
+            </li>
+            </ul>
+           </div>
           </div>
         <section>
           <div className="chart-section" >

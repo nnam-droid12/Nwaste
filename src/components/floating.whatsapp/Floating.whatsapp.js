@@ -5,11 +5,10 @@ const WhatsappFloat =()=> {
 
   return (
       <FloatingWhatsApp  
-      phoneNumber='09162270129'
+      phoneNumber='08057205319'
       accountName='Nwaste'
       allowClickAway
       notification
-      notificationSound
       notificationDelay={30000}
       darkMode
       defaultMessage={`Welcome to Nwaste customer service`}

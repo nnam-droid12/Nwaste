@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Logo from '../../assets/logo1.png';
-import { auth } from '../../firebase/firebase.utils';
 import { GoThreeBars } from "react-icons/go";
 import { MdArrowRightAlt } from "react-icons/md";
 import './Header.scss';

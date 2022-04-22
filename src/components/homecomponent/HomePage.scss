@@ -132,6 +132,7 @@
         margin: 0;
         padding: 0;
         width: auto;
+        overflow-x: hidden;
     }
 
     .details {
@@ -204,8 +205,9 @@
     padding: .5rem 5.25rem 3.65rem;
 }
 .info {
-   margin-left: 8px;
+   margin-left: 5px;
 }
+
 .change-review:active, .change-review:hover {
     background-color: rgb(204, 185, 185);
     padding: 10px;
@@ -248,11 +250,12 @@ hr {
         text-align: center;
         top: 435%;
     }
+   
 // guideline styles
 }
 
 .guideline-content {
-    margin-top: 23rem;
+    margin-top: 20rem;
 }
 
 .guideline {
@@ -280,7 +283,8 @@ hr {
 
 // Future plan
 .future-plan {
-    margin: 7.75rem 2rem 4rem;
+    color: #0c5f79;
+    margin: 3.75rem 2rem 4rem;
     min-width: auto;
     display: flex;
     flex-direction: column;

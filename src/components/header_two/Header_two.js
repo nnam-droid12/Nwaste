@@ -41,6 +41,7 @@ const HeaderTwo = ({ micspeak, sttFromMic, setSearch, currentUser, hidden, searc
             <div className="search">
                 <input
                 type='search'
+                value={search}
                 onChange={(e) => setSearch(e.target.value || e.micspeak)}
                 className="input" 
                 placeholder="Search. . ."
@@ -54,6 +55,7 @@ const HeaderTwo = ({ micspeak, sttFromMic, setSearch, currentUser, hidden, searc
                     <span className='partition'>|</span> <BsMicFill onClick={sttFromMic} />
                 </div>
             </div>
+            <div className='cart-icon'><CartIcon /></div>
 
             <input type="checkbox" className="nav-toggle" id='nav-toggle'/>
             <label htmlFor='nav-toggle' className='nav-toggle-label'>
@@ -61,7 +63,7 @@ const HeaderTwo = ({ micspeak, sttFromMic, setSearch, currentUser, hidden, searc
                         <GoThreeBars className='hamburger-btn' size='32px' />
                     </span>
             </label>
-            <div className='options'>
+            <div className='options h2-options'>
                 <Link className='option' to='/loan' >
                     LOAN
                 </Link>
@@ -87,7 +89,7 @@ const HeaderTwo = ({ micspeak, sttFromMic, setSearch, currentUser, hidden, searc
                     </Link>
                     
                 }
-                <CartIcon />
+                
                
             </div>
             {

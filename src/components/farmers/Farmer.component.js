@@ -108,9 +108,9 @@ const sttFromMic = async () => {
                   }
        </div> 
        <WhatsappFloat />
-    {/* <footer className="position-footer">
+    <footer className="position-footer">
     <Footer /> 
-    </footer>      */}
+    </footer>     
        </div>
     );
 }

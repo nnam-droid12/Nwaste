@@ -1,8 +1,8 @@
 const reviews = [
     {
         id: 1,
-        name: "Gbenu Oluwasijibomi Pharez",
-        job: "Student and Farmer",
+        name: "Pharez",
+        job: "Farmer",
         text: 
         'This help to ease our work as farmers but not all farmers are aware of soil types and compartibility of crops. It will be nice if it can be made reach out to more farmers'
     },
