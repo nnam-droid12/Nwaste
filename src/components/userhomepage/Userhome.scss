@@ -42,3 +42,13 @@
     }
     
 }
+
+@media screen and (max-width: 768px){
+    .content-description{
+        margin-top: 32px;
+        line-height: 0.5px;
+        letter-spacing: 1.5;
+        margin: 5px auto;
+        padding: 6.5px;
+    }
+}

@@ -144,7 +144,7 @@ const HomePage = (props) => {
 
         {/* future plan beginning */}
       <section className='future-plan'>
-            <h3 className='horizontal-line'><hr/>Our Future Plan<hr/></h3>
+            <h3 className='horizontal-line future-center' ><hr/>Our Future Plan<hr/></h3>
         <div className='mission'>
             <p>Out of the Billions of food wasted every year, perishable foods have been identified to be the most wasted, which has been due to inefficient and uneffective method of preservation, as a result NWASTE is building the most efficient solar powered storage system to address this problem.</p>
             <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXgsj5dNoXh4EhBkYAP_SEDWDnJ3YRaQ-spg&usqp=CAU' alt='' ></img>

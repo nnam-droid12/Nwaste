@@ -82,6 +82,7 @@
     position: absolute;
     bottom: auto;
     width: 100%;
+    z-index: -1;
 } 
 #plain {
     display: none;
