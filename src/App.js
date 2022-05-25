@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import HomePage from './components/homecomponent/Home.components';
@@ -20,6 +20,8 @@ import Loan from './components/news/News.component';
 import ProductForm from './components/productform/ProductForm.component';
 import { setCurrentUser } from './redux/user/user.actions';
 import { createStructuredSelector } from 'reselect';
+import Dashboard from './components/dashboard/FarmersDashboard.component';
+import Nutrition from './components/nutrition/Nutrition.component';
 
 
 
@@ -30,6 +32,7 @@ class App extends React.Component {
     const {setCurrentUser} =this.props;
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if(userAuth){
+
         const userRef = await createUserProfileDocument(userAuth);
 
         userRef.onSnapshot(snapShot => {
@@ -54,15 +57,17 @@ class App extends React.Component {
           <Route path='/' element={<HomePage />} />
           <Route path='/about' element={<AboutPage />} />
           <Route path='/faq' element={<DisplayFaq  />} />
-          <Route path='/signin' element={<SignIn />}  />
-          <Route path='/signup' element={<SignUp />} /> 
+          <Route path='/signin' element={this.props.currentUser? <Navigate to='/userhome'/> : <SignIn /> } />
+          <Route path='/signup' element={this.props.currentUser? <Navigate to='/userhome'/> : <SignUp /> } /> 
           <Route path='/forgotpassword' element={<ForgotPassword />} />
           <Route path='/resetmessage' element= {<ResetMessage />} />
           <Route path='/farmers' element= {<Farmer  />} />
           <Route path='/loan' element= {<Loan  />} />
+          <Route path='/dashboard' element= {<Dashboard  />} />
           <Route path='/checkout' element={<CheckoutPage />}  />
           <Route path='/productform' element= {<ProductForm />} />
-          <Route path='/userhome' element={<UserHomePage currentUser={this.props.currentUser} />}  />
+          <Route path='/userhome' element={<UserHomePage />}  />
+          <Route path='/nutrient' element={<Nutrition />}  />
        </Routes>
     </div>
   );

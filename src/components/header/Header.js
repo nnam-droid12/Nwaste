@@ -41,11 +41,14 @@ const Header = ({ currentUser }) =>{
                  <Link className='option' to='/loan' >
                     LOAN
                 </Link>
+                <Link className='option' to='/nutrient' >
+                    Healthy 
+                </Link>
                  {
                      currentUser ?
                      // when user is sign in
-                        <Link className='option' to='/userhome'>
-                        PROFILE
+                        <Link className='option' to=''>
+                            <img src={currentUser ? currentUser.photoURL : Logo } alt='logo' />
                         </Link>   
                     :
                         <Link className='option' to='/signin' >

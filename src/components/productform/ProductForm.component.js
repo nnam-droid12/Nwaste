@@ -9,10 +9,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 import "./ProductForm.scss";
 
-const ProductForm = () =>{
+const ProductForm = ({currentUser}) =>{
     const [formData, setFormData] = useState({
         title: "",
         location: "",
+        description: "",
         price: "",
         image: "",
       });
@@ -25,7 +26,7 @@ const ProductForm = () =>{
       }
       const handleProducts = (e) =>{
         e.preventDefault();
-        if(!formData.title || !formData.location || !formData.price || !formData.image){
+        if(!formData.title || !formData.location || !formData.description || !formData.price || !formData.image){
             return;
           }
           const storageRef = ref(storage, `/images/${Date.now()}${formData.image.name}`);
@@ -45,9 +46,10 @@ const ProductForm = () =>{
                 const productRef = collection(db, "Products");
                 console.log(productRef);
                 console.log(formData);
-                 await addDoc(productRef, {
+                 await addDoc(productRef,{
                   title: formData.title,
                   location: formData.location,
+                  description: formData.description,
                   price: formData.price,
                   imageUrl: url,
                 })
@@ -55,6 +57,7 @@ const ProductForm = () =>{
                   setFormData({
                     title: "",
                     location: "",
+                    description: "",
                     price: "",
                     image: "",
                   });
@@ -70,6 +73,7 @@ const ProductForm = () =>{
   
 
     return (
+      
        <form className='form-container'>
           <div className='form-bg'>
           <Link to="/">
@@ -91,6 +95,15 @@ const ProductForm = () =>{
                value={formData.location}
                onChange={(e)=>handleChange(e)}
                required /> <br/><br/>
+
+               <p className="form-tag">Description</p>
+               <input type='text' name='description'
+               className='product-input'
+               placeholder='description' 
+               value={formData.description}
+               onChange={(e)=>handleChange(e)}
+               required /> <br/><br/>
+
                 <p className="form-tag">Price</p>
                <input type='text' name='price'
                className='product-input'
@@ -111,9 +124,11 @@ const ProductForm = () =>{
                  {`uploading products ${progress}%`}
                </div>) }
                <button onClick={handleProducts} className='submit-btn'>Submit product</button>
+               
           </div>
        </form>
     );
 }
+
 
 export default ProductForm;

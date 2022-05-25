@@ -13,9 +13,9 @@ export const sidebarData = [
         link: '/'
     },
     {
-        title: "Survey",
+        title: "Farmers Dashboard",
         icon: <FcSurvey />,
-        link: '/'
+        link: '/dashboard'
     },
     {
         title: "Market Place",

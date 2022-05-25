@@ -1,4 +1,5 @@
 import React from 'react';
+import Logo from '../../assets/logo1.png'
 import { sidebarData } from '../Sidebar.data';
 import { IoMdContact } from "react-icons/io";
 import { connect } from 'react-redux';
@@ -10,7 +11,9 @@ const Sidebar = ({currentUser}) => {
         <div className='sidebar'>
             
             <ul className='sidebar-list'>
-            <div id="contact-icon"><IoMdContact /></div>
+            <div id="contact-icon">
+            <img src={currentUser? currentUser.photoURL : Logo} alt='logo' />
+            </div>
             <div id='username'>{currentUser && <p>Welcome, {currentUser.displayName}</p> }</div>
                 <h5 id='navigation'> Navigation</h5>
             {sidebarData.map((val, key)=> {

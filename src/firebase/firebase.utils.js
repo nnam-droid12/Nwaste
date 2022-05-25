@@ -21,13 +21,14 @@ const config = {
   
 
     if(!snapShot.exists){
-      const { displayName, email } = userAuth;
+      const { displayName, email, photoURL } = userAuth;
       const createdAt = new Date();
 
       try{
         await userRef.set({
           displayName,
           email,
+          photoURL,
           createdAt,
           ...additionalData
         })
@@ -46,8 +47,9 @@ export const firestore = firebase.firestore();
 
 export const provider = new firebase.auth.GoogleAuthProvider();
 provider.setCustomParameters({ prompt: 'select_account' });
+export const signInWithGoogle = () => auth.signInWithPopup(provider);
 export const storage = firebase.storage(app)
 export const db = firebase.firestore(app);
-// export const signInWithGoogle = () => auth.signInWithPopup(provider);
+
 
 export default firebase;

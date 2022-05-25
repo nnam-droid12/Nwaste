@@ -4,8 +4,8 @@ import './Signin.scss';
 import CustomButton from '../custombutton/CustomButton.component';
 import GoogleButton from 'react-google-button';
 import { Link } from 'react-router-dom';
-import { auth, provider } from '../../firebase/firebase.utils';
-import {getRedirectResult} from 'firebase/auth'
+import { auth,signInWithGoogle } from '../../firebase/firebase.utils';
+// import {getRedirectResult} from 'firebase/auth'
 import Logo from '../../assets/logo1.png';
 
 
@@ -18,28 +18,28 @@ class SignIn extends React.Component{
             password: ''
         }
     }
-    componentDidMount(){
-        const fetchGoogleSignIn = async ()=>{
-           const response =  await getRedirectResult(auth);
+    // componentDidMount(){
+    //     const fetchGoogleSignIn = async ()=>{
+    //        const response =  await getRedirectResult(auth);
 
-           if(response){
-             window.location='/userhome'
-           }
-        }
+    //        if(response){
+    //          window.location='/userhome'
+    //        }
+    //     }
 
-        fetchGoogleSignIn();
-    }
+    //     fetchGoogleSignIn();
+    // }
     
     handleSubmit = async event =>{
         event.preventDefault();
         const { email, password } = this.state;
         try{
             await auth.signInWithEmailAndPassword(email, password);
-            auth.onAuthStateChanged(user => {
-                if(user){
-                    window.location = '/userhome';
-                }
-            });
+            // auth.onAuthStateChanged(user => {
+            //     if(user){
+            //         window.location = '/userhome';
+            //     }
+            // });
             this.setState({ email: '', password: '' });
         } catch(error){
             console.log(error);
@@ -51,10 +51,10 @@ class SignIn extends React.Component{
       this.setState({ [name]: value });
     }
 
-    signInWithGoogle = async () =>{
-        await auth.signInWithRedirect(provider);
+    // signInWithGoogle = async () =>{
+    //     await auth.signInWithRedirect(provider);
     
-    }
+    // }
     render(){
         return(
         <div className='bg-holder'>
@@ -64,7 +64,7 @@ class SignIn extends React.Component{
               <Link to="/">
                 <img className='sign-logo' title='Go to home page' alt='logo' src={Logo} style={{height: '55px', width: '55px'}} /> 
               </Link>
-                <h4 className='header-4'>Already have an account?</h4>
+                <h4 className='header-4'>Already a Nwaste Member?</h4>
                 <span className='span'>Sign in with your email and password</span>
             </div>
             <form className='form-input' onSubmit={this.handleSubmit}  >
@@ -91,7 +91,7 @@ class SignIn extends React.Component{
                     </div>
                     <GoogleButton 
                     className='google-btn'
-                    onClick={this.signInWithGoogle}>Sign in with google</GoogleButton>
+                    onClick={signInWithGoogle}>Sign in with google</GoogleButton>
                 </div>
             </div>
             </form>
