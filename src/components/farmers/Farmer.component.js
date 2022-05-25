@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import {db} from '../../firebase/firebase.utils';
+import { useState, useEffect } from 'react';
+import { firestore } from '../../firebase/firebase.utils';
 import HeaderTwo from "../header_two/Header_two";
-import WhatsappFloat from "../floating.whatsapp/Floating.whatsapp";
+// import WhatsappFloat from "../floating.whatsapp/Floating.whatsapp";
+import SupportEngine from '../user-support/support-engine/SupportEngine';
 import { FaMapMarkerAlt } from "react-icons/fa";
 import Footer from '../footer/Footer';
 import { getTokenOrRefresh } from '../../token_utils';
@@ -9,18 +10,25 @@ import { ResultReason } from 'microsoft-cognitiveservices-speech-sdk';
 import Loader from "../loader/Loader";
 import { connect } from 'react-redux';
 import { addItem } from '../../redux/cart/cart.actions';
+import { getAllFoodItems } from '../';
 import "tachyons";
+
+import {
+  getDocs,
+  collection,
+  query,
+  orderBy
+} from 'firebase/firestore';
 import './Farmers.scss';
+
 const speechsdk = require('microsoft-cognitiveservices-speech-sdk');
 
 
-const Farmer = ({ addItem, currentUser }) => {
+const Farmer = ({ addItem }) => {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [search, setSearch] = useState("");
   const [products, setProducts] = useState([]);
   const[micspeak, setMicSpeak] = useState('');
-
-
 
 
   useEffect(() =>{
@@ -54,11 +62,21 @@ const sttFromMic = async () => {
 
   
     useEffect(() => {
-      const fetchData = async () => {
-        const data = await db.collection("Products").get();
-        setProducts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-      };
-      fetchData();
+
+        const getAllFoodItems = async () => {
+        const items = await getDocs(
+            query(collection(firestore, 'foodBank'), orderBy('id', 'desc'))
+        );
+        setProducts(items.docs.map(doc => doc.data()));
+  
+    }
+    getAllFoodItems();
+
+      // const fetchData = async () => {
+      //   const data = await firestore.collection("foodBank").get();
+      //   setProducts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+      // };
+      // fetchData();
     }, []);
 
     useEffect(() => {
@@ -78,7 +96,6 @@ const sttFromMic = async () => {
         <HeaderTwo
         search={ search }
         clearBtn={clearBtn}
-        currentUser={currentUser}
         products={products}
         setSearch={setSearch}
         sttFromMic={sttFromMic}
@@ -107,7 +124,8 @@ const sttFromMic = async () => {
                   </main>))) : <div className='loading'><Loader /></div>
                   }
        </div> 
-       <WhatsappFloat />
+       {/* <WhatsappFloat /> */}
+       <SupportEngine />
     <footer className="position-footer">
     <Footer /> 
     </footer>     
@@ -120,11 +138,3 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export default connect(null, mapDispatchToProps)(Farmer);
-
-
-
-
-
-
-
-

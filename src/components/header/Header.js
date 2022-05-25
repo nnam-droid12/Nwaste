@@ -2,14 +2,27 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Logo from '../../assets/logo1.png';
+import Avatar from '../../assets/avatar.png';
 import { GoThreeBars } from "react-icons/go";
-import { MdArrowRightAlt } from "react-icons/md";
+import { auth } from '../../firebase/firebase.utils';
+import { MdArrowRightAlt, MdLogout } from "react-icons/md";
+import { useState } from 'react';
+import { IoMdContact } from "react-icons/io";
 import './Header.scss';
+import { motion } from 'framer-motion';
 
 
 const Header = ({ currentUser }) =>{
+
+const [isMenu, setIsMenu] = useState(false)
+
+const logOut = () => {
+    auth.signOut(window.location = '/');
+    setIsMenu(false);
+}
+
     return(
-        <nav className='header sticky'>
+            <nav className='header sticky'>
             {/* my logo === h1 */}
             <Link to='/'>
              <div> 
@@ -32,25 +45,45 @@ const Header = ({ currentUser }) =>{
             </label>
                <div className='options'>
 
-                 <Link className='option' to='/about'>
+                 <Link className='option hover:bg-slate-100 transition-all duration-100 ease-in-out text-textColor text-base' to='/about'>
                      ABOUT
                  </Link>
-                 <Link className='option' to='/faq' >
+                 <Link className='option hover:bg-slate-100 transition-all duration-100 ease-in-out text-textColor text-base' to='/faq' >
                      FAQ
                  </Link>
-                 <Link className='option' to='/loan' >
+                 <Link className='option hover:bg-slate-100 transition-all duration-100 ease-in-out text-textColor text-base' to='/loan' >
                     LOAN
                 </Link>
                  {
                      currentUser ?
                      // when user is sign in
-                        <Link className='option' to='/userhome'>
-                        PROFILE
-                        </Link>   
+                        
+                            <motion.img 
+                            onClick={() => setIsMenu(!isMenu)}
+                            whileTap={{scale: .6}}
+                            src={currentUser? currentUser.photoURL : Avatar} 
+                            alt='Avatar' className='avatar rounded-full option'
+
+                            />  
                     :
-                        <Link className='option' to='/signin' >
+                        <Link className='option hover:bg-slate-100 transition-all duration-100 ease-in-out text-textColor text-base' to='/signin' >
                             LOGIN
                         </Link>
+                 }
+
+                 {
+                     isMenu && (
+                    <motion.div 
+                     initial={{opacity: 0, scale: 0.6}}
+                     animate={{opacity: 1, scale: 1}}
+                     exit={{opacity: 0, scale: 0.6}}
+                     className='w-10 bg-gray-50 shadow-x1 rounded-lg flex flex-col absolute top-20 right-24'>
+                    <Link to='/userhome'>
+                    <p onClick={() => setIsMenu(false)} className='px-4 py-2 cursor-pointer flex items-center gap-3 hover:bg-slate-100 transition-all duration-100 ease-in-out text-textColor text-base'>Profile <IoMdContact /> </p>
+                    </Link>
+                    <p onClick={logOut} className='px-4 py-2 cursor-pointer flex items-center gap-3 hover:bg-slate-100 transition-all duration-100 ease-in-out text-textColor text-base'>Logout <MdLogout /></p>
+                 </motion.div> 
+                     )
                  }
 
                  <div>
@@ -60,7 +93,7 @@ const Header = ({ currentUser }) =>{
                         <span className='get-started-btn'>Market place</span>
                         <span 
                         className="get-started-icon"
-                        size='30px'
+                        size='10px'
                         ><MdArrowRightAlt />
                         </span>
                     </button>

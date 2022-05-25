@@ -57,7 +57,7 @@ const UserHomePage = () => {
   }, []);
      
 
-  var data = {
+  const data = {
     labels: polyshape?.map(y => y.name),
     datasets: [{
         label: `${polyshape.length} graph available`,

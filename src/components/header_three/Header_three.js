@@ -20,7 +20,7 @@ const HeaderThree = () => {
             </Link>
 
             <button >
-            <Link className='product-btn' to='/productform'>Submit Products</Link>
+            <Link className='product-btn' to='/submitform'>Submit Products</Link>
             </button>
         </nav>
      );

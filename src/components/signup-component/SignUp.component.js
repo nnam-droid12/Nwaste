@@ -108,7 +108,7 @@ class SignUp extends React.Component {
                          type='submit'> sign up </CustomButton>
                     </div>
                     <div className='signin-and-link'>
-                    <p style={{color: '#4285f4'}}>Already Have An Account? 
+                    <p style={{color: '#4285f4'}}>Already a Nwaste member? 
                         <Link to='/signin'>
                             <button className='sign-in-btn'>Sign in</button>
                         </Link>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { sidebarData } from '../Sidebar.data';
-import { IoMdContact } from "react-icons/io";
+import Avatar from '../../assets/avatar.png';
 import { connect } from 'react-redux';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 import './Sidebar.scss';
@@ -10,7 +10,12 @@ const Sidebar = ({currentUser}) => {
         <div className='sidebar'>
             
             <ul className='sidebar-list'>
-            <div id="contact-icon"><IoMdContact /></div>
+            <div id="avatar-icon">
+                <img 
+                className='rounded-full'
+                src={currentUser? currentUser.photoURL : Avatar}
+                alt='avatar' />
+            </div>
             <div id='username'>{currentUser && <p>Welcome, {currentUser.displayName}</p> }</div>
                 <h5 id='navigation'> Navigation</h5>
             {sidebarData.map((val, key)=> {
