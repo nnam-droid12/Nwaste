@@ -1,9 +1,9 @@
-import React from 'react';
 import CartItem from '../cart-item/Cart-item.component';
 import { connect } from 'react-redux';
 import { toggleCartHidden } from './../../redux/cart/cart.actions';
 import { createStructuredSelector } from 'reselect';
 import { selectCartItems } from '../../redux/cart/cart.selectors';
+import { ReactComponent as EmptyCart } from '../../assets/emptyCart.svg';
 import { useNavigate } from 'react-router-dom';
 import './cart-dropdown.scss';
 
@@ -17,7 +17,11 @@ const CartDropdown = ({ cartItems, dispatch }) => {
                     cartItems.map(cartItem => 
                     <CartItem key={cartItem.id} i={cartItem} />)
                 ): 
-                <span className='empty-message'>Your cart is empty</span>
+                (<div>
+                    <EmptyCart className='empty-cart'/>
+                    <span className='cart-message'>Your cart is empty!</span>
+                </div>
+                )
     
                 }
             </div>

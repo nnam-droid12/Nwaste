@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import { createStructuredSelector } from 'reselect';
 import { selectCartHidden } from '../../redux/cart/cart.selectors';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
-import { auth } from '../../firebase/firebase.utils';
 import Logo from '../../assets/logo1.png';
 import CartIcon from '../cart-icon/Cart-icon.component';
 import { connect } from 'react-redux';
@@ -70,8 +69,8 @@ const HeaderTwo = ({ sttFromMic, setSearch, currentUser, hidden, search, clearBt
                     FAQs
                 </Link>
                
-                {
-                    currentUser?
+                
+                    {/* currentUser?
                     <div className='display-option'>
                         <div className='option' onClick={() => auth.signOut(window.location = '/')} >
                             LOGOUT
@@ -82,12 +81,13 @@ const HeaderTwo = ({ sttFromMic, setSearch, currentUser, hidden, search, clearBt
                         </Link> 
                          
                     </div>        
-                    :
+                    : */}
+
                     <Link className='option' to='/signin'>
                     LOGIN
                     </Link>
                     
-                }
+                
                 
                
             </div>
