@@ -44,7 +44,7 @@ const ProductForm = () =>{
               .then(async (url) =>{
                 const productRef = collection(db, "Products");
                 console.log(productRef);
-                console.log(formData);
+                console.log(formDa7ta);
                  await addDoc(productRef, {
                   title: formData.title,
                   location: formData.location,

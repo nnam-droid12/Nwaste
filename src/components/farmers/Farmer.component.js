@@ -1,16 +1,24 @@
 import { useState, useEffect } from 'react';
 import { firestore } from '../../firebase/firebase.utils';
 import HeaderTwo from "../header_two/Header_two";
+import {addItem} from '../../redux/cart/cart.actions';
 // import WhatsappFloat from "../floating.whatsapp/Floating.whatsapp";
 import SupportEngine from '../user-support/support-engine/SupportEngine';
-import { FaMapMarkerAlt } from "react-icons/fa";
+import { AiOutlineClose } from 'react-icons/ai';
 import Footer from '../footer/Footer';
 import { getTokenOrRefresh } from '../../token_utils';
 import { ResultReason } from 'microsoft-cognitiveservices-speech-sdk';
-import Loader from "../loader/Loader";
+import Fruits from './fruits';
+import Cereals from './cereals';
+import NutsAndSeeds from './nutsandseeds';
+import SpicesAndHearbs from './spicesandhearb';
+import StemAndTubers from './stemandtuber';
+
+import { Route, Routes, useNavigate } from 'react-router-dom';
+
 import { connect } from 'react-redux';
-import { addItem } from '../../redux/cart/cart.actions';
-import { getAllFoodItems } from '../';
+
+// import { getAllFoodItems } from '../../firebase/firebaseFunction';
 import "tachyons";
 
 import {
@@ -29,6 +37,7 @@ const Farmer = ({ addItem }) => {
   const [search, setSearch] = useState("");
   const [products, setProducts] = useState([]);
   const[micspeak, setMicSpeak] = useState('');
+
 
 
   useEffect(() =>{
@@ -62,21 +71,13 @@ const sttFromMic = async () => {
 
   
     useEffect(() => {
-
         const getAllFoodItems = async () => {
         const items = await getDocs(
             query(collection(firestore, 'foodBank'), orderBy('id', 'desc'))
         );
         setProducts(items.docs.map(doc => doc.data()));
-  
     }
     getAllFoodItems();
-
-      // const fetchData = async () => {
-      //   const data = await firestore.collection("foodBank").get();
-      //   setProducts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-      // };
-      // fetchData();
     }, []);
 
     useEffect(() => {
@@ -90,6 +91,17 @@ const sttFromMic = async () => {
     setSearch('');
     setProducts(products);
   }
+
+
+  const ProductDetail = () => {
+    return ( 
+        <div className='more-detail'>
+        <AiOutlineClose />
+        <button className='more-detail-button'>ADD TO CART</button>
+    </div>
+     );
+}
+
    
     return (
         <div>
@@ -100,30 +112,21 @@ const sttFromMic = async () => {
         setSearch={setSearch}
         sttFromMic={sttFromMic}
         micspeak={micspeak} />
-        <div className='farmer-card ml4'>
-         {products.length?
-          
-         ( filteredProducts.map((i) => 
-             (<main className='farm-products dib grow' key={i.id}>
-                    <div >
-                        <img src={i.imageUrl} alt="images" 
-                        className="img" />
-                        <div className='product-detail ml3'>
-                          <h3 className='name'> {i.title}</h3>
-                          <div className='flex-wrapper'>
-                          <FaMapMarkerAlt className='location'/>
-                          <span><h4>{i.location}</h4></span>
-                          </div>
-                          <h4 className='price'>${i.price}</h4>
-                          <button className='cart-button' onClick={() => addItem(i)}>
-                          Add to cart
-                          </button>
-                        </div>
-                    </div>
-                    
-                  </main>))) : <div className='loading'><Loader /></div>
-                  }
-       </div> 
+
+<Fruits filteredProducts={filteredProducts} addItem={addItem} products={products} ProductDetail={ProductDetail} />
+<Cereals filteredProducts={filteredProducts} addItem={addItem} products={products} ProductDetail={ProductDetail} />
+<StemAndTubers filteredProducts={filteredProducts} addItem={addItem} products={products} ProductDetail={ProductDetail} />
+<SpicesAndHearbs filteredProducts={filteredProducts} addItem={addItem} products={products} ProductDetail={ProductDetail} />
+<NutsAndSeeds filteredProducts={filteredProducts} addItem={addItem} products={products} ProductDetail={ProductDetail} />
+
+          {/* <Routes>
+            <Route path='/fruits' element={<Fruits filteredProducts={filteredProducts} addItem={addItem} products={products}/>} />
+            <Route path='/cereals' element={<Cereals filteredProducts={filteredProducts} addItem={addItem} products={products}/>} />
+            <Route path='/stemandtubers' element={<StemAndTubers filteredProducts={filteredProducts} addItem={addItem} products={products}/>} />
+            <Route path='/spicesandhearbs' element={<SpicesAndHearbs filteredProducts={filteredProducts} addItem={addItem} products={products}/>} />
+            <Route path='/nutsandseeds' element={ <NutsAndSeeds filteredProducts={filteredProducts} addItem={addItem} products={products}/>} />
+          </Routes> */}
+        
        {/* <WhatsappFloat /> */}
        <SupportEngine />
     <footer className="position-footer">

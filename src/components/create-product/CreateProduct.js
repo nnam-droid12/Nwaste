@@ -1,7 +1,8 @@
 import  { useState } from 'react';
 import { motion } from 'framer-motion';
+import Header from '../header/Header';
 import { saveItem } from '../../firebase/firebaseFunction';
-import { MdFastfood, MdCloudUpload, MdDelete, MdFoodBank, MdAttachMoney } from "react-icons/md";
+import { MdFastfood, MdCloudUpload, MdFoodBank, MdAttachMoney } from "react-icons/md";
 import LoaderTwo from '../loader/LoaderTwo';
 import { CategoryData } from '../../CategoryData';
 import { AnimatePresence } from 'framer-motion';
@@ -11,7 +12,7 @@ import { storage } from '../../firebase/firebase.utils';
 const CreateProduct = () => {
 
   const [title, setTitle] = useState("");
-  const [calories, setCalories] = useState("");
+  const [location, setLocation] = useState("");
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState(null);
   const [fields, setFields] = useState(false);
@@ -35,7 +36,7 @@ const CreateProduct = () => {
         setTimeout(() => {
         setFields(false);
         setIsLoading(false);
-        }, 3000)
+        }, 6000)
       }, () => {
         getDownloadURL(uploadTask.snapshot.ref).then(downloadURL => {
           setImageAsset(downloadURL);
@@ -45,7 +46,7 @@ const CreateProduct = () => {
           setAlertStatus('success');
           setTimeout(() => {
           setFields(false);
-          }, 3000)
+          }, 6000)
         })
       })
     }
@@ -53,7 +54,7 @@ const CreateProduct = () => {
     const saveDetails = () => {
       setIsLoading(true);
       try {
-        if ((!title || !calories || !price || !imageAsset, !category)) {
+        if ((!title || !location || !price || !imageAsset || !category)) {
           setFields(true);
           setMsg("Required fields can't be empty");
           setAlertStatus("danger");
@@ -67,13 +68,11 @@ const CreateProduct = () => {
             title: title,
             imageURL: imageAsset,
             category: category,
-            calories: calories,
-            qty: 1,
-            price: price,
+            location: location,
+            price: price
           };
   
           saveItem(data);
-  
           setIsLoading(false);
           setFields(true);
           setMsg("Data uploaded successfully 😊");
@@ -86,21 +85,29 @@ const CreateProduct = () => {
         }
       } catch (error) {
         console.log(error);
+        setFields(true);
+        setMsg('Error while submitting!. Try again ');
+        setAlertStatus('danger');
+        setTimeout(() => {
+        setFields(false);
+        setIsLoading(false);
+        }, 6000)
       }
     };
 
     const clearData = () => {
       setTitle('');
       setImageAsset(null);
-      setCalories('');
+      setLocation('');
       setPrice('');
       setCategory('select category')
     }
 
     return ( 
         <AnimatePresence>
-      <div className="flex flex-col items-center justify-center">
-        <div className="w-[80%] flex flex-col items-center justify-center p-2 border gap-4 border-gray-300 rounded-lg">
+        <Header />
+      <div className="flex flex-col items-center justify-center create-product">
+        <div className="w-[40%] flex flex-col items-center justify-center p-2 border gap-4 border-gray-300 rounded-lg">
           {fields && (
             <motion.p
               initial={{ opacity: 0, scale: 0.5 }}
@@ -148,7 +155,7 @@ const CreateProduct = () => {
             </select>
           </div>
 
-          <div className="group flex justify-center items-center flex-col border-2 border-dotted border-gray-300 w-full h-225 md:h-300 cursor-pointer">
+          <div className="group flex justify-center items-center flex-col border-2 border-dotted border-gray-300 w-full h-225 md:h-300 cursor-pointer p-2">
             {isLoading ? (
               <LoaderTwo />
             ) : (
@@ -188,10 +195,10 @@ const CreateProduct = () => {
               <input
                 type="text"
                 required
-                placeholder="Give me a calories..."
+                placeholder="Enter your location here..."
                 className="w-full h-full text-lg  bg-transparent outline-none order-none placeholder:text-gray-500"
-                value={calories}
-                onChange={(e) => setCalories(e.target.value)}
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
               />
             </div>
 

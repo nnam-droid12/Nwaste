@@ -49,6 +49,9 @@
    padding: 10px;
    transform: scale(1, 0);
    transition: transform 500ms ease-in-out;
+   &:hover {
+     opacity: .85;
+   }
  }
 
  .option {

@@ -15,9 +15,9 @@ import { AnimatePresence } from 'framer-motion';
 import ForgotPassword from './components/forgot-password/ForgotPassword.component';
 import ResetMessage from './components/reset-password/ResetPassword.component';
 import Farmer from './components/farmers/Farmer.component';
+
 import Loan from './components/news/News.component';
 import CreateProduct from './components/create-product/CreateProduct';
-// import ProductForm from './components/productform/ProductForm.component';
 import { setCurrentUser } from './redux/user/user.actions';
 import { createStructuredSelector } from 'reselect';
 
@@ -59,10 +59,11 @@ class App extends React.Component {
           <Route path='/signup' element={<SignUp />} /> 
           <Route path='/forgotpassword' element={<ForgotPassword />} />
           <Route path='/resetmessage' element= {<ResetMessage />} />
-          <Route path='/farmers' element= {<Farmer  />} />
+
+          <Route path="/farmers" element= {<Farmer  />} />
+
           <Route path='/loan' element= {<Loan  />} />
           <Route path='/checkout' element={<CheckoutPage />}  />
-          {/* <Route path='/productform' element= {<ProductForm />} /> */}
           <Route path='/submitform' element= {<CreateProduct />} />
           <Route path='/userhome' element={<UserHomePage currentUser={this.props.currentUser} />}  />
        </Routes>

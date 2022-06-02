@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import reviews from '../../reviewdata/Review-Data';
 import weather from '../../assets/weather.jpg';
 import { MdArrowRightAlt, MdShoppingCart } from "react-icons/md";
@@ -6,6 +6,7 @@ import { HiAcademicCap, HiArrowsExpand } from "react-icons/hi";
 import { WiCloudUp } from "react-icons/wi";
 import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
 import Header from '../header/Header';
+import ProductDetail from '../products-detail/ProductDetail';
 import Footer from '../footer/Footer';
 import './HomePage.scss';
 
@@ -43,7 +44,7 @@ const HomePage = (props) => {
     //The end of the nexting and previewing function
 
     return(
-        <div >
+        <div className='homepage'>
          <Header currentUser={props.currentUser} />
           <div className='container'>
               <div className='outer'>
@@ -53,7 +54,7 @@ const HomePage = (props) => {
                     <a href='#guideline-content'>
                     <button 
                     className='get-started'>
-                    <span className='get-started-btn'>Guideline</span>
+                    <span className='get-started-btn'>Overview</span>
                     <span 
                     className="get-started-icon"
                     size='30px'
@@ -108,6 +109,7 @@ const HomePage = (props) => {
             
     {/* the beginning of user reviews */}
     <section className="review">
+    <ProductDetail />
         <div className="user-reviews">
             <div  className='userss'>
 
@@ -163,6 +165,3 @@ const HomePage = (props) => {
 }
 
 export default HomePage;
-
-
-

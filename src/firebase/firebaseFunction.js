@@ -1,10 +1,6 @@
-import firestore from './firebase.utils';
+import {firestore} from './firebase.utils';
 
-import {
-    setDoc,
-    doc
-    
-} from 'firebase/firestore';
+import { setDoc, doc } from 'firebase/firestore';
 //save new items
 
 export const saveItem = async (data) => {
