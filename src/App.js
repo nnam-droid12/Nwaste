@@ -15,6 +15,7 @@ import UserHomePage from './components/userhomepage/Userhome.component';
 import ForgotPassword from './components/forgot-password/ForgotPassword.component';
 import ResetMessage from './components/reset-password/ResetPassword.component';
 import Farmer from './components/farmers/Farmer.component';
+
 import Loan from './components/news/News.component';
 import CreateProduct from './components/create-product/CreateProduct';
 import { setCurrentUser } from './redux/user/user.actions';
@@ -61,11 +62,11 @@ class App extends React.Component {
           <Route path='/signup' element={this.props.currentUser? <Navigate to='/userhome'/> : <SignUp /> } /> 
           <Route path='/forgotpassword' element={<ForgotPassword />} />
           <Route path='/resetmessage' element= {<ResetMessage />} />
-          <Route path='/farmers' element= {<Farmer  />} />
+
+          <Route path="/farmers" element= {<Farmer  />} />
+          <Route path='/flood' element= {<Flood  />} />
           <Route path='/loan' element= {<Loan  />} />
           <Route path='/checkout' element={<CheckoutPage />}  />
-          <Route path='/userhome' element={<UserHomePage />}  />
-          <Route path='/flood' element={<Flood />}  />
           <Route path='/submitform' element= {<CreateProduct />} />
           <Route path='/userhome' element={<UserHomePage currentUser={this.props.currentUser} />}  />
           <Route path='/direction' element={<Direction />} />

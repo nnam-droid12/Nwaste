@@ -4,24 +4,60 @@ import { EngineStyle } from '../SupportEngine.style';
 
 import { LoadingOutlined } from '@ant-design/icons';
 
+import axios from 'axios';
+
 import Avatar from '../Avatar';
 
-const EmailForm = () => {
+const EmailForm = props => {
     const [email, setEmail] = useState('');
     const [loading, setLoading] = useState(false);
+
+    function getOrCreateUser(callback) {
+        axios.put(
+            'https://api.chatengine.io/users/',
+        {
+            "username": email,
+            "secret": email,
+            'email': email,
+        },
+        {headers: {'Private-Key': process.env.REACT_APP_CE_PRIVATE_KEY}}
+        )
+        .then(res => callback(res.data))
+    }
+
+    function getOrCreateChat(callback) {
+        axios.put(
+            'https://api.chatengine.io/chats/',
+            {
+                "usernames": ["Muhammad Rasheed", email],
+                "is_direct_chat": true
+            },
+        {headers: {'Private-Key': process.env.REACT_APP_CE_PRIVATE_KEY}}
+        )
+        .then(res => callback(res.data))
+    }
 
     function handleSubmit(event) {
         event.preventDefault();
         setLoading(true);
         console.log('sending email', email);
+
+        getOrCreateUser(
+            user => { 
+            props.setUser(user)
+            getOrCreateChat(
+                chat => props.setChat(chat)
+            )
+        }
+        )
+
     }
 
     return ( 
         <div style={{
             ...EngineStyle.emailFormWindow, 
-            ...{
-                height: '100%',
-                opacity: '1'
+            ...{height: props.visible? '100%' : '0%',
+                opacity: props.visible? '1' : '0'
             }
         }}>
 

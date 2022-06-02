@@ -1,6 +1,6 @@
 import  { useState } from 'react';
 import { motion } from 'framer-motion';
-// import Header from '../header/Header';
+import Header from '../header/Header';
 import { saveItem } from '../../firebase/firebaseFunction';
 import { MdFastfood, MdCloudUpload, MdFoodBank, MdAttachMoney } from "react-icons/md";
 import LoaderTwo from '../loader/LoaderTwo';
@@ -36,7 +36,7 @@ const CreateProduct = () => {
         setTimeout(() => {
         setFields(false);
         setIsLoading(false);
-        }, 3000)
+        }, 6000)
       }, () => {
         getDownloadURL(uploadTask.snapshot.ref).then(downloadURL => {
           setImageAsset(downloadURL);
@@ -46,7 +46,7 @@ const CreateProduct = () => {
           setAlertStatus('success');
           setTimeout(() => {
           setFields(false);
-          }, 3000)
+          }, 6000)
         })
       })
     }
@@ -54,7 +54,7 @@ const CreateProduct = () => {
     const saveDetails = () => {
       setIsLoading(true);
       try {
-        if ((!title || !location || !price || !imageAsset, !category)) {
+        if ((!title || !location || !price || !imageAsset || !category)) {
           setFields(true);
           setMsg("Required fields can't be empty");
           setAlertStatus("danger");
@@ -74,7 +74,6 @@ const CreateProduct = () => {
           };
   
           saveItem(data);
-  
           setIsLoading(false);
           setFields(true);
           setMsg("Data uploaded successfully 😊");
@@ -87,6 +86,13 @@ const CreateProduct = () => {
         }
       } catch (error) {
         console.log(error);
+        setFields(true);
+        setMsg('Error while submitting!. Try again ');
+        setAlertStatus('danger');
+        setTimeout(() => {
+        setFields(false);
+        setIsLoading(false);
+        }, 6000)
       }
     };
 
@@ -99,10 +105,11 @@ const CreateProduct = () => {
     }
 
     return ( 
-        
-        // <AnimatePresence exitBeforeEnter>
-      <div className="w-full min-h-screen flex flex-col items-center justify-center">
-        <div className="w-[40%] md-w[100%]flex flex-col items-center justify-center p-2 border gap-4 border-gray-300 rounded-lg">
+
+        <AnimatePresence>
+        <Header />
+      <div className="flex flex-col items-center justify-center create-product">
+        <div className="w-[40%] flex flex-col items-center justify-center p-2 border gap-4 border-gray-300 rounded-lg">
           {fields && (
             <motion.p
               initial={{ opacity: 0, scale: 0.5 }}
@@ -150,7 +157,7 @@ const CreateProduct = () => {
             </select>
           </div>
 
-          <div className="group flex justify-center items-center flex-col border-2 border-dotted border-gray-300 w-full h-225 md:h-300 cursor-pointer">
+          <div className="group flex justify-center items-center flex-col border-2 border-dotted border-gray-300 w-full h-225 md:h-300 cursor-pointer p-2">
             {isLoading ? (
               <LoaderTwo />
             ) : (
@@ -190,7 +197,7 @@ const CreateProduct = () => {
               <input
                 type="text"
                 required
-                placeholder="Farmer location..."
+                placeholder="Enter your location here..."
                 className="w-full h-full text-lg  bg-transparent outline-none order-none placeholder:text-gray-500"
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
@@ -221,7 +228,7 @@ const CreateProduct = () => {
           </div>
         </div>
       </div>
-      //  </AnimatePresence>
+      </AnimatePresence>
    
      );
 }

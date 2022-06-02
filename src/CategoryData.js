@@ -1,28 +1,33 @@
 export const CategoryData = [
     {
         id: 1,
-        name: 'Hats',
-        urlParamName: 'hats'
+        name: 'Cereals and legumes',
+        urlParamName: 'Cerealsandlegumes'
     },
     {
         id: 2,
-        name: 'Sneakers',
-        urlParamName: 'sneakers'
+        name: 'Stem and tubbers',
+        urlParamName: 'Stemandtubbers'
     },
     {
         id: 3,
-        name: "Jackets",
-        urlParamName: 'jackets'
+        name: "Nuts and seeds",
+        urlParamName: 'Nutsandseeds'
     },
     {
         id: 4,
-        name: "Floaters",
-        urlParamName: 'floaters'
+        name: "Fruits",
+        urlParamName: 'fruits'
     },
     {
         id: 5,
-        name: "Shots",
-        urlParamName: 'shots'
+        name: "Vegetables",
+        urlParamName: 'Vegetables'
+    },
+    {
+        id: 6,
+        name: "Spices and herbs",
+        urlParamName: 'Spicesandhearbs'
     }
     
 ]

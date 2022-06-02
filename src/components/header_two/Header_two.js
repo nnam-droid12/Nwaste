@@ -47,10 +47,12 @@ const HeaderTwo = ({ sttFromMic, setSearch, currentUser, hidden, search, clearBt
                 
                 <div className="search-icon">
                 
-                    {
+                   <div>
+                   {
                       !search.length?  <FaSistrix /> : <AiOutlineClose onClick={clearBtn}/>
                     }
-                    <span className='partition'>|</span> <BsMicFill onClick={sttFromMic} />
+                   </div>
+                    <BsMicFill onClick={sttFromMic} className="mic-icon" />
                 </div>
             </div>
             <div className='cart-icon'><CartIcon /></div>

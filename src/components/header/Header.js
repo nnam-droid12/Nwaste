@@ -60,12 +60,11 @@ const logOut = () => {
                  {
                      currentUser ?
                      // when user is sign in
-                        
                             <motion.img 
                             onClick={() => setIsMenu(!isMenu)}
                             whileTap={{scale: .6}}
-                            src={currentUser? currentUser.photoURL : Avatar} 
-                            alt='Avatar' className='avatar rounded-full option'
+                            src={currentUser? currentUser?.photoURL : Avatar} 
+                            alt='' className='avatar rounded-full option'
 
                             />  
                     :

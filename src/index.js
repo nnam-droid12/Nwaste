@@ -17,7 +17,6 @@ ReactDOM.render(
    <BrowserRouter>
      <PersistGate persistor={persistor}>
      { path.indexOf('/support') === -1 ? <App /> : <SupportAdmin /> }
-      {/* <App /> */}
       </PersistGate>
    </BrowserRouter>
 </Provider>,

@@ -52,6 +52,6 @@ export const signInWithGoogle = () => auth.signInWithPopup(provider);
 export const storage = firebase.storage(app)
 export const db = firebase.firestore(app);
 // export const db = firebase.firestore(app);
-// export const signInWithGoogle = () => auth.signInWithPopup(provider);
+export const signInWithGoogle = () => auth.signInWithPopup(provider);
 
 export default firebase;
